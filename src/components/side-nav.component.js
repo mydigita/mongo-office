@@ -12,16 +12,16 @@ export default function SideNav(){
                 <h1>Mongo Office</h1>
                 <p>by: theTradeCoder</p>
             </div>
-                <a href="/task-manager/" className="form-control">Task Manager</a>
-                <a href="/employee-contacts/" className="form-control">Employee Contacts</a>
-                <a href="/file-tracker/" className="form-control">File Tracker</a>
-                <a href="/travel-records/" className="form-control">Travel Records</a>
-                <a href="/medical-records/" className="form-control">Medical Records</a>
-                <a href="/meeting-records/" className="form-control">Meeting Records</a>
-                <a href="/plan-master/" className="form-control">Plan Master</a>
-                <a href="/project-manager/" className="form-control">Project Manager</a>
-                <a href="/vehicle-records/" className="form-control">Vehicle Records</a>
-                <a href="/driver-duty-roster/" className="form-control">Driver's Duty Roster</a>
+                <a href="/task-manager/" className="form-control nav-link">Task Manager</a>
+                <a href="/employee-contacts/" className="form-control nav-link">Employee Contacts</a>
+                <a href="/file-tracker/" className="form-control nav-link">File Tracker</a>
+                <a href="/travel-records/" className="form-control nav-link">Travel Records</a>
+                <a href="/medical-records/" className="form-control nav-link">Medical Records</a>
+                <a href="/meeting-records/" className="form-control nav-link">Meeting Records</a>
+                <a href="/plan-master/" className="form-control nav-link">Plan Master</a>
+                <a href="/project-manager/" className="form-control nav-link">Project Manager</a>
+                <a href="/vehicle-records/" className="form-control nav-link">Vehicle Records</a>
+                <a href="/driver-duty-roster/" className="form-control nav-link">Driver's Duty Roster</a>
             <div>
 
             </div>
