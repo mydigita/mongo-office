@@ -21,6 +21,7 @@ export default function SideNav(){
                 <a href="/plan-master/" className="form-control nav-link">Plan Master</a>
                 <a href="/project-manager/" className="form-control nav-link">Project Manager</a>
                 <a href="/vehicle-records/" className="form-control nav-link">Vehicle Records</a>
+                <a href="/business-contacts/" className="form-control nav-link">Business Contacts</a>
                 <a href="/driver-duty-roster/" className="form-control nav-link">Driver's Duty Roster</a>
             <div>
 
