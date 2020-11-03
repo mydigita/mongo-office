@@ -1,9 +1,12 @@
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Home from "./components/home.component.js";
 
 function App() {
   return (
-    <div className="App">
-     <h1>Mongo Office</h1>
-    </div>
+    <Router className="App">
+      <Route path="/" component={Home}/>
+    </Router>
   );
 }
 
