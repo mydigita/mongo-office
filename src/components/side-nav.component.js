@@ -7,8 +7,8 @@ import "../App.css";
 export default function SideNav(){
 
     return (
-        <div>
-            <div className="container">
+        <div className="side-nav shadow">
+            <div>
                 <h1>Mongo Office</h1>
                 <p>by: theTradeCoder</p>
             </div>
