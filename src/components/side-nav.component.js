@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
 import "../App.css";
 
-export default function Home(){
+export default function SideNav(){
 
     return (
         <div>
