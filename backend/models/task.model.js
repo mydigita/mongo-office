@@ -23,7 +23,9 @@ const TaskSchema = new Schema({
         update_count:{type:Number},
         deleted:{type:String},
         closed:{type:String},
-        open:{type:String}
+        open:{type:String},
+        visit_count:{type:Number},
+        browser:[String]
     }
 }, {timestamps:true});
 
