@@ -2,7 +2,7 @@
   "name": "mongo-office",
   "version": "1.0.0",
   "author":"thetradecoder, tradecoder",
-  "homepage":"https://thetradecoder.github.io/mongo-office",
+  "homepage":"https://thetradecoder.github.io/mongo-office/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
