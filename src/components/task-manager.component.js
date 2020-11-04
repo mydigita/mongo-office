@@ -32,7 +32,34 @@ export default function TaskManager(){
                     </div>
                     <div id="add" className="tab-pane fade">
                         <h3>Add New Task</h3>
-                        <p>New task</p>
+                        <div>
+                            <form>
+                                <div className="form-group">
+                                    <label>Task name:</label>
+                                    <input type="text" className="form-control" placeholder="Task title"/>
+                                </div>
+                                <div className="form-group">                                   
+                                    <label>Task details:</label>
+                                    <input type="text" className="form-control" placeholder="Task details"/>
+                                </div>
+                                <div className="form-group">                                    
+                                    <label>Assigned to:</label>
+                                    <input type="text" className="form-control" placeholder="Assigned to"/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Created by:</label>
+                                    <input type="text" className="form-control" placeholder="Created by"/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Deadline:</label>
+                                    <input type="text" className="form-control" placeholder="Deadline"/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Status:</label>
+                                    <input type="text" className="form-control" placeholder="Status"/>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div id="edit" className="tab-pane fade">
                         <h3>Edit Task</h3>
