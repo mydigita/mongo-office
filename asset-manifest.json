@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mongo-office/static/css/main.719baad8.chunk.css",
-    "main.js": "/mongo-office/static/js/main.8a5938af.chunk.js",
-    "main.js.map": "/mongo-office/static/js/main.8a5938af.chunk.js.map",
+    "main.js": "/mongo-office/static/js/main.4762f5c0.chunk.js",
+    "main.js.map": "/mongo-office/static/js/main.4762f5c0.chunk.js.map",
     "runtime-main.js": "/mongo-office/static/js/runtime-main.63bc6ba3.js",
     "runtime-main.js.map": "/mongo-office/static/js/runtime-main.63bc6ba3.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/mongo-office/static/css/2.20aa2d7b.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.64f3bd21.chunk.js",
     "static/css/main.719baad8.chunk.css",
-    "static/js/main.8a5938af.chunk.js"
+    "static/js/main.4762f5c0.chunk.js"
   ]
 }
