@@ -46,3 +46,7 @@ html, body{
   overflow-y: scroll;
   background-color:#ebf5f1;
 }
+
+.body-part{
+  margin-left:300px;
+}
