@@ -19,6 +19,7 @@ export default function SideNav(){
                     <a href="/event-manager/" className="form-control nav-link">Event Manager</a>                    
                     <a href="/file-tracker/" className="form-control nav-link">File Tracker</a>
                     <a href="/duty-roster/" className="form-control nav-link">Duty Roster</a>
+                    <a href="/cash-register/" className="form-control nav-link">Cash Register</a>
                     <a href="/vehicle-records/" className="form-control nav-link">Vehicle Records</a> 
                     <a href="/travel-records/" className="form-control nav-link">Travel Records</a>
                     <a href="/meeting-records/" className="form-control nav-link">Meeting Records</a>
