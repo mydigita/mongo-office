@@ -6,6 +6,9 @@ import "../App.css";
 
 
 export default function TaskManager(){
+    function onSubmitAddTask(e){
+        e.preventDefault();
+    }
     return(
         <div className="body-part">
             <div>
@@ -33,7 +36,7 @@ export default function TaskManager(){
                     <div id="add" className="tab-pane fade">
                         <h3>Add New Task</h3>
                         <div>
-                            <form>
+                            <form onSubmit={onSubmitAddTask}>
                                 <div className="form-group">
                                     <label>Task name:</label>
                                     <input type="text" className="form-control" placeholder="Task title"/>
@@ -57,6 +60,9 @@ export default function TaskManager(){
                                 <div className="form-group">
                                     <label>Status:</label>
                                     <input type="text" className="form-control" placeholder="Status"/>
+                                </div>
+                                <div>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
