@@ -5,6 +5,31 @@
 html, body{
   box-sizing: border-box;
 }
+
+/* Scrollbar design starts here */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gray; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:teal;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: blue; 
+}
+
+/* Scrollbar design closed here */
+
 .side-nav-container{
   max-width:300px;
   height:100%;
