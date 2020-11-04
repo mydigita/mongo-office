@@ -5,7 +5,7 @@ import TaskManager from "./components/task-manager.component.js";
 
 function App() {
   return (
-    <Router className="App">
+    <Router>
       <SideNav />
       <Route path="/mongo-office/task-manager/" component={TaskManager}/>
     </Router>
