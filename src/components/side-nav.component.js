@@ -30,6 +30,7 @@ export default function SideNav(){
                     <a href="/airline-contacts/" className="form-control nav-link">Airline Contacts</a>
                     <a href="/association-contacts/" className="form-control nav-link">Association Contacts</a>
                     <a href="/embassy-contacts/" className="form-control nav-link">Embassy Contacts</a>
+                    <a href="/visa-centers/" className="form-control nav-link">Visa Centers</a>
                 </div>
             </div>
         </div>
