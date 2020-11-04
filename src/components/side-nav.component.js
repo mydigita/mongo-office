@@ -16,6 +16,7 @@ export default function SideNav(){
                 </div>
                 <div>
                     <a href="/task-manager/" className="form-control nav-link">Task Manager</a>
+                    <a href="/event-manager/" className="form-control nav-link">Event Manager</a>
                     <a href="/business-contacts/" className="form-control nav-link">Business Contacts</a>
                     <a href="/employee-contacts/" className="form-control nav-link">Employee Contacts</a>
                     <a href="/airline-contacts/" className="form-control nav-link">Airline Contacts</a>
