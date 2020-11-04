@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <SideNav />
-      <Route path="/mongo-office/task-manager/" component={TaskManager}/>
+      <Route path="/mongo-office/task-manager/" exact component={TaskManager}/>
     </Router>
   );
 }
