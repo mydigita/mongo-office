@@ -10,6 +10,11 @@ const TaskSchema = new Schema({
     date_created:{type:Date},
     deadline:{type:Date},
     status:{type:String},
+    update_count:{type:Number},
+    open:{type:String},
+    closed:{type:String},     
+    deleted:{type:String},
+    visit_count:{type:Number},
     history:[{
         username:{type:String},
         title:{type:String},
@@ -20,11 +25,6 @@ const TaskSchema = new Schema({
         ip:{type:String},
         updated_on:{type:Date},
         mac:{type:String},
-        update_count:{type:Number},
-        deleted:{type:String},
-        closed:{type:String},
-        open:{type:String},
-        visit_count:{type:Number},
         browser:{type:String}
     }]
 }, {timestamps:true});
