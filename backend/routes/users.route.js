@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user.model.js');
 
-router.route('/add')
+router.route('/mongo-office/task-manager/add')
 .post((req, res)=>{
     const {
         username,
