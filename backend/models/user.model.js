@@ -16,6 +16,7 @@ const UserSchema = new Schema({
         password:{type:String},
         ip:{type:String},
         updated_on:{type:Date},
+        mac:{type:String},
         browser:{type:String}
     }]
 }, {timestamps:true});
