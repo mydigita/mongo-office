@@ -28,8 +28,7 @@ export default function UserForm(){
                 </div>
                 <div>
                     <button type="submit">Signup</button>
-                </div>
-                
+                </div>               
 
             </form>
         </div>
