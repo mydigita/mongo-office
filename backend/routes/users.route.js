@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Users = require('../models/user.model.js');
 
-router.route('/mongo-office/accounts/sign-up')
+router.route('/mongo-office/accounts/register')
 .post((req, res)=>{
     const {
         username,
