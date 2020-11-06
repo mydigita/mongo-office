@@ -4,9 +4,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'jquery/dist/jquery.js';
 
 export default function UserForm(){
+    function onSubmitUserSignup(e){
+        e.preventDefault();
+    }
     return(
         <div>
-            <form>
+            <form onSubmit={onSubmitUserSignup}>
                 <div className="form-group">
                     <label>Username:</label>
                     <input type="text" className="form-control" placeholder="username"/>
