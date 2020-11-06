@@ -10,9 +10,9 @@ router.route('/mongo-office/accounts/register')
         full_name,
     } = req.body;
 
-    var first_ip="";
-    var last_ip="";
-    var ip="";
+    var first_ip=req.ip;
+    var last_ip=req.ip;
+    var ip=req.ip;
     const created_on = new Date();
     const updated_on = new Date();
     var update_count=1;
