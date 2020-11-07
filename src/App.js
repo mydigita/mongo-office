@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <SideNav />
-      <Route path="/mongo-office/task-manager/accounts/signup" component={UserForm}/>
+      <Route path="/mongo-office/accounts/signup" component={UserForm}/>
       <Route path="/mongo-office/task-manager/" exact component={TaskManager}/>
     </Router>
   );
