@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/users.route');
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,7 @@ mongoose.connection.once('open', ()=>{
 
 app.use(cors());
 app.use(express.json());
+app.use('/mongo-office/accounts/', userRoutes);
 
 
 app.listen(port, ()=>{
