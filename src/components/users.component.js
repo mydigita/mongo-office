@@ -1,14 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'jquery/dist/jquery.js';
 
 export default function UserForm(){
+
+    const [username, setUsername] =  useState("");
+    const [user_email, setUser_email] = useState("");
+    const [password, setPassword] =  useState("");
+    const [fullName, setFullName] = useState("");
+
+    const userDetails = {username, user_email, password, fullName};
+
+
     function onSubmitUserSignup(e){
         e.preventDefault();
+        axios.post('http://localhost:5000/mongo-office/accounts/register', userDetails)
+        .then(()=>window.alert("Signup successful"))
+        .catch(err=>window.alert(err));
     }
     return(
-        <div>
+        <div className="body-part">
             <form onSubmit={onSubmitUserSignup}>
                 <div className="form-group">
                     <label>Username:</label>
@@ -27,7 +40,7 @@ export default function UserForm(){
                     <input type="text" className="form-control" placeholder="full name"/>
                 </div>
                 <div>
-                    <button type="submit">Signup</button>
+                    <button type="submit" className="btn btn-primary">Signup</button>
                 </div>               
 
             </form>
