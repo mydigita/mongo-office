@@ -1,35 +1,35 @@
 const router = require('express').Router();
 const Users = require('../models/user.model.js');
 
-router.route('/register')
+router.route('/register') 
 .post((req, res)=>{
     const {
         username,
-        user_email,
+        userEmail,
         password,
-        full_name,
+        fullName,
     } = req.body;
 
-    var first_ip=req.headers['x-forwarded-for'];
-    var last_ip=req.headers['x-forwarded-for'];
-    var ip=req.headers['x-forwarded-for'];
-    const created_on = new Date();
-    const updated_on = new Date();
-    var update_count=1;
+    var firstIp=req.headers['x-forwarded-for'] || req.connection.remoteAddress;;
+    var lastIp=req.headers['x-forwarded-for'] || req.connection.remoteAddress;;
+    var ip=req.headers['x-forwarded-for'] || req.connection.remoteAddress;;
+    const createdOn = new Date();
+    const updatedOn = new Date();
+    var updateCount=1;
     var mac="";
     var browser="";
-    var history=[{full_name, password, ip, updated_on, mac, browser}];
+    var history=[{fullName, password, ip, updatedOn, mac, browser}];
 
     const User = new Users({
         username,
-        user_email,
+        userEmail,
         password,
-        full_name,
-        first_ip,
-        last_ip,
-        created_on,
-        updated_on,
-        update_count,
+        fullName,
+        firstIp,
+        lastIp,
+        createdOn,
+        updatedOn,
+        updateCount,
         history
     });
 

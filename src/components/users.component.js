@@ -7,7 +7,7 @@ import 'jquery/dist/jquery.js';
 export default function UserForm(){
 
     const [username, setUsername] =  useState("");
-    const [user_email, setUserEmail] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] =  useState("");
     const [fullName, setFullName] = useState("");
 
@@ -26,7 +26,7 @@ export default function UserForm(){
         setFullName(e.target.value);
     }
 
-    const userDetails = {username, user_email, password, fullName};
+    const userDetails = {username, userEmail, password, fullName};
 
 
     function onSubmitUserSignup(e){

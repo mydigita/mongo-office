@@ -3,19 +3,19 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     username:{type:String},
-    user_email:{type:String},
+    userEmail:{type:String},
     password:{type:String},
-    full_name:{type:String},
-    first_ip:{type:String},
-    last_ip:{type:String},
-    created_on:{type:Date},
-    updated_on:{type:Date},
-    update_count:{type:Number},
+    fullName:{type:String},
+    firstIp:{type:String},
+    lastIp:{type:String},
+    createdOn:{type:Date},
+    updatedOn:{type:Date},
+    updateCount:{type:Number},
     history:[{
-        full_name:{type:String},
+        fullName:{type:String},
         password:{type:String},
         ip:{type:String},
-        updated_on:{type:Date},
+        updatedOn:{type:Date},
         mac:{type:String},
         browser:{type:String}
     }]
