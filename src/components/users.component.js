@@ -3,13 +3,28 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'jquery/dist/jquery.js';
-
+ 
 export default function UserForm(){
 
     const [username, setUsername] =  useState("");
-    const [user_email, setUser_email] = useState("");
+    const [user_email, setUserEmail] = useState("");
     const [password, setPassword] =  useState("");
     const [fullName, setFullName] = useState("");
+
+    function onChangeUsername(e){
+        setUsername(e.target.value);
+    }
+
+    function onChangeUserEmail(e){
+        setUserEmail(e.target.value);
+    }
+    function onChangePassword(e){
+        setPassword(e.target.value);
+    }
+
+    function onChangeFullName(e){
+        setFullName(e.target.value);
+    }
 
     const userDetails = {username, user_email, password, fullName};
 
@@ -25,19 +40,19 @@ export default function UserForm(){
             <form onSubmit={onSubmitUserSignup}>
                 <div className="form-group">
                     <label>Username:</label>
-                    <input type="text" className="form-control" placeholder="username"/>
+                    <input type="text" className="form-control" placeholder="username" onChange={onChangeUsername}/>
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="email" className="form-control" placeholder="email"/>
+                    <input type="email" className="form-control" placeholder="email" onChange={onChangeUserEmail}/>
                 </div>
                 <div className="form-group">
                     <label>Password:</label>
-                    <input type="password" className="form-control" placeholder="password"/>
+                    <input type="password" className="form-control" placeholder="password" onChange={onChangePassword}/>
                 </div>
                 <div className="form-group">
                     <label>Full Name:</label>
-                    <input type="text" className="form-control" placeholder="full name"/>
+                    <input type="text" className="form-control" placeholder="full name" onChange={onChangeFullName}/>
                 </div>
                 <div>
                     <button type="submit" className="btn btn-primary">Signup</button>
