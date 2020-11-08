@@ -40,19 +40,19 @@ export default function UserForm(){
             <form onSubmit={onSubmitUserSignup}>
                 <div className="form-group">
                     <label>Username:</label>
-                    <input type="text" className="form-control" placeholder="username" onChange={onChangeUsername}/>
+                    <input type="text" className="form-control" placeholder="username" onChange={onChangeUsername} required/>
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="email" className="form-control" placeholder="email" onChange={onChangeUserEmail}/>
+                    <input type="email" className="form-control" placeholder="email" onChange={onChangeUserEmail} required/>
                 </div>
                 <div className="form-group">
                     <label>Password:</label>
-                    <input type="password" className="form-control" placeholder="password" onChange={onChangePassword}/>
+                    <input type="password" className="form-control" placeholder="password" onChange={onChangePassword} required/>
                 </div>
                 <div className="form-group">
                     <label>Full Name:</label>
-                    <input type="text" className="form-control" placeholder="full name" onChange={onChangeFullName}/>
+                    <input type="text" className="form-control" placeholder="full name" onChange={onChangeFullName} required/>
                 </div>
                 <div>
                     <button type="submit" className="btn btn-primary">Signup</button>
