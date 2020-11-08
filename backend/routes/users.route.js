@@ -8,18 +8,13 @@ router.route('/register')
         userEmail,
         password,
         fullName,
-    } = req.body;  
-    const createdOn = new Date();
-    const updatedOn = new Date();
-  
-    
+    } = req.body; 
+        
     const User = new Users({
         username,
         userEmail,
         password,
-        fullName,      
-        createdOn,
-        updatedOn
+        fullName   
     });
 
     User.save()
