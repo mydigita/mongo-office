@@ -22,5 +22,10 @@ router.route('/register')
     .catch((err)=>res.send('User Registration Failed! Try with a different username / email'))
 })
 
+router.route('/login')
+.get((req, res)=>{
+    // finish login backend codes here
+})
+
 
 module.exports =  router;
