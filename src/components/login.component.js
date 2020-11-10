@@ -19,6 +19,9 @@ export default function UserLogin(){
     function onSubmitUserLogin(e){
         e.preventDefault();
         const userData = {username, password};
+        axios.get(`http://localhost:5000/${username}/${password}`)
+        .then(()=>window.location="/mongo-office/home")
+        .catch(err=>window.alert(err))
                 
     }
 
