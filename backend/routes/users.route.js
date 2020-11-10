@@ -24,10 +24,10 @@ router.route('/register')
     .catch((err)=>res.send('User Registration Failed! Try with a different username / email'))
 })
 
-router.route(`/login/${username}/${password}`)
+router.route("/login/:username/:password")
 .get((req, res)=>{
     // finish login backend codes here
-    Users.find({username, password})
+    Users.find({username:req.params.username, password:req.params.password})
     .then(data=>res.send(data))
     .catch(err=>console.log(err))
 })
