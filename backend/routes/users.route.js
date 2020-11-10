@@ -27,8 +27,8 @@ router.route('/register')
 router.route(`/login/${username}/${password}`)
 .get((req, res)=>{
     // finish login backend codes here
-    Users.find({})
-    .then(data=>{res.json(data)})
+    Users.find({username, password})
+    .then(data=>res.send(data))
     .catch(err=>console.log(err))
 })
 

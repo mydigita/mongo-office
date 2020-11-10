@@ -21,7 +21,7 @@ export default function UserLogin(){
         e.preventDefault();
         const userData = {username, password};
         axios.get(`http://localhost:5000/mongo-office/accounts/login/${username}/${password}`)
-        .then(()=>window.location="/mongo-office/home")
+        .then((data)=>{window.alert(data);window.location=`/mongo-office/${username}`})
         .catch(err=>window.alert(err))
                 
     }
