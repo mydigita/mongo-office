@@ -16,6 +16,7 @@ export default function SideNav(){
                     <p>by: theTradeCoder</p>
                 </div>
                 <div>
+                    <Link to="/mongo-office/accounts/login/" className="form-control nav-link">Login</Link>
                     <Link to="/mongo-office/accounts/signup/" className="form-control nav-link">Signup</Link>
                     <Link to="/mongo-office/task-manager/" className="form-control nav-link">Task Manager</Link>
                     <Link to="/mongo-office/event-manager/" className="form-control nav-link">Event Manager</Link>                    

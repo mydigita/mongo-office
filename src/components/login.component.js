@@ -3,6 +3,7 @@ import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
+import "../App.css";
 
 export default function UserLogin(){
     const [username, setUsername]=useState("");
@@ -26,7 +27,7 @@ export default function UserLogin(){
     }
 
     return(
-        <div>
+        <div className="body-part">
             <form onSubmit={onSubmitUserLogin}>
                 <div className="form-group">
                     <label>Username</label>
@@ -36,6 +37,7 @@ export default function UserLogin(){
                     <label>Password</label>
                     <input type="password" className="form-control" onChange={onChangePassword} placeholder="password" required/>
                 </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
 
             </form>
 
