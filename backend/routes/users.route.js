@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const Users = require('../models/user.model.js');
-const username = "mamun";
-const password="123456";
 
 router.route('/register') 
 .post((req, res)=>{
