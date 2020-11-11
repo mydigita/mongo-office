@@ -21,7 +21,11 @@ export default function UserLogin(){
         e.preventDefault();
         const userData = {username, password};
         axios.get(`http://localhost:5000/mongo-office/accounts/login/${username}/${password}`)
-        .then((data)=>{window.alert(data);window.location=`/mongo-office/${username}`})
+        .then((data)=>{
+            if(data.data.length>0){
+                window.location=`/mongo-office/${data.data}`
+            }else{window.alert('incorrect information!')}
+        })
         .catch(err=>window.alert(err))
                 
     }

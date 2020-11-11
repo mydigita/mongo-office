@@ -26,8 +26,8 @@ router.route("/login/:username/:password")
 .get((req, res)=>{
     // finish login backend codes here
     Users.find({username:req.params.username, password:req.params.password})
-    .then(data=>res.send(data))
-    .catch(err=>console.log(err))
+    .then(data=>res.send(data[0]._id))
+    .catch(err=>res.send(err))
 })
 
 
