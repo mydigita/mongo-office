@@ -7,5 +7,5 @@ export function UserList(props){
         <UserContext.Provider>
             {props.children}
         </UserContext.Provider>
-    )
+    );
 }
