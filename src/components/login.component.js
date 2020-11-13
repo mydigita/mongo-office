@@ -41,7 +41,7 @@ export default function UserLogin(){
                     <label>Password</label>
                     <input type="password" className="form-control" onChange={onChangePassword} placeholder="password" required/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Login</button>
 
             </form>
 
