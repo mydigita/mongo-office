@@ -10,13 +10,14 @@ export default function Logout(){
     function onSubmitLogoutTrue(e){
         e.preventDefault();
         setUserid("");
+        setUser("");
         window.location = '/mongo-office/';
     }
 
     return(
         <div className="body-part">
             <form onSubmit={onSubmitLogoutTrue}>
-    <h4>Are you sure to logout? {userid}</h4>
+    <h4>Are you sure to logout? {user} ({userid})</h4>
                 <button type="submit" className="btn btn-warning">Yes</button>            
             </form>
 
