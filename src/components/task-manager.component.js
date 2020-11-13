@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from './user-context';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
@@ -6,13 +7,14 @@ import "../App.css";
 
 
 export default function TaskManager(){
+    const [userid, setUserid] = useContext(UserContext);
     function onSubmitAddTask(e){
         e.preventDefault();
     }
     return(
         <div className="body-part">
             <div>
-                <h1 className="text-center">Task Manager</h1>
+    <h1 className="text-center">Task Manager {userid}</h1>
                 <hr/>
             </div>
             <div>

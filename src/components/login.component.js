@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
+import {UserContext} from "./user-context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
@@ -8,6 +9,7 @@ import "../App.css";
 export default function UserLogin(){
     const [username, setUsername]=useState("");
     const [password, setPassword]=useState("");
+    const [userid, setUserid] = useContext(UserContext);
 
     function onChangeUsername(e){
         setUsername(e.target.value);
@@ -23,7 +25,8 @@ export default function UserLogin(){
         axios.get(`http://localhost:5000/mongo-office/accounts/login/${username}/${password}`)
         .then((data)=>{
             if(data.data.length>0){
-                window.location=`/mongo-office/${data.data}`
+                setUserid(data.data);
+                // window.location=`/mongo-office/${userid}`
             }else{window.alert('incorrect information!')}
         })
         .catch(err=>window.alert(err))
@@ -32,6 +35,7 @@ export default function UserLogin(){
 
     return(
         <div className="body-part">
+            <h1 className="text-center">{userid}</h1>
             <form onSubmit={onSubmitUserLogin}>
                 <div className="form-group">
                     <label>Username</label>
