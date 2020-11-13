@@ -26,7 +26,7 @@ export default function UserLogin(){
         .then((data)=>{
             if(data.data.length>0){
                 setUserid(data.data);
-                // window.location=`/mongo-office/${userid}`
+                window.location=`/mongo-office/`
             }else{window.alert('incorrect information!')}
         })
         .catch(err=>window.alert(err))
