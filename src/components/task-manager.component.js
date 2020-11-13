@@ -8,13 +8,14 @@ import "../App.css";
 
 export default function TaskManager(){
     const [userid, setUserid] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     function onSubmitAddTask(e){
         e.preventDefault();
     }
     return(
         <div className="body-part">
             <div>
-            <h1 className="text-center">Task Manager {userid}</h1>
+            <h1 className="text-center">Task Manager {user}</h1>
                 <hr/>
             </div>
             <div>

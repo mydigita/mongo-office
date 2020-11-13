@@ -6,6 +6,7 @@ import 'jquery/dist/jquery';
 
 export default function Logout(){
     const [userid, setUserid] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     function onSubmitLogoutTrue(e){
         e.preventDefault();
         setUserid("");

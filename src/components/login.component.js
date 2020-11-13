@@ -10,6 +10,7 @@ export default function UserLogin(){
     const [username, setUsername]=useState("");
     const [password, setPassword]=useState("");
     const [userid, setUserid] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     function onChangeUsername(e){
         setUsername(e.target.value);
@@ -24,8 +25,9 @@ export default function UserLogin(){
       
         axios.get(`http://localhost:5000/mongo-office/accounts/login/${username}/${password}`)
         .then((data)=>{
-            if(data.data.length>0){
-                setUserid(data.data);
+            if(data.data.username){
+                setUserid(data.data.userid);
+                setUser(data.data.username);
                 // window.location=`/mongo-office/task-manager`;
             }else{window.alert('incorrect information!')}
         })
