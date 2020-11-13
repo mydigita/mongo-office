@@ -17,7 +17,8 @@ export default function Logout(){
     return(
         <div className="body-part">
             <form onSubmit={onSubmitLogoutTrue}>
-    <h4>Are you sure to logout? {user} ({userid})</h4>
+                <h4>Are you sure to logout?</h4>
+                <p>{user} ({userid})</p> <br/>
                 <button type="submit" className="btn btn-warning">Yes</button>            
             </form>
 
