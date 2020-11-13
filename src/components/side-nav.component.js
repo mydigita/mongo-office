@@ -35,6 +35,7 @@ export default function SideNav(){
                     <Link to="/mongo-office/association-contacts/" className="form-control nav-link">Association Contacts</Link>
                     <Link to="/mongo-office/embassy-contacts/" className="form-control nav-link">Embassy Contacts</Link>
                     <Link to="/mongo-office/visa-centers/" className="form-control nav-link">Visa Centers</Link>
+                    <Link to="/mongo-office/logout/" className="form-control nav-link">Logout</Link>
                 </div>
             </div>
         </div>
