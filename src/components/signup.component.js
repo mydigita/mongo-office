@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
@@ -56,7 +57,10 @@ export default function UserForm(){
                 </div>
                 <div>
                     <button type="submit" className="btn btn-primary form-control">Signup</button>
-                </div>               
+                </div>
+                <div className="pt-3">
+                <Link to="/mongo-office/accounts/login/">Have an account? Login here</Link>                    
+                </div>           
 
             </form>
         </div>

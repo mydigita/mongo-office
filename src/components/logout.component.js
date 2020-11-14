@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'jquery/dist/jquery';
@@ -25,7 +26,7 @@ export default function Logout(){
         } else {
             return (
                 <div className="body-part logout">
-                    <p className="text-danger">You are not logged in!</p>
+                    <Link to="/mongo-office/accounts/login/" className="form-control nav-link bg-warning">You are not logged in. To login, click here</Link>
                 </div>
             );
         }
