@@ -47,7 +47,7 @@ export default function UserLogin(){
     }
 
     return(
-        <div className="body-part">
+        <div className="body-part login shadow">
             <h1 className="text-center">{userid}</h1>
             <form onSubmit={onSubmitUserLogin}>
                 <div className="form-group">
@@ -58,7 +58,7 @@ export default function UserLogin(){
                     <label>Password</label>
                     <input type="password" className="form-control" onChange={onChangePassword} placeholder="password" required/>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary form-control mt-5">Login</button>
             </form>
             <div>
             <Link to="/mongo-office/accounts/signup/" className="">Not have an account? Create one</Link>

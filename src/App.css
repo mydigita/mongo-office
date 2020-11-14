@@ -50,3 +50,9 @@ html, body{
 .body-part{
   margin-left:300px;
 }
+.login, .logout, .signup{
+  width:350px;
+  margin:auto;
+  padding:10px;
+  border-radius:7px;
+}

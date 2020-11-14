@@ -14,17 +14,17 @@ export default function Logout(){
     function renderLogout(){
         if(user){
             return(
-                <div className="body-part">
+                <div className="body-part logout shadow">
                     <form onSubmit={onSubmitLogoutTrue}>
                         <h2>Hey {user} !</h2>
                         <p className="text-danger">Are you sure to logout?</p>
-                        <button type="submit" className="btn btn-warning">Yes</button>            
+                        <button type="submit" className="btn btn-warning form-control">Yes</button>            
                     </form>
                 </div>
             );
         } else {
             return (
-                <div className="body-part">
+                <div className="body-part logout">
                     <p className="text-danger">You are not logged in!</p>
                 </div>
             );

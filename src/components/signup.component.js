@@ -36,7 +36,7 @@ export default function UserForm(){
         .catch(err=>window.alert(err));
     }
     return(
-        <div className="body-part">
+        <div className="body-part signup shadow">
             <form onSubmit={onSubmitUserSignup}>
                 <div className="form-group">
                     <label>Username:</label>
@@ -55,7 +55,7 @@ export default function UserForm(){
                     <input type="text" className="form-control" placeholder="full name" onChange={onChangeFullName} required/>
                 </div>
                 <div>
-                    <button type="submit" className="btn btn-primary">Signup</button>
+                    <button type="submit" className="btn btn-primary form-control">Signup</button>
                 </div>               
 
             </form>
