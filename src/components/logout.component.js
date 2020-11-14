@@ -11,15 +11,33 @@ export default function Logout(){
         localStorage.clear();
         window.location = '/mongo-office/';
     }
-
-    return(
-        <div className="body-part">
+    function renderLogout(){
+        if(user.length){
+            return(
+                <div className="body-part">
             <form onSubmit={onSubmitLogoutTrue}>
                 <h2>Hey {user} !</h2>
-                <p><strong>Are you sure to logout?</strong></p>
+                <p className="text-danger">Are you sure to logout?</p>
                 <button type="submit" className="btn btn-warning">Yes</button>            
             </form>
         </div>
 
+
+            );
+        } else {
+            return (
+                <div className="body-part">
+                    You are not logged in!
+                </div>
+            );
+        }
+    }
+
+
+    return(
+        <div>
+            {renderLogout()}
+        </div>
+        
     );
 }
