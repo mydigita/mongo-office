@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -58,8 +59,10 @@ export default function UserLogin(){
                     <input type="password" className="form-control" onChange={onChangePassword} placeholder="password" required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
-
             </form>
+            <div>
+            <Link to="/mongo-office/accounts/signup/" className="">Not have an account? Create one</Link>
+            </div>
 
         </div>
     );
