@@ -23,7 +23,7 @@ export default function SideNav(){
         if(user){
             return "/mongo-office/accounts/logout/";
         }else{
-            return "/mongo-office/accounts/login/";
+            return "/mongo-office/";
         }
     }
 

@@ -59,7 +59,7 @@ export default function UserForm(){
                     <button type="submit" className="btn btn-primary form-control">Signup</button>
                 </div>
                 <div className="pt-3">
-                <Link to="/mongo-office/accounts/login/">Have an account? Login here</Link>                    
+                <Link to="/mongo-office/">Have an account? Login here</Link>                    
                 </div>           
 
             </form>

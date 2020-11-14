@@ -10,7 +10,7 @@ export default function Logout(){
     function onSubmitLogoutTrue(e){
         e.preventDefault();
         localStorage.clear();
-        window.location = '/mongo-office/accounts/login/';
+        window.location = '/mongo-office/';
     }
     function renderLogout(){
         if(user){
@@ -26,7 +26,7 @@ export default function Logout(){
         } else {
             return (
                 <div className="body-part logout">
-                    <Link to="/mongo-office/accounts/login/" className="form-control nav-link bg-warning">You are not logged in. To login, click here</Link>
+                    <Link to="/mongo-office/" className="form-control nav-link bg-warning">You are not logged in. To login, click here</Link>
                 </div>
             );
         }
