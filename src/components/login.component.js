@@ -28,11 +28,16 @@ export default function UserLogin(){
             if(data.data.username){
                 setUserid(data.data.userid);
                 setUser(data.data.username);
-                // window.location=`/mongo-office/task-manager`;
+                
+                window.location.assign('/mongo-office/task-manager/');
+                
             }else{window.alert('incorrect information!')}
         })
         .catch(err=>window.alert(err))
                 
+    }
+    if(!localStorage.getItem('userid')){
+        localStorage.setItem('userid', userid);
     }
 
     return(

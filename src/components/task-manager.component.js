@@ -15,7 +15,7 @@ export default function TaskManager(){
     return(
         <div className="body-part">
             <div>
-            <h1 className="text-center">Task Manager {user}</h1>
+            <h1 className="text-center">Task Manager {localStorage.getItem('userid')}</h1>
                 <hr/>
             </div>
             <div>
