@@ -1,5 +1,4 @@
-import React, {useContext} from 'react';
-import {UserContext} from './user-context';
+import React  from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
@@ -7,27 +6,26 @@ import "../App.css";
 
 
 export default function TaskManager(){
-    const [userid, setUserid] = useContext(UserContext);
-    const [user, setUser] = useContext(UserContext);
+    const userid =  localStorage.getItem('userid');
     function onSubmitAddTask(e){
         e.preventDefault();
     }
     return(
         <div className="body-part">
             <div>
-            <h1 className="text-center">Task Manager {localStorage.getItem('userid')}</h1>
+            <h1 className="text-center">Task Manager {userid}</h1>
                 <hr/>
             </div>
             <div>
-            <ul class="nav nav-tabs pt-2">
-                <li class="nav-item">
-                    <a class="nav-link active primary" data-toggle="tab" href="#view">View Task</a>
+            <ul className="nav nav-tabs pt-2">
+                <li className="nav-item">
+                    <a className="nav-link active primary" data-toggle="tab" href="#view">View Task</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link warning" data-toggle="tab" href="#add">Add Task</a>
+                <li className="nav-item">
+                    <a className="nav-link warning" data-toggle="tab" href="#add">Add Task</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link danger" data-toggle="tab" href="#edit">Edit Task</a>
+                <li className="nav-item">
+                    <a className="nav-link danger" data-toggle="tab" href="#edit">Edit Task</a>
                 </li>
             </ul>
 

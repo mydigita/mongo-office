@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import {UserContext} from "./user-context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
@@ -9,8 +8,10 @@ import "../App.css";
 export default function UserLogin(){
     const [username, setUsername]=useState("");
     const [password, setPassword]=useState("");
-    const [userid, setUserid] = useContext(UserContext);
-    const [user, setUser] = useContext(UserContext);
+    const [user, setUser] =  useState("");
+    const [userid, setUserid]= useState("");
+    const localStorateItems = [];
+    
 
     function onChangeUsername(e){
         setUsername(e.target.value);
@@ -27,17 +28,22 @@ export default function UserLogin(){
         .then((data)=>{
             if(data.data.username){
                 setUserid(data.data.userid);
-                setUser(data.data.username);
-                
+                setUser(data.data.username);                
                 window.location.assign('/mongo-office/task-manager/');
                 
             }else{window.alert('incorrect information!')}
         })
+
         .catch(err=>window.alert(err))
                 
     }
-    if(!localStorage.getItem('userid')){
-        localStorage.setItem('userid', userid);
+
+    localStorateItems.push(userid);
+    localStorateItems.push(user);
+
+    if(!localStorage.getItem('items')){
+        localStorage.setItem('items', JSON.stringify(localStorage));
+        console.log(localStorateItems);
     }
 
     return(
