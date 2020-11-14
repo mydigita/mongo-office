@@ -14,7 +14,7 @@ function App() {
           <Route path="/mongo-office/accounts/signup" component={UserForm}/>
           <Route path="/mongo-office/accounts/login" exact component={UserLogin}/>
           <Route path="/mongo-office/task-manager/" component={TaskManager}/>
-          <Route path="/mongo-office/logout/" component={Logout}/>  
+          <Route path="/mongo-office/accounts/logout/" component={Logout}/>  
     </Router>
   );
 }

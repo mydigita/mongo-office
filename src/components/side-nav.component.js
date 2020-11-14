@@ -6,6 +6,26 @@ import "jquery/dist/jquery.js";
 import "../App.css";
 
 export default function SideNav(){
+    const user = localStorage.getItem('user');
+
+    function loginLogout(){
+        if(user){
+            return(
+                <div>Logout</div>
+            );
+        }else{
+            return(
+                <div>Login</div>
+            );
+        }
+    }
+    function loginLogoutLink(){
+        if(user){
+            return "/mongo-office/accounts/logout/";
+        }else{
+            return "/mongo-office/accounts/login/";
+        }
+    }
 
     return (
         <div className="side-nav-container shadow">
@@ -16,8 +36,7 @@ export default function SideNav(){
                     <p>by: theTradeCoder</p>
                 </div>
                 <div>
-                    <Link to="/mongo-office/accounts/login/" className="form-control nav-link">Login</Link>
-                    <Link to="/mongo-office/accounts/signup/" className="form-control nav-link">Signup</Link>
+                    <Link to={loginLogoutLink} className="form-control nav-link">{loginLogout()}</Link>             
                     <Link to="/mongo-office/task-manager/" className="form-control nav-link">Task Manager</Link>
                     <Link to="/mongo-office/event-manager/" className="form-control nav-link">Event Manager</Link>                    
                     <Link to="/mongo-office/file-tracker/" className="form-control nav-link">File Tracker</Link>
@@ -35,7 +54,7 @@ export default function SideNav(){
                     <Link to="/mongo-office/association-contacts/" className="form-control nav-link">Association Contacts</Link>
                     <Link to="/mongo-office/embassy-contacts/" className="form-control nav-link">Embassy Contacts</Link>
                     <Link to="/mongo-office/visa-centers/" className="form-control nav-link">Visa Centers</Link>
-                    <Link to="/mongo-office/logout/" className="form-control nav-link">Logout</Link>
+                    
                 </div>
             </div>
         </div>
