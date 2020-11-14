@@ -27,8 +27,10 @@ export default function SideNav(){
         }
     }
 
-    return (
-        <div className="side-nav-container shadow">
+    function renderSideNav(){
+        if(user){
+            return(
+                <div className="side-nav-container shadow">
             
             <div className="side-nav">
                 <div>
@@ -53,11 +55,19 @@ export default function SideNav(){
                     <Link to="/mongo-office/airline-contacts/" className="form-control nav-link">Airline Contacts</Link>
                     <Link to="/mongo-office/association-contacts/" className="form-control nav-link">Association Contacts</Link>
                     <Link to="/mongo-office/embassy-contacts/" className="form-control nav-link">Embassy Contacts</Link>
-                    <Link to="/mongo-office/visa-centers/" className="form-control nav-link">Visa Centers</Link>
-                    
+                    <Link to="/mongo-office/visa-centers/" className="form-control nav-link">Visa Centers</Link>                    
                 </div>
             </div>
         </div>
+            );
+        }
+    }
+
+    return (
+        <div>
+            {renderSideNav()}
+        </div>
+        
     );
 
 }

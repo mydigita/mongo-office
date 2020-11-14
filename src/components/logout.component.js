@@ -10,7 +10,7 @@ export default function Logout(){
     function onSubmitLogoutTrue(e){
         e.preventDefault();
         localStorage.clear();
-        window.location = '/mongo-office/';
+        window.location = '/mongo-office/accounts/login/';
     }
     function renderLogout(){
         if(user){
