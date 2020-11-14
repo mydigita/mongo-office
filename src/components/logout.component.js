@@ -4,10 +4,12 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'jquery/dist/jquery';
 
 export default function Logout(){
-    const userid = localStorage.getItem('user');
+    const userid = localStorage.getItem('userid');
+    const user = localStorage.getItem('user');
 
     function onSubmitLogoutTrue(e){
         e.preventDefault();
+        localStorage.setItem('user', "");
         localStorage.setItem('userid', "");
         window.location = '/mongo-office/';
     }
@@ -16,7 +18,7 @@ export default function Logout(){
         <div className="body-part">
             <form onSubmit={onSubmitLogoutTrue}>
                 <h4>Are you sure to logout?</h4>
-                <p> {userid}</p> <br/>
+                <p> {user} . {userid}</p> <br/>
                 <button type="submit" className="btn btn-warning">Yes</button>            
             </form>
 

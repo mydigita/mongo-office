@@ -10,7 +10,6 @@ export default function UserLogin(){
     const [password, setPassword]=useState("");
     const [user, setUser] =  useState("");
     const [userid, setUserid]= useState("");
-    const localStorateItems = [];
     
 
     function onChangeUsername(e){
@@ -28,7 +27,7 @@ export default function UserLogin(){
         .then((data)=>{
             if(data.data.username){
                 setUserid(data.data.userid);
-                setUser(data.data.username);                
+                setUser(data.data.username);                       
                 window.location.assign('/mongo-office/task-manager/');
                 
             }else{window.alert('incorrect information!')}
@@ -38,12 +37,12 @@ export default function UserLogin(){
                 
     }
 
-    localStorateItems.push(userid);
-    localStorateItems.push(user);
 
-    if(!localStorage.getItem('items')){
-        localStorage.setItem('items', JSON.stringify(localStorage));
-        console.log(localStorateItems);
+    if(!localStorage.getItem('userid')){
+        localStorage.setItem('userid', userid);
+    }
+    if(!localStorage.getItem('user')){
+        localStorage.setItem('user', user);
     }
 
     return(
@@ -52,7 +51,7 @@ export default function UserLogin(){
             <form onSubmit={onSubmitUserLogin}>
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" className="form-control" onChange={onChangeUsername} placeholder="username" requireed/>
+                    <input type="text" className="form-control" onChange={onChangeUsername} placeholder="username" required/>
                 </div>
                 <div className="form-group">
                     <label>Password</label>
