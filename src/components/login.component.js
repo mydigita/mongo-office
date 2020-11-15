@@ -48,7 +48,8 @@ export default function UserLogin(){
 
     return(
         <div className="body-part login shadow">
-            <h1 className="text-center">{userid}</h1>
+            <h1 className="text-center">MONGO OFFICE</h1>
+            <p className="text-right text-secondary pb-4 pr-3">By: theTradeCoder</p>
             <form onSubmit={onSubmitUserLogin}>
                 <div className="form-group">
                     <label>Username</label>
