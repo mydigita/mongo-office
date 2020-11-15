@@ -23,7 +23,7 @@ router.route('/register')
 })
 
 router.route("/login/:username/:password")
-.get((req, res)=>{
+.post((req, res)=>{
     // finish login backend codes here
     Users.find({username:req.params.username, password:req.params.password})
     .then(data=>res.send({userid:data[0]._id, username:data[0].username}))
