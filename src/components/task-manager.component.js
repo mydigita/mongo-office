@@ -1,4 +1,5 @@
-import React  from 'react';
+import React, {useState}  from 'react';
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
@@ -7,13 +8,48 @@ import "../App.css";
 
 export default function TaskManager(){
     const userid =  localStorage.getItem('userid');
+    const user = localStorage.getItem('user');
+    const createdBy= user;
+    const [title, setTitle] = useState("");
+    const [details, setDetails] = useState("");
+    const [assignedTo, setAssignedTo] =  useState("");
+    const [deadline, setDeadline]= useState("");
+    const progress = 'No progress recorded';
+    const status = 'open';
+    function onChangeTitle(e){
+        setTitle(e.target.value());
+    }
+    function onChangeDetails(e){
+        setDetails(e.target.value());
+    }
+    function onChangeAssignedTo(e){
+        setAssignedTo(e.target.value);
+    }
+    function onChangeDeadline(e){
+        setDeadline(e.target.value());
+    }
+   
     function onSubmitAddTask(e){
         e.preventDefault();
+        const taskData = {
+            createdBy,
+            userid,          
+            title,
+            details,
+            assignedTo,
+            deadline,
+            progress,
+            status
+        };
+        
+        axios.post('http://localhost:5000/mongo-office/task-manager/add', taskData)
+        .then(()=>window.alert('Task added!'))
+        .catch(err=>window.alert('Failed to add tasks!'))
     }
     return(
         <div className="body-part">
             <div>
-            <h1 className="text-center">Task Manager {userid}</h1>
+            <h1 className="text-center">Task Manager</h1>
                 <hr/>
             </div>
             <div>
@@ -40,27 +76,23 @@ export default function TaskManager(){
                             <form onSubmit={onSubmitAddTask}>
                                 <div className="form-group">
                                     <label>Task name:</label>
-                                    <input type="text" className="form-control" placeholder="Task title"/>
+                                    <input type="text" className="form-control" placeholder="Task title" onChange={onChangeTitle}/>
                                 </div>
                                 <div className="form-group">                                   
                                     <label>Task details:</label>
-                                    <input type="text" className="form-control" placeholder="Task details"/>
+                                    <input type="text" className="form-control" placeholder="Task details" onChange={onChangeDetails}/>
                                 </div>
                                 <div className="form-group">                                    
                                     <label>Assigned to:</label>
-                                    <input type="text" className="form-control" placeholder="Assigned to"/>
-                                </div>
-                                <div className="form-group">
-                                    <label>Created by:</label>
-                                    <input type="text" className="form-control" placeholder="Created by"/>
-                                </div>
+                                    <input type="text" className="form-control" placeholder="Assigned to" onChange={onChangeAssignedTo}/>
+                                </div>                                
                                 <div className="form-group">
                                     <label>Deadline:</label>
-                                    <input type="text" className="form-control" placeholder="Deadline"/>
-                                </div>
+                                    <input type="text" className="form-control" placeholder="Deadline" onChange={onChangeDeadline}/>
+                                </div>                                
                                 <div className="form-group">
                                     <label>Status:</label>
-                                    <input type="text" className="form-control" placeholder="Status"/>
+                                    <input type="text" className="form-control" placeholder={status} disabled/>
                                 </div>
                                 <div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
