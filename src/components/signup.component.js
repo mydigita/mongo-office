@@ -33,7 +33,7 @@ export default function UserForm(){
     function onSubmitUserSignup(e){
         e.preventDefault();
         axios.post('http://localhost:5000/mongo-office/accounts/register', userDetails)
-        .then(()=>{window.alert("Signup Successful"); window.location='/mongo-office/home'})
+        .then(()=>{window.alert("Signup Successful"); window.location='/mongo-office/'})
         .catch(err=>window.alert(err));
     }
     return(
