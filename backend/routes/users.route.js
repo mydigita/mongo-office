@@ -1,21 +1,37 @@
 const router = require('express').Router();
-const Users = require('../models/user.model.js');
+// const Users = require('../models/user.model.js');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-router.route('/register') 
+const UserSchema = new Schema({
+    username:{type:String},
+    userEmail:{type:String},
+    password:{type:String},
+    fullName:{type:String},      
+    updateCount:{type:Number},   
+}, {timestamps:true});
+
+
+router.route('/:register') 
 .post((req, res)=>{
+    
     const {
         username,
         userEmail,
         password,
         fullName,
     } = req.body; 
-        
+    
+    const Users = mongoose.model(req.params.register, UserSchema);
+
     const User = new Users({
         username,
         userEmail,
         password,
         fullName   
     });
+
+    
 
     User.save()
     .then(()=>res.send("Signup successful"))
@@ -24,8 +40,10 @@ router.route('/register')
 
 router.route("/login/:username/:password")
 .post((req, res)=>{
+    const {username, password} = req.params;
+    const Users = mongoose.model(username, UserSchema);
     // finish login backend codes here
-    Users.find({username:req.params.username, password:req.params.password})
+    Users.find({username, password})
     .then(data=>res.send({userid:data[0]._id, username:data[0].username}))
     .catch(err=>res.send(err))
 })
