@@ -12,6 +12,7 @@
 /build
 
 # misc
+REACT_APP_
 .env
 .DS_Store
 .env.local
