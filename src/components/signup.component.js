@@ -11,6 +11,7 @@ export default function UserForm(){
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] =  useState("");
     const [fullName, setFullName] = useState("");
+    const [mobile, setMobile]=useState("");
 
     function onChangeUsername(e){
         setUsername(e.target.value);
@@ -25,6 +26,9 @@ export default function UserForm(){
 
     function onChangeFullName(e){
         setFullName(e.target.value);
+    }
+    function onChangeMobileNumber(e){
+        setMobile(e.target.value);
     }
 
     const userDetails = {username, userEmail, password, fullName};
@@ -55,11 +59,15 @@ export default function UserForm(){
                     <label>Full Name:</label>
                     <input type="text" className="form-control" placeholder="full name" onChange={onChangeFullName} required/>
                 </div>
+                <div className="form-group">
+                    <label>Mobile Number:</label>
+                    <input type="text" className="form-control" placeholder="mobile number" onChange={onChangeMobileNumber} required/>
+                </div>
                 <div>
                     <button type="submit" className="btn btn-primary form-control">Signup</button>
                 </div>
                 <div className="pt-3">
-                <Link to="/mongo-office/">Have an account? Login here</Link>                    
+                <Link to="/mongo-office/">Have an account? Login here</Link>                 
                 </div>           
 
             </form>

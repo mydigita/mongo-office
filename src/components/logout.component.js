@@ -17,9 +17,10 @@ export default function Logout(){
             return(
                 <div className="body-part logout shadow">
                     <form onSubmit={onSubmitLogoutTrue}>
-                        <h2>Hey {user} !</h2>
+                        <h2 className="text-success">Hey {user} !</h2>
                         <p className="text-danger">Are you sure to logout?</p>
-                        <button type="submit" className="btn btn-warning form-control">Yes</button>            
+                        <button type="submit" className="btn btn-warning form-control">Yes</button>
+                        <p className="pt-4 text-secondary">If not, please select an item from the menu to continue.</p>         
                     </form>
                 </div>
             );
@@ -27,6 +28,7 @@ export default function Logout(){
             return (
                 <div className="body-part logout">
                     <Link to="/mongo-office/" className="form-control nav-link bg-warning">You are not logged in. To login, click here</Link>
+                    
                 </div>
             );
         }

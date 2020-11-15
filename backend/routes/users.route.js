@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     userEmail:{type:String, unique:true},
     password:{type:String},
     fullName:{type:String},
+    mobileNumber:{type:String, unique:true},
     taskManager:[],
     eventManager:[],
     fileTracker:[],
@@ -40,6 +41,7 @@ router.route('/:register')
         userEmail,
         password,
         fullName,
+        mobile
     } = req.body; 
     
     const Users = mongoose.model(req.params.register, UserSchema);
@@ -48,14 +50,15 @@ router.route('/:register')
         username,
         userEmail,
         password,
-        fullName   
+        fullName,
+        mobile 
     });
 
     
 
     User.save()
     .then(()=>res.send("Signup successful"))
-    .catch((err)=>res.send('User Registration Failed! Try with a different username / email'))
+    .catch((err)=>res.send('User Registration Failed! Try with a different username / email/ mobile'))
 })
 
 router.route("/login/:username/:password")
