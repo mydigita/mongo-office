@@ -29,7 +29,7 @@ export default function UserLogin(){
             if(data.data.username){
                 setUserid(data.data.userid);
                 setUser(data.data.username);                       
-                window.location.assign('/mongo-office/task-manager/');
+                window.location.assign('/mongo-office/');
                 
             }else{window.alert('incorrect information!')}
         })
@@ -45,9 +45,10 @@ export default function UserLogin(){
     if(!localStorage.getItem('user')){
         localStorage.setItem('user', user);
     }
-
-    return(
-        <div className="body-part login shadow">
+   function renderLogin(){
+    if(!localStorage.getItem('user')){
+        return(
+            <div className="body-part login shadow">
             <h1 className="text-center">MONGO OFFICE</h1>
             <p className="text-right text-secondary pb-4 pr-3">By: theTradeCoder</p>
             <form onSubmit={onSubmitUserLogin}>
@@ -66,5 +67,21 @@ export default function UserLogin(){
             </div>
 
         </div>
+
+        );
+    }else{ return (
+        <div className="body-part login shadow">
+            <p>Hi {localStorage.getItem('user')} ! </p>
+            <h4 className="text-success">Welcome to MONGO OFFICE! </h4>
+            <p className="text-secondary">Please select an item from the menu to continue.</p>
+
+        </div>
+    );}
+   }
+
+    return(
+        <div>
+            {renderLogin()}
+        </div>        
     );
 }
