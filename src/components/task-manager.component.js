@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, {useEffect, useState}  from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -11,6 +11,7 @@ export default function TaskManager(){
     const [details, setDetails] = useState("");
     const [assignedTo, setAssignedTo] =  useState("");
     const [deadline, setDeadline]= useState("");
+    const [taskRecord, setTaskRecord] = useState(""); 
     const progress = 'No progress recorded';
     const status = 'open';
     const username = localStorage.getItem('user');
@@ -28,6 +29,19 @@ export default function TaskManager(){
     function onChangeDeadline(e){
         setDeadline(e.target.value);
     }
+
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
+        .then(data=>{
+            // const d = JSON.stringify(data.data);
+            setTaskRecord(data.data.taskManager.map(e=>{
+                return(
+                <h1>{e.title}</h1>
+                );
+            }));            
+        })
+        .catch(err=>window.alert(err))
+    })
    
     function onSubmitAddTask(e){
         e.preventDefault();
@@ -71,7 +85,7 @@ export default function TaskManager(){
                 <div className="tab-content">
                     <div id="view" className="tab-pane fade in active">
                         <h3>Task List</h3>
-                        <p></p>
+                        <p>{taskRecord}</p>
                     </div>
                     <div id="add" className="tab-pane fade">
                         <h3>Add New Task</h3>
