@@ -31,7 +31,7 @@ export default function UserForm(){
         setMobile(e.target.value);
     }
 
-    const userDetails = {username, userEmail, password, fullName};
+    const userDetails = {username, userEmail, password, fullName, mobile};
 
 
     function onSubmitUserSignup(e){

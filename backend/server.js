@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/users.route');
 require('dotenv').config();
+const taskRoutes = require('./routes/task-manager.route');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ mongoose.connection.once('open', ()=>{
 app.use(cors());
 app.use(express.json());
 app.use('/mongo-office/accounts/', userRoutes);
+app.use('/mongo-office/task-manager/', taskRoutes);
 
 
 app.listen(port, ()=>{

@@ -5,10 +5,11 @@ const TaskSchema = new Schema({
     title:{type:String},
     details:{type:String},
     assignedTo:{type:String},
-    deadline:{type:Date},
+    deadline:{type:String},
     progress:{type:String},
-    status:{type:String},    
+    status:{type:String},
 }, {timestamps:true});
 
-const Task = mongoose.model('Task', TaskSchema);
-module.exports = Task;
+
+const TaskManager = mongoose.model('taskManager', TaskSchema);
+module.exports = TaskManager;

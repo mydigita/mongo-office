@@ -14,16 +14,16 @@ export default function TaskManager(){
     const progress = 'No progress recorded';
     const status = 'open';
     function onChangeTitle(e){
-        setTitle(e.target.value());
+        setTitle(e.target.value);
     }
     function onChangeDetails(e){
-        setDetails(e.target.value());
+        setDetails(e.target.value);
     }
     function onChangeAssignedTo(e){
         setAssignedTo(e.target.value);
     }
     function onChangeDeadline(e){
-        setDeadline(e.target.value());
+        setDeadline(e.target.value);
     }
    
     function onSubmitAddTask(e){
@@ -36,10 +36,13 @@ export default function TaskManager(){
             progress,
             status
         };
-        
-        axios.post('http://localhost:5000/mongo-office/task-manager/add', taskData)
+        const username = localStorage.getItem('user');
+        const userid= localStorage.getItem('userid');
+        const dataRequest = `http://localhost:5000/mongo-office/task-manager/add/${username}/${userid}`;
+              
+        axios.post(dataRequest, taskData)
         .then((data)=>window.alert(data.data))
-        .catch(err=>window.alert('Failed to add tasks!'))
+        .catch(err=>window.alert(err))
     }
     return(
         <div className="body-part">

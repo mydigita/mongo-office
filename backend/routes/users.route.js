@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const Users = require('../models/user.model.js');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
