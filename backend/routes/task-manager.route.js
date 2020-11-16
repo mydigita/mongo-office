@@ -7,7 +7,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const collectionSchema = new Schema({}, {strict:false});
 // and the mongoose model is used inside the post request to use necessary data from the client side
-
+router.route('/view/:username/:userid')
+.get((req, res)=>{
+    const {     
+        username,
+        userid
+    } = req.params;
+    
+    // this will select the database-collections for the logged in client only 
+    const db = mongoose.model(username, collectionSchema);
+    db.findOne({username, _id:userid}, 'taskManager')
+    .then(data=>res.send(data))
+    .catch(err=>res.send(err))
+    
+})
 router.route('/add/:username/:userid')
 .post((req, res)=>{
     const {     

@@ -13,6 +13,8 @@ export default function TaskManager(){
     const [deadline, setDeadline]= useState("");
     const progress = 'No progress recorded';
     const status = 'open';
+    const username = localStorage.getItem('user');
+    const userid= localStorage.getItem('userid');
     
     function onChangeTitle(e){
         setTitle(e.target.value);
@@ -38,14 +40,15 @@ export default function TaskManager(){
             status,
             createdOn:new Date()
         };
-        const username = localStorage.getItem('user');
-        const userid= localStorage.getItem('userid');
-        const dataRequest = `http://localhost:5000/mongo-office/task-manager/add/${username}/${userid}`;
+        
               
-        axios.post(dataRequest, taskData)
+        axios.post(`http://localhost:5000/mongo-office/task-manager/add/${username}/${userid}`, taskData)
         .then((data)=>window.alert(data.data))
         .catch(err=>window.alert(err))
     }
+   
+
+   
     return(
         <div className="body-part">
             <div>
@@ -68,7 +71,7 @@ export default function TaskManager(){
                 <div className="tab-content">
                     <div id="view" className="tab-pane fade in active">
                         <h3>Task List</h3>
-                        <p>Task</p>
+                        <p></p>
                     </div>
                     <div id="add" className="tab-pane fade">
                         <h3>Add New Task</h3>
