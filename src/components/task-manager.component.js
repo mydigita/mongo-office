@@ -7,9 +7,6 @@ import "../App.css";
 
 
 export default function TaskManager(){
-    const userid =  localStorage.getItem('userid');
-    const user = localStorage.getItem('user');
-    const createdBy= user;
     const [title, setTitle] = useState("");
     const [details, setDetails] = useState("");
     const [assignedTo, setAssignedTo] =  useState("");
@@ -31,9 +28,7 @@ export default function TaskManager(){
    
     function onSubmitAddTask(e){
         e.preventDefault();
-        const taskData = {
-            createdBy,
-            userid,
+        const taskData = {           
             title,
             details,
             assignedTo,
@@ -43,7 +38,7 @@ export default function TaskManager(){
         };
         
         axios.post('http://localhost:5000/mongo-office/task-manager/add', taskData)
-        .then(()=>window.alert('Task added!'))
+        .then((data)=>window.alert(data.data))
         .catch(err=>window.alert('Failed to add tasks!'))
     }
     return(
@@ -75,7 +70,7 @@ export default function TaskManager(){
                         <div>
                             <form onSubmit={onSubmitAddTask}>
                                 <div className="form-group">
-                                    <label>Task name:</label>
+                                    <label>Task name / title:</label>
                                     <input type="text" className="form-control" placeholder="Task title" onChange={onChangeTitle}/>
                                 </div>
                                 <div className="form-group">                                   
@@ -90,10 +85,6 @@ export default function TaskManager(){
                                     <label>Deadline:</label>
                                     <input type="text" className="form-control" placeholder="Deadline" onChange={onChangeDeadline}/>
                                 </div>                                
-                                <div className="form-group">
-                                    <label>Status:</label>
-                                    <input type="text" className="form-control" placeholder={status} disabled/>
-                                </div>
                                 <div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </div>
