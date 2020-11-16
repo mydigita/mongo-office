@@ -13,6 +13,7 @@ export default function TaskManager(){
     const [deadline, setDeadline]= useState("");
     const progress = 'No progress recorded';
     const status = 'open';
+    
     function onChangeTitle(e){
         setTitle(e.target.value);
     }
@@ -34,7 +35,8 @@ export default function TaskManager(){
             assignedTo,
             deadline,
             progress,
-            status
+            status,
+            createdOn:new Date()
         };
         const username = localStorage.getItem('user');
         const userid= localStorage.getItem('userid');

@@ -24,12 +24,14 @@ router.route('/add/:username/:userid')
         assignedTo,
         deadline,
         progress,
-        status
+        status,
+        createdOn
+        
     } = req.body;
 
     
     const tasksToAdd = new TaskManager({
-        title, details, assignedTo, deadline, progress, status
+        title, details, assignedTo, deadline, progress, status, createdOn
     });
 
     // mongoose code to save (push) tasks in task-manager array

@@ -8,6 +8,7 @@ const TaskSchema = new Schema({
     deadline:{type:String},
     progress:{type:String},
     status:{type:String},
+    createdOn:{type:Date}
 }, {timestamps:true});
 
 
