@@ -36,7 +36,11 @@ export default function TaskManager(){
             // const d = JSON.stringify(data.data);
             setTaskRecord(data.data.taskManager.map(e=>{
                 return(
-                <h1>{e.title}</h1>
+                    <div className="shadow p-2">
+                        <h4>{e.title}</h4>
+                <p>Details: {e.details}<br/>Assigned To : {e.assignedTo}, Deadline: {e.deadline}, Status: {e.status}</p>
+
+                    </div>
                 );
             }));            
         })
@@ -83,9 +87,8 @@ export default function TaskManager(){
             </ul>
 
                 <div className="tab-content">
-                    <div id="view" className="tab-pane fade in active">
-                        <h3>Task List</h3>
-                        <p>{taskRecord}</p>
+                    <div id="view" className="tab-pane active">
+                        <div>{taskRecord}</div>
                     </div>
                     <div id="add" className="tab-pane fade">
                         <h3>Add New Task</h3>
