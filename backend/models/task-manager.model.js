@@ -7,8 +7,10 @@ const TaskSchema = new Schema({
     assignedTo:{type:String},
     deadline:{type:String},
     progress:{type:String},
-    status:{type:String},
-    createdOn:{type:Date}
+    status:{type:String},    
+    username:{type:String}, 
+    userid:{type:String},
+    editPassword:{type:String}
 }, {timestamps:true});
 
 

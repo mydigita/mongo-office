@@ -11,7 +11,8 @@ export default function TaskManager(){
     const [details, setDetails] = useState("");
     const [assignedTo, setAssignedTo] =  useState("");
     const [deadline, setDeadline]= useState("");
-    const [taskRecord, setTaskRecord] = useState(""); 
+    const [editPassword, setEditPassword]= useState("");
+    const [taskRecord, setTaskRecord] = useState("");
     const progress = 'No progress recorded';
     const status = 'open';
     const username = localStorage.getItem('user');
@@ -29,26 +30,30 @@ export default function TaskManager(){
     function onChangeDeadline(e){
         setDeadline(e.target.value);
     }
+    function onChangeEditPassword(e){
+        setEditPassword(e.target.value);
+    }
 
     useEffect(()=>{
+        // get tasks
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
-            // const d = JSON.stringify(data.data);
-            setTaskRecord(data.data.taskManager.filter(d=>d.status==='open').map(e=>{
-                
+            setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
                 return(
                     <div className="shadow single-task">
                         <h4>{e.title}</h4>
-                <p>Task details: {e.details}<br/>
-                Progress: {e.progress}<br/>Assigned to : {e.assignedTo}, Deadline: {e.deadline}</p>
-                <p className="text-muted">Delete/Edit key : {e._id} </p>
+                <p>Task details: {e.details}</p>
+                <p>Progress: {e.progress}<br/> Deadline: {e.deadline}, Assigned to: {e.assignedTo}</p>
+                <p className="text-muted">Edit key: {e._id}</p>
                     </div>
                 );
-            }));            
+            }))
         })
         .catch(err=>window.alert(err))
-    })
+    });
    
+
+    // add task 
     function onSubmitAddTask(e){
         e.preventDefault();
         const taskData = {           
@@ -57,10 +62,9 @@ export default function TaskManager(){
             assignedTo,
             deadline,
             progress,
-            status,
-            createdOn:new Date()
-        };
-        
+            status,          
+            editPassword
+        };        
               
         axios.post(`http://localhost:5000/mongo-office/task-manager/add/${username}/${userid}`, taskData)
         .then((data)=>window.alert(data.data))
@@ -111,7 +115,11 @@ export default function TaskManager(){
                                 <div className="form-group">
                                     <label>Deadline:</label>
                                     <input type="text" className="form-control" placeholder="Deadline" onChange={onChangeDeadline}/>
-                                </div>                                
+                                </div>
+                                <div className="form-group">
+                                    <label>Edit/Delete protection password: </label>
+                                    <input type="text" className="form-control" placeholder="edit/delete protection password" onChange={onChangeEditPassword}/>
+                                </div>                            
                                 <div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </div>

@@ -6,6 +6,7 @@ import 'jquery/dist/jquery';
 
 export default function Logout(){    
     const user = localStorage.getItem('user');
+    const firstName = localStorage.getItem('firstname');
 
     function onSubmitLogoutTrue(e){
         e.preventDefault();
@@ -17,7 +18,7 @@ export default function Logout(){
             return(
                 <div className="body-part logout shadow">
                     <form onSubmit={onSubmitLogoutTrue}>
-                        <h2 className="text-success">Hey {user} !</h2>
+                        <h2 className="text-success">Hey {firstName} !</h2>
                         <p className="text-danger">Are you sure to logout?</p>
                         <button type="submit" className="btn btn-warning form-control">Yes</button>
                         <p className="pt-4 text-secondary">If not, please select an item from the menu to continue.</p>         

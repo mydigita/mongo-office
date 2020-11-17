@@ -11,6 +11,7 @@ export default function UserLogin(){
     const [password, setPassword]=useState("");
     const [user, setUser] =  useState("");
     const [userid, setUserid]= useState("");
+    const [firstName, setFirstName] = useState("");
     
 
     function onChangeUsername(e){
@@ -19,7 +20,7 @@ export default function UserLogin(){
     function onChangePassword(e){
         setPassword(e.target.value);
     }
-
+   
 
     function onSubmitUserLogin(e){
         e.preventDefault();
@@ -28,7 +29,8 @@ export default function UserLogin(){
         .then((data)=>{
             if(data.data.username){
                 setUserid(data.data.userid);
-                setUser(data.data.username);                       
+                setUser(data.data.username); 
+                setFirstName(data.data.firstName);                    
                 window.location.assign('/mongo-office/');
                 
             }else{window.alert('incorrect information!')}
@@ -38,13 +40,16 @@ export default function UserLogin(){
                 
     }
 
-
     if(!localStorage.getItem('userid')){
         localStorage.setItem('userid', userid);
     }
     if(!localStorage.getItem('user')){
         localStorage.setItem('user', user);
     }
+    if(!localStorage.getItem('firstname')){
+        localStorage.setItem('firstname', firstName);
+    }
+    
    function renderLogin(){
     if(!localStorage.getItem('user')){
         return(
@@ -71,7 +76,7 @@ export default function UserLogin(){
         );
     }else{ return (
         <div className="body-part login shadow">
-            <p>Hi {localStorage.getItem('user')} ! </p>
+            <p>Hi {localStorage.getItem('firstname')} ! </p>
             <h4 className="text-success">Welcome to MONGO OFFICE! </h4>
             <p className="text-secondary">Please select an item from the menu to continue.</p>
 
