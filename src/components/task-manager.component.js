@@ -81,7 +81,7 @@ export default function TaskManager(){
                     <a className="nav-link active primary" data-toggle="tab" href="#view">View Task</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link warning" data-toggle="tab" href="#add">Add Task</a>
+                    <a className="nav-link warning" data-toggle="tab" href="#add">Add New Task</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link danger" data-toggle="tab" href="#edit">Edit Task</a>
