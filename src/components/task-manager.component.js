@@ -34,12 +34,14 @@ export default function TaskManager(){
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             // const d = JSON.stringify(data.data);
-            setTaskRecord(data.data.taskManager.map(e=>{
+            setTaskRecord(data.data.taskManager.filter(d=>d.status==='open').map(e=>{
+                
                 return(
-                    <div className="shadow p-2">
+                    <div className="shadow single-task">
                         <h4>{e.title}</h4>
-                <p>Details: {e.details}<br/>Assigned To : {e.assignedTo}, Deadline: {e.deadline}, Status: {e.status}</p>
-
+                <p>Task details: {e.details}<br/>
+                Progress: {e.progress}<br/>Assigned to : {e.assignedTo}, Deadline: {e.deadline}</p>
+                <p className="text-muted">Delete/Edit key : {e._id} </p>
                     </div>
                 );
             }));            
