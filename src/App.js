@@ -5,6 +5,7 @@ import TaskManager from "./components/task-manager.component";
 import UserForm from "./components/signup.component";
 import UserLogin from "./components/login.component";
 import Logout from './components/logout.component';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 

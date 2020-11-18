@@ -39,12 +39,17 @@ export default function TaskManager(){
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
+                
                 return(
                     <div className="shadow single-task">
                         <h4>{e.title}</h4>
-                <p>Task details: {e.details}</p>
-                <p>Progress: {e.progress}<br/> Deadline: {e.deadline}, Assigned to: {e.assignedTo}</p>
-                <p className="text-muted">Edit key: {e._id}</p>
+                        <p>Task details: {e.details}</p>
+                        <p>Progress: {e.progress}<br/> Deadline: {e.deadline}, Assigned to: {e.assignedTo}</p>
+                        
+                        <button className="btn btn-default text-primary" >Edit</button>
+                        <button className="btn btn-default text-primary" >Close</button>
+                        <button className="btn btn-default text-primary" >Delete</button>
+                
                     </div>
                 );
             }))
@@ -71,6 +76,7 @@ export default function TaskManager(){
         .catch(err=>window.alert(err))
     }
    
+ 
 
    
     return(
@@ -128,7 +134,15 @@ export default function TaskManager(){
                     </div>
                     <div id="edit" className="tab-pane fade">
                         <h3>Edit Task</h3>
-                        <p>Edit task</p>
+                        <div>
+                            <form>
+                                <div className="form-group">
+                                    <label>Task Details: </label>
+                                    <input type="text" className="form-control"/>
+
+                                </div>
+                            </form>
+                        </div>
                     </div>                   
                 </div>
             </div>
