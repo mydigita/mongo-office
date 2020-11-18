@@ -39,6 +39,15 @@ export default function TaskManager(){
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
+                function actionToEdit(){
+                    return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
+                }
+                function actionToClose(){
+                    return window.location.assign(`/mongo-office/task-manager/close/${e._id}`);                    
+                }
+                function actionToDelete(){
+                    return window.location.assign(`/mongo-office/task-manager/delete/${e._id}`);
+                }
                 
                 return(
                     <div className="shadow single-task">
@@ -46,9 +55,9 @@ export default function TaskManager(){
                         <p>Task details: {e.details}</p>
                         <p>Progress: {e.progress}<br/> Deadline: {e.deadline}, Assigned to: {e.assignedTo}</p>
                         
-                        <button className="btn btn-default text-primary" >Edit</button>
-                        <button className="btn btn-default text-primary" >Close</button>
-                        <button className="btn btn-default text-primary" >Delete</button>
+                        <button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button>
+                        <button className="btn btn-default text-primary" onClick={actionToClose} >Close</button>
+                        <button className="btn btn-default text-primary" onClick={actionToDelete} >Delete</button>
                 
                     </div>
                 );
