@@ -148,13 +148,36 @@ export default function TaskManager(){
                                 <div className="form-group">
                                     <label>Task Details: </label>
                                     <input type="text" className="form-control"/>
-
                                 </div>
                             </form>
                         </div>
                     </div>                   
                 </div>
             </div>
+        </div>
+    );
+}
+
+
+// edit task component
+
+export function EditTask(){
+    const [title, setTitle] = useState("");
+    const [details, setDetails] = useState("");
+    const [assignedTo, setAssignedTo] =  useState("");
+    const [deadline, setDeadline]= useState("");
+    const [editPassword, setEditPassword]= useState("");
+    const [taskRecord, setTaskRecord] = useState("");
+    const progress = 'No progress recorded';
+    const status = 'open';
+    const username = localStorage.getItem('user');
+    const userid= localStorage.getItem('userid');
+    const taskId = window.location.href.split('/').reverse()[0];
+    return(
+        
+        <div className="body-part">
+            <h1>{taskId}</h1>
+
         </div>
     );
 }
