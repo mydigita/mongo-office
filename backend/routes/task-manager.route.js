@@ -52,24 +52,12 @@ router.route('/add/:username/:userid')
    
 });
 
-router.route('/edit/:editkey/:editpassword')
-.post((req, res)=>{
-    const {
-        editkey, 
-        editpassword
-    } = req.params;
-    const {
-        details,
-        assignedTo,
-        deadline,
-        progress               
-    } = req.body;
-    const updateTasks = {
-        details, assignedTo, deadline, progress
-    }
+router.route('/edit/:taskId')
+.get((req, res)=>{
+    const {taskId} = req.params;   
 
-    TaskManager.findOneAndUpdate({_id:editkey, editPassword:editpassword}, updateTasks)
-    .then(()=>res.send('Updated!'))
+    TaskManager.findOne({_id:taskId})
+    .then((data)=>res.send(data))
     .catch(err=>res.send(err))
 
 })

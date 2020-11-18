@@ -35,12 +35,13 @@ export default function TaskManager(){
     }
 
     useEffect(()=>{
-        // get tasks
+        // view tasks
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
                 function actionToEdit(){
                     return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
+                 
                 }
                 function actionToClose(){
                     return window.location.assign(`/mongo-office/task-manager/close/${e._id}`);                    
@@ -141,7 +142,7 @@ export default function TaskManager(){
                             </form>
                         </div>
                     </div>
-                    <div id="edit" className="tab-pane fade">
+                    {/* <div id="edit" className="tab-pane fade">
                         <h3>Edit Task</h3>
                         <div>
                             <form>
@@ -152,9 +153,10 @@ export default function TaskManager(){
                                 </div>
                             </form>
                         </div>
-                    </div>                   
+                    </div>                    */}
                 </div>
             </div>
         </div>
     );
 }
+
