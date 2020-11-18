@@ -53,10 +53,13 @@ export default function UserLogin(){
    function renderLogin(){
     if(!localStorage.getItem('user')){
         return(
-            <div className="body-part login shadow">
-            <h1 className="text-center">MONGO OFFICE</h1>
-            <p className="text-right text-secondary pb-4 pr-3">By: theTradeCoder</p>
-            <form onSubmit={onSubmitUserLogin}>
+            <div className="container login shadow">
+                <div className="p-2">
+                    <h1 className="text-center text-success">MONGO OFFICE</h1>
+                    <p className="text-right text-secondary pr-3">By: theTradeCoder</p>
+                </div>
+            
+            <form onSubmit={onSubmitUserLogin} className="">
                 <div className="form-group">
                     <label>Username</label>
                     <input type="text" className="form-control" onChange={onChangeUsername} placeholder="username" required/>

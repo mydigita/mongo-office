@@ -51,7 +51,7 @@ export default function UserForm(){
                 
             </div>
 
-            <form onSubmit={onSubmitUserSignup} className="shadow p-3">
+            <form onSubmit={onSubmitUserSignup} className="shadow p-3 border">
             <p className="text-secondary">User Registration</p>
                 <div className="form-group">
                     {/* <label>Username:</label> */}
