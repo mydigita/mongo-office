@@ -27,7 +27,7 @@ export default function Logout(){
             );
         } else {
             return (
-                <div className="body-part logout">
+                <div className="container logout">
                     <Link to="/mongo-office/" className="form-control nav-link bg-warning">You are not logged in. To login, click here</Link>
                     
                 </div>
