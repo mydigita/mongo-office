@@ -45,31 +45,37 @@ export default function UserForm(){
         .catch(err=>window.alert(err));
     }
     return(
-        <div className="body-part signup shadow">
-            <form onSubmit={onSubmitUserSignup}>
+        <div className="container signup">
+            <div>
+                <h1 className="text-center text-success shadow p-2">MONGO OFFICE</h1>
+                
+            </div>
+
+            <form onSubmit={onSubmitUserSignup} className="shadow p-3">
+            <p className="text-secondary">User Registration</p>
                 <div className="form-group">
-                    <label>Username:</label>
-                    <input type="text" className="form-control" placeholder="username" onChange={onChangeUsername} required/>
+                    {/* <label>Username:</label> */}
+                    <input type="text" className="form-control" placeholder="Username" onChange={onChangeUsername} required/>
                 </div>
                 <div className="form-group">
-                    <label>Email:</label>
-                    <input type="email" className="form-control" placeholder="email" onChange={onChangeEmail} required/>
+                    {/* <label>Email:</label> */}
+                    <input type="email" className="form-control" placeholder="Email" onChange={onChangeEmail} required/>
                 </div>
                 <div className="form-group">
-                    <label>Password:</label>
-                    <input type="password" className="form-control" placeholder="password" onChange={onChangePassword} required/>
+                    {/* <label>Password:</label> */}
+                    <input type="password" className="form-control" placeholder="Password" onChange={onChangePassword} required/>
                 </div>
                 <div className="form-group">
-                    <label>First name:</label>
-                    <input type="text" className="form-control" placeholder="first name" onChange={onChangeFirstName} required/>
+                    {/* <label>First name:</label> */}
+                    <input type="text" className="form-control" placeholder="First name" onChange={onChangeFirstName} required/>
                 </div>
                 <div className="form-group">
-                    <label>Last name:</label>
-                    <input type="text" className="form-control" placeholder="full name" onChange={onChangeLastName} required/>
+                    {/* <label>Last name:</label> */}
+                    <input type="text" className="form-control" placeholder="Last name" onChange={onChangeLastName} required/>
                 </div>
                 <div className="form-group">
-                    <label>Mobile number:</label>
-                    <input type="text" className="form-control" placeholder="mobile number" onChange={onChangeMobileNumber} required/>
+                    {/* <label>Mobile number:</label> */}
+                    <input type="text" className="form-control" placeholder="Mobile number" onChange={onChangeMobileNumber} required/>
                 </div>
                 <div>
                     <button type="submit" className="btn btn-primary form-control">Signup</button>
