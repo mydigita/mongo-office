@@ -98,7 +98,7 @@ export default function TaskManager(){
     return(
         <div className="body-part">
             <div>
-            <h1 className="text-center">Task Manager</h1>
+            <h1 className="text-center text-muted">Task Manager</h1>
                 <hr/>
             </div>
             <div>
@@ -118,9 +118,9 @@ export default function TaskManager(){
                     <div id="view" className="tab-pane active">
                         <div>{taskRecord}</div>
                     </div>
-                    <div id="add" className="tab-pane fade">
-                        <h3>Add New Task</h3>
-                        <div>
+                    <div id="add" className="tab-pane fade pt-3">
+                        <h3 className="text-secondary">Add New Task</h3>
+                        <div className="form-light p-3">
                             <form onSubmit={onSubmitAddTask}>
                                 <div className="form-group">
                                     <label>Task name / title:</label>

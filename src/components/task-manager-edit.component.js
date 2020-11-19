@@ -31,7 +31,7 @@ export default function EditTask(){
     },[taskId]);
 
     function onChangeEditDetails(e){
-        setTitle(e.target.value)
+        setDetails(e.target.value)
     }
     function onChangeEditProgress(e){
         setProgress(e.target.value);
@@ -49,22 +49,25 @@ export default function EditTask(){
     function onSubmitSaveTask(e){
         e.preventDefault();
     }
+    function onChangeEditPassword(e){
+        setEditPassword(e.target.value);
+    }
 
     return(
-        <div className="body-part">
-            <h1>Edit Task </h1>
-            <div>
+        <div className="body-part pt-4">
+            <h4 className="text-muted text-center">Edit and Save Task </h4> 
+            <div className="p-3 form-light">
                 <form onSubmit={onSubmitSaveTask}>
-                    <h3>{title}</h3>
+                    <h4>{title}</h4>
                     <div className="form-group">
                         <label>Task Details : </label>
-                        <textarea className="form-control" rows="5" cols="10" onChange={onChangeEditDetails}>hello</textarea>
+                        <textarea className="form-control" rows="5" cols="10" onChange={onChangeEditDetails}>{details}</textarea>
                     </div>
                     <div className="form-group">
                         <label>Progress: </label>
                         <input type="text" className="form-control" value={progress} onChange={onChangeEditProgress}/>
                     </div>
-                    <div className="d-flex justify-content-start flex-wrap">
+                    <div className="d-flex justify-content-between flex-wrap">
                         <div className="form-group">
                             <label>Assigned to: </label>
                             <input className="form-control" type="text" value={assignedTo} onChange={onChangeEditAssignedTo}/>
@@ -75,7 +78,7 @@ export default function EditTask(){
                         </div>
                         <div className="form-group">
                             <label>Edit password: </label>
-                            <input type="password" placeholder="Enter edit permission key / password" className="form-control"/>                     
+                            <input type="password" maxLength="4" minLength="4" onChange={onChangeEditPassword} placeholder="Enter edit permission key / password" className="form-control"/>                
                         </div>
                     </div>
                                

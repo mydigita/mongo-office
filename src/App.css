@@ -59,3 +59,13 @@ html, body{
 .single-task{
   padding:10px 15px 5px 15px;
 }
+.bg-teal{
+  background-color:teal;
+}
+.bg-silver{
+  background-color: silver;
+}
+.form-light{
+  background-color: #c6e6db;
+  border-radius:10px;
+}
