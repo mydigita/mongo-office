@@ -30,7 +30,11 @@ export default function TaskManager(){
         setAssignedTo(e.target.value);
     }
     function onChangeDeadline(e){
-        setDeadline(e.target.value);
+        if(e>new Date()){
+            setDeadline(e);
+        }else{
+            setDeadline(new Date());
+        }
     }
     function onChangeEditPassword(e){
         setEditPassword(e.target.value);
@@ -55,8 +59,8 @@ export default function TaskManager(){
                 return(
                     <div className="shadow single-task">
                         <h4>{e.title}</h4>
-                        <p>Task details: {e.details}</p>
-                        <p>Progress: {e.progress}<br/> Deadline: {e.deadline}, Assigned to: {e.assignedTo}</p>
+                        <p><strong>Task details:</strong> {e.details}</p>
+                        <p><strong>Progress:</strong> {e.progress}<br/> <strong>Deadline:</strong> {e.deadline.substring(0,10)}, <strong>Assigned to:</strong> {e.assignedTo}</p>
                         
                         <button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button>
                         <button className="btn btn-default text-primary" onClick={actionToClose} >Close</button>
@@ -136,8 +140,8 @@ export default function TaskManager(){
                                         <DatePicker selected={deadline} onChange={onChangeDeadline} className="form-control text-danger"/>
                                     </div>
                                     <div className="form-group">
-                                        <label>Edit/Delete protection password: </label>
-                                        <input type="text" className="form-control" placeholder="edit/delete protection password" onChange={onChangeEditPassword}/>
+                                        <label>Edit protection password: </label>
+                                        <input type="password" maxLength="4" minLength="4" className="form-control" placeholder="4 digit password" onChange={onChangeEditPassword}/>
                                     </div>
                                 </div>                            
                                 <div>

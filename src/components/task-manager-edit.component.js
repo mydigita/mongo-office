@@ -4,13 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
 import "../App.css";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function EditTask(){
     const taskId = window.location.href.split('/').reverse()[0];
     const [title, setTitle] = useState("");
     const [details, setDetails] = useState("");
     const [assignedTo, setAssignedTo] =  useState("");
-    const [deadline, setDeadline]= useState("");
+    const [deadline, setDeadline]= useState(new Date());
     const [progress, setProgress]= useState("");
     const [editPassword, setEditPassword]= useState("");
     
@@ -21,13 +23,12 @@ export default function EditTask(){
                 setTitle(data.data.title);
                 setDetails(data.data.details);
                 setAssignedTo(data.data.assignedTo);
-                setDeadline(data.data.deadline);
+                setDeadline(new Date(data.data.deadline));
                 setProgress(data.data.progress);
-
             }
         })
         .catch(err=>window.alert(err))
-    },[]);
+    },[taskId]);
 
     function onChangeEditDetails(e){
         setTitle(e.target.value)
@@ -39,7 +40,11 @@ export default function EditTask(){
         setAssignedTo(e.target.value);
     }
     function onChangeEditDeadline(e){
-        setDeadline(e.target.value);
+        if(e> new Date()){
+            setDeadline(e);
+        }else{
+            setDeadline(new Date());
+        }
     }
     function onSubmitSaveTask(e){
         e.preventDefault();
@@ -65,8 +70,8 @@ export default function EditTask(){
                             <input className="form-control" type="text" value={assignedTo} onChange={onChangeEditAssignedTo}/>
                         </div>
                         <div className="form-group">
-                            <label>Deadline: </label>
-                            <input className="form-control" type="text" value={deadline} onChange={onChangeEditDeadline}/>
+                            <label>Deadline: </label><br/>
+                            <DatePicker selected={deadline} onChange={onChangeEditDeadline} className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label>Edit password: </label>

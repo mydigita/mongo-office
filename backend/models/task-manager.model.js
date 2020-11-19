@@ -5,7 +5,7 @@ const TaskSchema = new Schema({
     title:{type:String},
     details:{type:String},
     assignedTo:{type:String},
-    deadline:{type:String},
+    deadline:{type:Date},
     progress:{type:String},
     status:{type:String},    
     username:{type:String}, 
