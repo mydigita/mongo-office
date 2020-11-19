@@ -51,6 +51,15 @@ export default function EditTask(){
     }
     function onChangeEditPassword(e){
         setEditPassword(e.target.value);
+        const updateData = {
+            details,
+            assignedTo,
+            progress,
+            deadline
+        }
+        axios.post(`http://localhost:5000/mongo-office/task-manager/edit/save/${taskId}/${editPassword}`, updateData)
+        .then(data=>{window.alert(data); window.location.assign('/mongo-office/task-manager/');})
+        .catch(err=>window.alert(err));
     }
 
     return(
