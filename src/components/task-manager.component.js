@@ -44,7 +44,7 @@ export default function TaskManager(){
         // view tasks
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
-            setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
+            setTaskRecord(data.data.reverse().filter(e=>e.status==='open').map(e=>{
                 function actionToEdit(){
                     return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
                  

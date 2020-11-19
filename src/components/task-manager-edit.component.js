@@ -90,8 +90,10 @@ export default function EditTask(){
                             <input type="password" maxLength="4" minLength="4" onChange={onChangeEditPassword} placeholder="Enter edit permission key / password" className="form-control" required/>   
                         </div>
                     </div>
-                               
-                    <button type="submit" className="btn btn-primary">Save</button>
+                    <div className="btn-group">
+                        <button type="submit" className="btn btn-primary">Save Task</button>
+                        <button className="btn btn-info" onClick={()=>{return window.location.assign('/mongo-office/task-manager/')}}>Go Back</button>
+                    </div>
                    
                 </form>
             </div>
