@@ -88,8 +88,9 @@ export default function TaskManager(){
         };        
               
         axios.post(`http://localhost:5000/mongo-office/task-manager/add/${username}/${userid}`, taskData)
-        .then((data)=>window.alert(data.data))
-        .catch(err=>window.alert(err))
+        .then((data)=>{window.alert(data.data); window.location.assign('/mongo-office/task-manager')})
+        .catch(err=>window.alert(err));
+        
     }
    
  
@@ -124,24 +125,24 @@ export default function TaskManager(){
                             <form onSubmit={onSubmitAddTask}>
                                 <div className="form-group">
                                     <label>Task name / title:</label>
-                                    <input type="text" className="form-control" placeholder="Task title" onChange={onChangeTitle}/>
+                                    <input type="text" className="form-control" placeholder="Task title" onChange={onChangeTitle} required/>
                                 </div>
                                 <div className="form-group">                                   
                                     <label>Task details:</label>
-                                    <textarea type="text" rows="5" cols="10" className="form-control" placeholder="Task details" onChange={onChangeDetails}></textarea>
+                                    <textarea type="text" rows="5" cols="10" className="form-control" placeholder="Task details" onChange={onChangeDetails} required></textarea>
                                 </div>
                                 <div className="d-flex flex-wrap justify-content-between">
                                     <div className="form-group">                              
                                         <label>Assigned to:</label>
-                                        <input type="text" className="form-control" placeholder="Assigned to" onChange={onChangeAssignedTo}/>
+                                        <input type="text" className="form-control" placeholder="Assigned to" onChange={onChangeAssignedTo} required/>
                                     </div>          
                                     <div className="form-group">
                                         <label>Deadline:</label><br/>
-                                        <DatePicker selected={deadline} onChange={onChangeDeadline} className="form-control text-danger"/>
+                                        <DatePicker selected={deadline} onChange={onChangeDeadline} className="form-control text-danger" required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Edit protection password: </label>
-                                        <input type="password" maxLength="4" minLength="4" className="form-control" placeholder="4 digit password" onChange={onChangeEditPassword}/>
+                                        <input type="password" maxLength="4" minLength="4" className="form-control" placeholder="4 digit password" onChange={onChangeEditPassword} required/>
                                     </div>
                                 </div>                            
                                 <div>
