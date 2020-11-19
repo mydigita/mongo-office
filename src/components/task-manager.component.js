@@ -35,12 +35,13 @@ export default function TaskManager(){
     }
 
     useEffect(()=>{
-        // get tasks
+        // view tasks
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             setTaskRecord(data.data.filter(e=>e.status==='open').map(e=>{
                 function actionToEdit(){
                     return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
+                 
                 }
                 function actionToClose(){
                     return window.location.assign(`/mongo-office/task-manager/close/${e._id}`);                    
@@ -141,7 +142,7 @@ export default function TaskManager(){
                             </form>
                         </div>
                     </div>
-                    <div id="edit" className="tab-pane fade">
+                    {/* <div id="edit" className="tab-pane fade">
                         <h3>Edit Task</h3>
                         <div>
                             <form>
@@ -151,33 +152,10 @@ export default function TaskManager(){
                                 </div>
                             </form>
                         </div>
-                    </div>                   
+                    </div>                    */}
                 </div>
             </div>
         </div>
     );
 }
 
-
-// edit task component
-
-export function EditTask(){
-    const [title, setTitle] = useState("");
-    const [details, setDetails] = useState("");
-    const [assignedTo, setAssignedTo] =  useState("");
-    const [deadline, setDeadline]= useState("");
-    const [editPassword, setEditPassword]= useState("");
-    const [taskRecord, setTaskRecord] = useState("");
-    const progress = 'No progress recorded';
-    const status = 'open';
-    const username = localStorage.getItem('user');
-    const userid= localStorage.getItem('userid');
-    const taskId = window.location.href.split('/').reverse()[0];
-    return(
-        
-        <div className="body-part">
-            <h1>{taskId}</h1>
-
-        </div>
-    );
-}
