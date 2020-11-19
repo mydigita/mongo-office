@@ -48,9 +48,6 @@ export default function EditTask(){
     }
     function onSubmitSaveTask(e){
         e.preventDefault();
-    }
-    function onChangeEditPassword(e){
-        setEditPassword(e.target.value);
         const updateData = {
             details,
             assignedTo,
@@ -58,8 +55,11 @@ export default function EditTask(){
             deadline
         }
         axios.post(`http://localhost:5000/mongo-office/task-manager/edit/save/${taskId}/${editPassword}`, updateData)
-        .then(data=>{window.alert(data); window.location.assign('/mongo-office/task-manager/');})
+        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/task-manager/');})
         .catch(err=>window.alert(err));
+    }
+    function onChangeEditPassword(e){
+        setEditPassword(e.target.value);        
     }
 
     return(
@@ -70,7 +70,7 @@ export default function EditTask(){
                     <h4>{title}</h4>
                     <div className="form-group">
                         <label>Task Details : </label>
-                        <textarea className="form-control" rows="5" cols="10" onChange={onChangeEditDetails}>{details}</textarea>
+                        <textarea className="form-control" rows="5" cols="10" onChange={onChangeEditDetails} value={details}></textarea>
                     </div>
                     <div className="form-group">
                         <label>Progress: </label>
@@ -87,7 +87,7 @@ export default function EditTask(){
                         </div>
                         <div className="form-group">
                             <label>Edit password: </label>
-                            <input type="password" maxLength="4" minLength="4" onChange={onChangeEditPassword} placeholder="Enter edit permission key / password" className="form-control"/>                
+                            <input type="password" maxLength="4" minLength="4" onChange={onChangeEditPassword} placeholder="Enter edit permission key / password" className="form-control" required/>   
                         </div>
                     </div>
                                
