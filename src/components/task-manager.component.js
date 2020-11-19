@@ -4,13 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
 import "../App.css";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 
 export default function TaskManager(){
     const [title, setTitle] = useState("");
     const [details, setDetails] = useState("");
     const [assignedTo, setAssignedTo] =  useState("");
-    const [deadline, setDeadline]= useState("");
+    const [deadline, setDeadline]= useState(new Date());
     const [editPassword, setEditPassword]= useState("");
     const [taskRecord, setTaskRecord] = useState("");
     const progress = 'No progress recorded';
@@ -122,19 +124,21 @@ export default function TaskManager(){
                                 </div>
                                 <div className="form-group">                                   
                                     <label>Task details:</label>
-                                    <input type="text" className="form-control" placeholder="Task details" onChange={onChangeDetails}/>
+                                    <textarea type="text" rows="5" cols="10" className="form-control" placeholder="Task details" onChange={onChangeDetails}></textarea>
                                 </div>
-                                <div className="form-group">                                    
-                                    <label>Assigned to:</label>
-                                    <input type="text" className="form-control" placeholder="Assigned to" onChange={onChangeAssignedTo}/>
-                                </div>                                
-                                <div className="form-group">
-                                    <label>Deadline:</label>
-                                    <input type="text" className="form-control" placeholder="Deadline" onChange={onChangeDeadline}/>
-                                </div>
-                                <div className="form-group">
-                                    <label>Edit/Delete protection password: </label>
-                                    <input type="text" className="form-control" placeholder="edit/delete protection password" onChange={onChangeEditPassword}/>
+                                <div className="d-flex flex-wrap justify-content-between">
+                                    <div className="form-group">                              
+                                        <label>Assigned to:</label>
+                                        <input type="text" className="form-control" placeholder="Assigned to" onChange={onChangeAssignedTo}/>
+                                    </div>          
+                                    <div className="form-group">
+                                        <label>Deadline:</label><br/>
+                                        <DatePicker selected={deadline} onChange={onChangeDeadline} className="form-control text-danger"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Edit/Delete protection password: </label>
+                                        <input type="text" className="form-control" placeholder="edit/delete protection password" onChange={onChangeEditPassword}/>
+                                    </div>
                                 </div>                            
                                 <div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
