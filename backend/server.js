@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 
 const mongoUri = process.env.MONGO_URI;
-mongoose.connect(mongoUri, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true})
+mongoose.connect(mongoUri, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:false})
 .then(()=>console.log('- mongo connected!'))
 .catch(err=>mongoose.connection.close());
 

@@ -71,12 +71,21 @@ router.route('/edit/save/:taskId/:editPassword')
     .catch(err=>res.send(err))
 })
 
-router.route('/close/:taskId/:editPassword')
+router.route('/edit/close/:taskId/:editPassword')
 .post((req, res)=>{
     const {taskId, editPassword} = req.params;
     const {status} = req.body;
-    TaskManager.findOneAndUpdate({_id:taskId, editPassword}, {$set:{status:status}})
-    .then(()=>res.send('Task Closed!'))
+    TaskManager.findOneAndUpdate({_id:taskId, editPassword}, {$set:{status}})
+    .then((data)=>res.send('Task Closed!'))
+    .catch(err=>res.send(err))
+})
+
+router.route('/edit/delete/:taskId/:editPassword')
+.post((req, res)=>{
+    const {taskId, editPassword} = req.params;
+    const {status} = req.body;
+    TaskManager.findOneAndUpdate({_id:taskId, editPassword}, {$set:{status}})
+    .then((data)=>res.send('Task Deleted!'))
     .catch(err=>res.send(err))
 })
 module.exports = router;
