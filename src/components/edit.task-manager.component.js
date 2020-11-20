@@ -64,13 +64,13 @@ export default function EditTask(){
     function onClickCloseTask(e){       
         const updateData ={status:'closed'};
         axios.post(`http://localhost:5000/mongo-office/task-manager/edit/close/${taskId}/${editPassword}`, updateData)
-        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/task-manager/');})
-        .catch(err=>window.alert('Please enter correct information!'));
+        .then(data=>{window.alert(data.data); setEditPassword(""); if(data.data!=='Wrong Password!'){window.location.assign('/mongo-office/task-manager/')};})
+        .catch(err=>window.alert(!editPassword?'Please enter password!':'Wrong password!'));
     }
     function onClickDeleteTask(){
         const updateData ={status:'deleted'};
         axios.post(`http://localhost:5000/mongo-office/task-manager/edit/delete/${taskId}/${editPassword}`, updateData)
-        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/task-manager/');})
+        .then(data=>{window.alert(data.data); setEditPassword(""); if(data.data!=='Wrong Password!'){window.location.assign('/mongo-office/task-manager/')};})
         .catch(err=>window.alert(!editPassword?'Please enter password!':'Wrong password!'));
 
     }
