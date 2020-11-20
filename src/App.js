@@ -6,7 +6,7 @@ import UserForm from "./components/signup.component";
 import UserLogin from "./components/login.component";
 import Logout from './components/logout.component';
 import "bootstrap/dist/css/bootstrap.min.css";
-import EditTask from "./components/task-manager-edit.component";
+import EditTask from "./components/edit-task-manager.component";
 
 function App() {
 
