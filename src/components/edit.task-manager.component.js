@@ -91,7 +91,9 @@ export default function EditTask(){
                         </div>
                     </div>
                     <div className="btn-group">
-                        <button type="submit" className="btn btn-primary">Save Task</button>
+                        <button type="submit" className="btn btn-success">Save Task</button>
+                        <button type="submit" className="btn btn-warning">Close Task</button>
+                        <button type="submit" className="btn btn-danger">Delete Task</button>
                         <button className="btn btn-info" onClick={()=>{return window.location.assign('/mongo-office/task-manager/')}}>Go Back</button>
                     </div>
                    
