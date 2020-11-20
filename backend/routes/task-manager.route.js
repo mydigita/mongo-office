@@ -71,4 +71,12 @@ router.route('/edit/save/:taskId/:editPassword')
     .catch(err=>res.send(err))
 })
 
+router.route('/close/:taskId/:editPassword')
+.post((req, res)=>{
+    const {taskId, editPassword} = req.params;
+    const {status} = req.body;
+    TaskManager.findOneAndUpdate({_id:taskId, editPassword}, {$set:{status:status}})
+    .then(()=>res.send('Task Closed!'))
+    .catch(err=>res.send(err))
+})
 module.exports = router;

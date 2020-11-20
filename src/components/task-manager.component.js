@@ -20,6 +20,7 @@ export default function TaskManager(){
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid');
     
+    
     function onChangeTitle(e){
         setTitle(e.target.value);
     }
@@ -40,20 +41,24 @@ export default function TaskManager(){
         setEditPassword(e.target.value);
     }
 
+
     useEffect(()=>{
         // view tasks
         axios.get(`http://localhost:5000/mongo-office/task-manager/view/${username}/${userid}`)
         .then(data=>{
             setTaskRecord(data.data.reverse().filter(e=>e.status==='open').map(e=>{
-                function actionToEdit(){
+                function editPath(){
                     return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
-                 
                 }
+                function actionToEdit(){
+                    editPath();                 
+                }
+                
                 function actionToClose(){
-                    return window.location.assign(`/mongo-office/task-manager/close/${e._id}`);                    
+                   editPath();               
                 }
                 function actionToDelete(){
-                    return window.location.assign(`/mongo-office/task-manager/delete/${e._id}`);
+                    editPath();
                 }
                 
                 return(
@@ -63,7 +68,7 @@ export default function TaskManager(){
                         <p><strong>Progress:</strong> {e.progress}<br/> <strong>Deadline:</strong> {e.deadline.substring(0,10)}, <strong>Assigned to:</strong> {e.assignedTo}</p>
                         
                         <button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button>
-                        <button className="btn btn-default text-primary" onClick={actionToClose} >Close</button>
+                        <button id={`me${e._id}`} className="btn btn-default text-primary" onClick={actionToClose} >Close</button>
                         <button className="btn btn-default text-primary" onClick={actionToDelete} >Delete</button>
                 
                     </div>

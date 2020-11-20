@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import SideNav from "./components/side-nav.component";
 import TaskManager from "./components/task-manager.component";
@@ -6,7 +6,7 @@ import UserForm from "./components/signup.component";
 import UserLogin from "./components/login.component";
 import Logout from './components/logout.component';
 import "bootstrap/dist/css/bootstrap.min.css";
-import EditTask from "./components/edit-task-manager.component";
+import EditTask from "./components/edit.task-manager.component";
 
 function App() {
 
