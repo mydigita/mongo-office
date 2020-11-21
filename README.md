@@ -16,4 +16,5 @@ npm start
 ## work in progress...
 
 * Completed login and logout
+* Completed nav menus of all linked app and applied to logged in user's dashboard
 * Completed Task-Manager (create task, view task, edit task, close task, delete task, task archive)
