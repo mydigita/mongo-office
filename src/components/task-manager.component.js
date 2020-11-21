@@ -15,6 +15,7 @@ export default function TaskManager(){
     const [deadline, setDeadline]= useState(new Date());
     const [editPassword, setEditPassword]= useState("");
     const [taskRecord, setTaskRecord] = useState("");
+    const [taskArchive, setTaskArchive] = useState("");
     const progress = 'No progress recorded';
     const status = 'open';
     const username = localStorage.getItem('user');
@@ -50,6 +51,7 @@ export default function TaskManager(){
                 function editPath(){
                     return window.location.assign(`/mongo-office/task-manager/edit/${e._id}`);
                 }
+
                 function actionToEdit(){
                     editPath();                 
                 }               
@@ -61,7 +63,20 @@ export default function TaskManager(){
                         <p><strong>Progress:</strong> {e.progress}<br/> <strong>Deadline:</strong> {e.deadline.substring(0,10)}, <strong>Assigned to:</strong> {e.assignedTo}</p>
                     </div>
                 );
-            }))
+            }));
+
+            setTaskArchive(data.data.reverse().filter(e=>e.status==='closed').map(e=>{
+                
+                return(
+                    <div className="shadow single-task1">
+                        <h4 className="text-muted">{e.title} ({e.status})</h4>
+                        <p className="text-muted">Task details: {e.details}</p>
+                        <p className="text-muted">Progress: {e.progress}<br/> Deadline: {e.deadline.substring(0,10)}, Assigned to: {e.assignedTo} </p>
+                    </div>
+                );
+            }));
+
+            
         })
         .catch(err=>window.alert(err))
     });
@@ -143,7 +158,7 @@ export default function TaskManager(){
                         </div>
                     </div>
                     <div id="archive" className="tab-pane fade">
-                        <h3>Task Archive</h3>
+                        <div>{taskArchive}</div>
                     </div>                   
                 </div>
             </div>
