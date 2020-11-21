@@ -7,7 +7,8 @@ git clone https://github.com/thetradecoder/mongo-office.git
 
 npm install
 
-// then set MONGO_URI and start the app
+// then create a .env at backend folder and set MONGO_URI
+// start the app
 
 npm start
 ```
