@@ -102,7 +102,7 @@ export default function TaskManager(){
                     <a className="nav-link warning" data-toggle="tab" href="#add">Add New Task</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link danger" data-toggle="tab" href="#edit">Edit Task</a>
+                    <a className="nav-link danger" data-toggle="tab" href="#archive">Task Archive</a>
                 </li>
             </ul>
 
@@ -142,17 +142,9 @@ export default function TaskManager(){
                             </form>
                         </div>
                     </div>
-                    {/* <div id="edit" className="tab-pane fade">
-                        <h3>Edit Task</h3>
-                        <div>
-                            <form>
-                                <div className="form-group">
-                                    <label>Task Details: </label>
-                                    <input type="text" className="form-control"/>
-                                </div>
-                            </form>
-                        </div>
-                    </div>                    */}
+                    <div id="archive" className="tab-pane fade">
+                        <h3>Task Archive</h3>
+                    </div>                   
                 </div>
             </div>
         </div>
