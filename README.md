@@ -15,5 +15,5 @@ npm start
 
 ## work in progress...
 
-* Complted login and logout
+* Completed login and logout
 * Completed Task-Manager (create task, view task, edit task, close task, delete task, task archive)
