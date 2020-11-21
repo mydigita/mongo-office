@@ -85,8 +85,6 @@ export default function TaskManager(){
         .catch(err=>window.alert(err));
         
     }
-   
- 
 
    
     return(
