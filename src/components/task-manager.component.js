@@ -52,25 +52,13 @@ export default function TaskManager(){
                 }
                 function actionToEdit(){
                     editPath();                 
-                }
-                
-                function actionToClose(){
-                   editPath();               
-                }
-                function actionToDelete(){
-                    editPath();
-                }
+                }               
                 
                 return(
                     <div className="shadow single-task">
-                        <h4>{e.title}</h4>
+                        <h4>{e.title} <span><button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button></span></h4>
                         <p><strong>Task details:</strong> {e.details}</p>
                         <p><strong>Progress:</strong> {e.progress}<br/> <strong>Deadline:</strong> {e.deadline.substring(0,10)}, <strong>Assigned to:</strong> {e.assignedTo}</p>
-                        
-                        <button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button>
-                        <button id={`me${e._id}`} className="btn btn-default text-primary" onClick={actionToClose} >Close</button>
-                        <button className="btn btn-default text-primary" onClick={actionToDelete} >Delete</button>
-                
                     </div>
                 );
             }))
