@@ -74,12 +74,10 @@ export default function TaskManager(){
                         <p className="text-muted">Progress: {e.progress}<br/> Deadline: {e.deadline.substring(0,10)}, Assigned to: {e.assignedTo} </p>
                     </div>
                 );
-            }));
-
-            
+            }));            
         })
         .catch(err=>window.alert(err))
-    });
+    }, [username, userid]);
    
 
     // add task 

@@ -14,7 +14,7 @@ mongoose.connect(mongoUri, {useNewUrlParser:true, useUnifiedTopology:true, useCr
 .then(()=>console.log('- mongo connected!'))
 .catch(err=>mongoose.connection.close());
 
-app.use(cors({origin: true, credentials: true}));
+app.use(cors());
 app.use(express.json());
 app.use('/mongo-office/accounts/', userRoutes);
 app.use('/mongo-office/task-manager/', taskRoutes);
