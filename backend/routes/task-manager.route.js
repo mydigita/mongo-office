@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { data } = require('jquery');
 const TaskManager = require('../models/task-manager.model');
 
 
@@ -10,8 +11,8 @@ router.route('/view/:username/:userid')
         userid,
     } = req.params;
    
-    TaskManager.find({username, userid})
-    .then(data=>res.send(data))
+    TaskManager.find({username, userid}, {title:true, details:true, assignedTo:true, deadline:true, progress:true, status:true})
+    .then(data=>res.send(data.filter(e=>e.status!=='deleted')))
     .catch(err=>res.send(err))
 });
 
