@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CashBookSchema = new Schema({
-    trxDate:{type:String},    
-    trxDetails:{type:String},
-    trxAmountIn:{type:Number},
-    trxAmountOut:{type:Number},
-    cashBalance:{type:Number},
+    date:{type:String},    
+    details:{type:String},
+    cashIn:{type:Number},
+    cashOut:{type:Number},
+    balance:{type:Number},
     username:{type:String}, 
     userid:{type:String},
 }, {timestamps:true});
