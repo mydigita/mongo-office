@@ -72,7 +72,6 @@ export default function EditTask(){
         axios.post(`http://localhost:5000/mongo-office/task-manager/edit/delete/${taskId}/${editPassword}`, updateData)
         .then(data=>{window.alert(data.data); setEditPassword(""); if(data.data!=='Wrong Password!'){window.location.assign('/mongo-office/task-manager/')};})
         .catch(err=>window.alert(!editPassword?'Please enter password!':'Wrong password!'));
-
     }
 
     return(
