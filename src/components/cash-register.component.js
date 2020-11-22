@@ -28,6 +28,7 @@ export default function CashRegister(){
                         <td>{e.trxDetails}</td>
                         <td>{e.trxAmountIn}</td>
                         <td>{e.trxAmountOut}</td>
+                        <td>{e.cashBalance}</td>
                     </tr>
                 );
             }))
