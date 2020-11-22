@@ -11,11 +11,9 @@ export default function CashRegister(){
     const [transactions, setTransactions] =  useState("");
     const [cashBalance, setCashBalance] = useState("");
     const [cashIn, setCashIn] = useState("");    
-    const [cashInDate, setCashInDate] = useState(new Date());
-    const [cashInDetails, setCashInDetails] = useState("");
     const [cashOut, setCashOut] = useState("");
-    const [cashOutDate, setCashOutDate] = useState(new Date());
-    const [cashOutDetails, setCashOutDetails] = useState("");
+    const [trxDate, setTrxDate] = useState(new Date());    
+    const [trxDetails, setTrxDetails] = useState("");
     const username = localStorage.getItem('username');
     const userid = localStorage.getItem('userid');
 
@@ -25,7 +23,12 @@ export default function CashRegister(){
         .then(data=>{
             setTransactions(data.data.reverse().map(e=>{
                 return (
-                    <tr></tr>
+                    <tr>
+                        <td>{e.trxDate}</td>
+                        <td>{e.trxDetails}</td>
+                        <td>{e.trxAmountIn}</td>
+                        <td>{e.trxAmountOut}</td>
+                    </tr>
                 );
             }))
         })
