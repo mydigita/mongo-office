@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/users.route');
 require('dotenv').config();
@@ -16,6 +17,7 @@ mongoose.connect(mongoUri, {useNewUrlParser:true, useUnifiedTopology:true, useCr
 .catch(err=>mongoose.connection.close());
 
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use('/mongo-office/accounts/', userRoutes);
 app.use('/mongo-office/task-manager/', taskRoutes);

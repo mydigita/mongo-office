@@ -9,4 +9,4 @@ router.route('/view/:username/:userid')
 })
 
 
-modules.exports = router;
+module.exports = router;
