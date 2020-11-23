@@ -9,26 +9,26 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function CashRegister(){
     const [transactions, setTransactions] =  useState("");
-    const [cashBalance, setCashBalance] = useState("");
+    const [balance, setBalance] = useState("");
     const [cashIn, setCashIn] = useState("");    
     const [cashOut, setCashOut] = useState("");
-    const [trxDate, setTrxDate] = useState(new Date());    
-    const [trxDetails, setTrxDetails] = useState("");
+    const [date, setDate] = useState(new Date());    
+    const [details, setDetails] = useState("");
     const username = localStorage.getItem('username');
     const userid = localStorage.getItem('userid');
 
 
     function viewTransaction(){
-        axios.get(`http://localhost:5000/mongo-office/cash-register/statement/${username}/${userid}`)
+        axios.get(`http://localhost:5000/mongo-office/cash-register/view/${username}/${userid}`)
         .then(data=>{
             setTransactions(data.data.reverse().map(e=>{
                 return (
                     <tr>
-                        <td>{e.trxDate}</td>
-                        <td>{e.trxDetails}</td>
-                        <td>{e.trxAmountIn}</td>
-                        <td>{e.trxAmountOut}</td>
-                        <td>{e.cashBalance}</td>
+                        <td>{e.date}</td>
+                        <td>{e.details}</td>
+                        <td>{e.cashIn}</td>
+                        <td>{e.cashOut}</td>
+                        <td>{e.balance}</td>
                     </tr>
                 );
             }))
@@ -39,6 +39,9 @@ export default function CashRegister(){
 
     return(
         <div>
+            <table>
+                {transactions}
+            </table>
 
         </div>
     );
