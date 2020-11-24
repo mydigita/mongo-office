@@ -55,7 +55,8 @@ export default function CashRegister(){
             setDetails("");
             setCashIn(0);
             setCashOut(0);
-            setReference("");            
+            setReference("");
+            window.location.assign('/mongo-office/cash-register/')                
         })
         .catch(err=>window.alert(err))
     } else{window.alert("Please input valid info!")}
@@ -100,11 +101,11 @@ export default function CashRegister(){
                     </div>
                     <div className="form-group">
                         <label>Cash Received: </label>
-                        <input type="Number" min="0" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} required/>
+                        <input type="Number" min="0" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} />
                     </div>
                     <div className="form-group">
                         <label>Expense Amount: </label>
-                        <input type="Number" min="0" placeholder="Expense amount" className="form-control"  onChange={onChangeCashOut} required/>
+                        <input type="Number" min="0" placeholder="Expense amount" className="form-control"  onChange={onChangeCashOut} />
                     </div>
                     <div className="form-group">
                         <label>Reference: </label>
