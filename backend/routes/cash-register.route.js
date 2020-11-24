@@ -12,7 +12,7 @@ router.route('/view/:username/:userid')
 router.route('/record-trx/:username/:userid')
 .post((req, res)=>{
     const {username, userid} = req.params;
-    const {date, details, cashIn, cashOut, balance, reference} = req.body;
+    const {date, details, cashIn, cashOut, balance, reference}= req.body;
     const data = new CashRegister({date, details, cashIn, cashOut, balance, reference, username, userid});
 
     data.save()

@@ -15,11 +15,12 @@ const userid = localStorage.getItem('userid');
 // View transactions / statement
 export default function CashRegister(){
     const [transactions, setTransactions] =  useState("");
-    const date = new Date().toLocaleDateString();
+    const date = new Date().toLocaleString();
     const [details, setDetails]= useState("");
     const [cashIn, setCashIn] =  useState(0);
     const [cashOut, setCashOut] = useState(0);
     const [reference, setReference] = useState("");
+   
     function onChangeDetails(e){
         setDetails(e.target.value);
     }
@@ -40,7 +41,7 @@ export default function CashRegister(){
     function onSubmitRecordTrx(e){
         e.preventDefault();
         const trxData = {
-            date:Date(),                        
+            date:new Date(),                        
             details,
             cashIn,
             cashOut,
@@ -62,36 +63,32 @@ export default function CashRegister(){
     } else{window.alert("Please input valid info!")}
 }
 
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //     axios.get(`http://localhost:5000/mongo-office/cash-register/view/${username}/${userid}`)
-    //     .then(data=>{
-    //         setTransactions(data.data.reverse().map(e=>{
-    //             return (
-    //                 <tr>
-    //                     <td>{e.date}</td>
-    //                     <td>{e.details}</td>
-    //                     <td>{e.cashIn}</td>
-    //                     <td>{e.cashOut}</td>
-    //                     <td>{e.balance}</td>
-    //                 </tr>
-    //             );
-    //         }))
-    //     })
+        axios.get(`http://localhost:5000/mongo-office/cash-register/view/${username}/${userid}`)
+        .then(data=>{
+            setTransactions(data.data.reverse().map(e=>{
+                return (
+                    <tr>
+                        <td>{e.date.substring(0,10)}</td>
+                        <td>{e.details}</td>
+                        <td>{e.cashIn}</td>
+                        <td>{e.cashOut}</td>
+                        <td>{e.balance}</td>
+                    </tr>
+                );
+            }))
+        })
+        .catch(err=>err);
 
-    // }, []);
+    }, []);
 
 
 
 
 
     return(
-        <div className="body-part">
-            {/* <div id="view">
-                <table>
-                    {transactions}
-                </table>
-            </div> */}
+        <div className="body-part">           
             <div id="record">
                 <form onSubmit={onSubmitRecordTrx}>
                     <p className="btn btn-warning disabled">Date: {date}</p>
@@ -114,6 +111,19 @@ export default function CashRegister(){
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
                
+            </div>
+
+             <div id="view">
+                <table className="table table-striped">
+                    <tr>
+                        <th>Date</th>
+                        <th>Details</th>
+                        <th>Received</th>
+                        <th>Expense</th>
+                        <th>Balance</th>
+                    </tr>
+                    {transactions}
+                </table>
             </div>
 
         </div>
