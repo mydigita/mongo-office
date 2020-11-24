@@ -72,6 +72,7 @@ export default function CashRegister(){
                     <tr>
                         <td>{e.date.substring(0,10)}</td>
                         <td>{e.details}</td>
+                        <td>{e.reference}</td>
                         <td>{e.cashIn}</td>
                         <td>{e.cashOut}</td>
                         <td>{e.balance}</td>
@@ -118,6 +119,7 @@ export default function CashRegister(){
                     <tr>
                         <th>Date</th>
                         <th>Details</th>
+                        <th>Reference</th>
                         <th>Received</th>
                         <th>Expense</th>
                         <th>Balance</th>
