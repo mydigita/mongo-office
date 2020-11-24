@@ -15,11 +15,12 @@ const userid = localStorage.getItem('userid');
 // View transactions / statement
 export default function CashRegister(){
     const [transactions, setTransactions] =  useState("");
-    const date = new Date().toLocaleString();
     const [details, setDetails]= useState("");
     const [cashIn, setCashIn] =  useState(0);
     const [cashOut, setCashOut] = useState(0);
     const [reference, setReference] = useState("");
+    const date = new Date().toLocaleDateString();
+   
    
     function onChangeDetails(e){
         setDetails(e.target.value);
@@ -92,7 +93,7 @@ export default function CashRegister(){
         <div className="body-part">           
             <div id="record">
                 <form onSubmit={onSubmitRecordTrx}>
-                    <p className="btn btn-warning disabled">Date: {date}</p>
+                    <p id="dt" className="btn btn-warning disabled">Date: {date}</p>
                     <div className="form-group">
                         <label>Description: </label>
                         <input type="text" placeholder="Transaction details" value={details} className="form-control" onChange={onChangeDetails} required/>
