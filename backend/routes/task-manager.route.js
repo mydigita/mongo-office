@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { data } = require('jquery');
 const TaskManager = require('../models/task-manager.model');
 
 

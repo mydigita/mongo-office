@@ -7,7 +7,7 @@ import "../App.css";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-const username = localStorage.getItem('username');
+const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
 
@@ -19,23 +19,47 @@ export default function CashRegister(){
     const [details, setDetails]= useState("");
     const [cashIn, setCashIn] =  useState(0);
     const [cashOut, setCashOut] = useState(0);
+    const [reference, setReference] = useState("");
     function onChangeDetails(e){
         setDetails(e.target.value);
     }
     function onChangeCashIn(e){
-        if(e>0){
+        if(e.target.value>0){
             setCashIn(e.target.value)
         }
     }
     function onChangeCashOut(e){
-        if(e>0){
+        if(e.target.value>0){
             setCashOut(e.target.value);
         }
+    }
+    function onChangeReference(e){
+        setReference(e.target.value)
     }
 
     function onSubmitRecordTrx(e){
         e.preventDefault();
-    }
+        const trxData = {
+            date:Date(),                        
+            details,
+            cashIn,
+            cashOut,
+            reference,
+            balance:(cashIn-cashOut)
+        }
+
+        if(cashIn>0 || cashOut>0 ){
+        axios.post(`http://localhost:5000/mongo-office/cash-register/record-trx/${username}/${userid}`, trxData)
+        .then(data=>window.alert(data.data))
+        .then(()=>{
+            setDetails("");
+            setCashIn(0);
+            setCashOut(0);
+            setReference("");            
+        })
+        .catch(err=>window.alert(err))
+    } else{window.alert("Please input valid info!")}
+}
 
     // useEffect(()=>{
 
@@ -72,15 +96,19 @@ export default function CashRegister(){
                     <p className="btn btn-warning disabled">Date: {date}</p>
                     <div className="form-group">
                         <label>Description: </label>
-                        <input type="text" placeholder="Trx details" className="form-control" onChange={onChangeDetails} required/>
+                        <input type="text" placeholder="Transaction details" value={details} className="form-control" onChange={onChangeDetails} required/>
                     </div>
                     <div className="form-group">
                         <label>Cash Received: </label>
-                        <input type="text" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} required/>
+                        <input type="Number" min="0" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} required/>
                     </div>
                     <div className="form-group">
                         <label>Expense Amount: </label>
-                        <input type="text" placeholder="Expense amount" className="form-control" onChange={onChangeCashOut} required/>
+                        <input type="Number" min="0" placeholder="Expense amount" className="form-control"  onChange={onChangeCashOut} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Reference: </label>
+                        <input type="text" placeholder="Reference name" value={reference} className="form-control" onChange={onChangeReference} required/>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
