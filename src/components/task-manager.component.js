@@ -58,12 +58,11 @@ export default function TaskManager(){
                 
                 return(
                     <div className="shadow single-task">
-                        <h4>{e.title} 
-                            <span><button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button>
-                            </span>
-                        </h4>
-                        <p><strong>Task details:</strong> {e.details}</p>
-                        <p><strong>Progress:</strong> {e.progress}<br/> <strong>Deadline:</strong> {e.deadline.substring(0,10)}, <strong>Assigned to:</strong> {e.assignedTo}</p>
+                        <h5>{e.title} 
+                            <span><button className="btn btn-default text-primary" onClick={actionToEdit} >Edit</button></span>
+                        </h5>
+                        <p>Task details: {e.details}</p>
+                        <p>Progress: {e.progress}<br/>Deadline: {e.deadline.substring(0,10)}, Assigned to: {e.assignedTo}</p>
                     </div>
                 );
             }));
