@@ -94,7 +94,7 @@ export default function CashRegister(){
                 <button className="btn btn-info" data-toggle="collapse" data-target="#record">Make an Entry</button>
                 <span>{date}</span>
             </div>        
-            <div id="record" className="collapse pb-4">
+            <div id="record" className="collapse pb-4 form-light p-3">
                 <form onSubmit={onSubmitRecordTrx}>
                     
                     <div className="form-group">
