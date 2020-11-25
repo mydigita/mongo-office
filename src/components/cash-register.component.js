@@ -72,8 +72,7 @@ export default function CashRegister(){
                 return (
                     <tr>
                         <td>{e.date.substring(0,10)}</td>
-                        <td>{e.details}</td>
-                        <td>{e.reference}</td>
+                        <td>{e.details}</td>                        
                         <td>{e.cashIn}</td>
                         <td>{e.cashOut}</td>
                         <td>{e.balance}</td>
@@ -90,14 +89,16 @@ export default function CashRegister(){
 
 
     return(
-        <div className="body-part">           
-            <div id="record">
+        <div className="body-part pt-4"> 
+        <div><button className="btn btn-primary" data-toggle="collapse" data-target="#record">Make an Entry</button></div>        
+            <div id="record" className="collapse">
                 <form onSubmit={onSubmitRecordTrx}>
-                    <p id="dt" className="btn btn-warning disabled">Date: {date}</p>
+                    
                     <div className="form-group">
                         <label>Description: </label>
                         <input type="text" placeholder="Transaction details" value={details} className="form-control" onChange={onChangeDetails} required/>
                     </div>
+                    <div className="d-flex justify-content-between">
                     <div className="form-group">
                         <label>Cash Received: </label>
                         <input type="Number" min="0" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} />
@@ -110,6 +111,12 @@ export default function CashRegister(){
                         <label>Reference: </label>
                         <input type="text" placeholder="Reference name" value={reference} className="form-control" onChange={onChangeReference} required/>
                     </div>
+                    <div className="form-group">
+                        <label>Date:</label>
+                        <input type="text" value={date} className="form-control" disabled/>
+                    </div>
+                    
+                    </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
                
@@ -119,8 +126,7 @@ export default function CashRegister(){
                 <table className="table table-striped">
                     <tr>
                         <th>Date</th>
-                        <th>Details</th>
-                        <th>Reference</th>
+                        <th className="w-50">Details</th>                        
                         <th>Received</th>
                         <th>Expense</th>
                         <th>Balance</th>
