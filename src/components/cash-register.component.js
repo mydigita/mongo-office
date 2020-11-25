@@ -91,7 +91,7 @@ export default function CashRegister(){
     return(
         <div className="body-part"> 
             <div className="p-4 d-flex justify-content-between">
-                <button className="btn btn-danger" data-toggle="collapse" data-target="#record">Make an Entry</button>
+                <button className="btn btn-info" data-toggle="collapse" data-target="#record">Make an Entry</button>
                 <span>{date}</span>
             </div>        
             <div id="record" className="collapse pb-4">

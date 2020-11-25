@@ -34,7 +34,7 @@ export default function SideNav(){
             
             <div className="side-nav">
                 <div>
-                    <h1>Mongo Office</h1>
+                    <h3>Mongo Office</h3>
                     <p>By: theTradeCoder</p>
                 </div>
                 <div>

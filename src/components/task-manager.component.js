@@ -68,7 +68,7 @@ export default function TaskManager(){
             setTaskArchive(data.data.reverse().filter(e=>e.status==='closed').map(e=>{
                 
                 return(
-                    <div className="shadow single-task1">
+                    <div className="shadow single-task">
                         <h6 className="text-muted">{e.title} ({e.status})</h6>
                         <p className="text-muted">Task details: {e.details}</p>
                         <p className="text-muted">Progress: {e.progress}<br/> Deadline: {e.deadline.substring(0,10)}, Assigned to: {e.assignedTo} </p>
