@@ -30,7 +30,7 @@ html, body{
 /* Scrollbar design closed here */
 
 .side-nav-container{
-  max-width:300px;
+  max-width:250px;
   height:100%;
   padding:10px;
   position:fixed;
@@ -47,7 +47,7 @@ html, body{
 }
 
 .body-part{
-  margin-left:300px;
+  margin-left:250px;
   margin-right:30px;
 }
 .login, .logout, .signup{
