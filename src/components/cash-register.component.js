@@ -89,9 +89,12 @@ export default function CashRegister(){
 
 
     return(
-        <div className="body-part pt-4"> 
-        <div><button className="btn btn-primary" data-toggle="collapse" data-target="#record">Make an Entry</button></div>        
-            <div id="record" className="collapse">
+        <div className="body-part"> 
+            <div className="p-4 d-flex justify-content-between">
+                <button className="btn btn-danger" data-toggle="collapse" data-target="#record">Make an Entry</button>
+                <span>{date}</span>
+            </div>        
+            <div id="record" className="collapse pb-4">
                 <form onSubmit={onSubmitRecordTrx}>
                     
                     <div className="form-group">
