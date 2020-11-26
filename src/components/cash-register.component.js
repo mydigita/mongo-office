@@ -20,6 +20,7 @@ export default function CashRegister(){
     const [authorizedBy, setAuthorizedBy] = useState("");
     const [carriedOutBy, setCarriedOutBy] = useState("");
     const date = new Date().toLocaleDateString();
+    const [totalBalance, setTotalBalance] = useState(0);
    
    
     function onChangeDetails(e){
@@ -73,7 +74,17 @@ export default function CashRegister(){
 
         axios.get(`http://localhost:5000/mongo-office/cash-register/view/${username}/${userid}`)
         .then(data=>{
-            setTransactions(data.data.reverse().map(e=>{
+            let balArr = [];
+            data.data.map(e=>balArr.push(e.balance));
+            setTotalBalance(balArr.reduce((a,b)=>{
+                const totalAmount = a+b;
+                if(totalAmount>0){
+                return (<span>{totalAmount}</span>)
+                }else{return (<span className="text-danger">{totalAmount}</span>)}
+            }));
+                         
+            setTransactions(data.data.map(e=>{
+                
                 return (
                     <tr>
                         <td>{e.date.substring(0,10)}</td>
@@ -128,7 +139,10 @@ export default function CashRegister(){
                
             </div>
 
-             <div id="view">
+            {/* view data / statement */}
+
+             <div id="view" className="pt-4">
+                <div>Total Balance as on {date}:  Tk {totalBalance}</div>
                 <table className="table table-striped">
                     <tr>
                         <th>Date</th>
