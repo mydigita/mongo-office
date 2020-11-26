@@ -7,7 +7,8 @@ const CashBookSchema = new Schema({
     cashIn:{type:Number},
     cashOut:{type:Number},
     balance:{type:Number},
-    reference:{type:String},
+    authorizedBy:{type:String},
+    carriedOutBy:{type:String},
     username:{type:String}, 
     userid:{type:String},
 }, {timestamps:true});
