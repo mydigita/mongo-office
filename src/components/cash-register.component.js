@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
 import "../App.css";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const username = localStorage.getItem('user');
@@ -18,7 +17,8 @@ export default function CashRegister(){
     const [details, setDetails]= useState("");
     const [cashIn, setCashIn] =  useState(0);
     const [cashOut, setCashOut] = useState(0);
-    const [reference, setReference] = useState("");
+    const [authorizedBy, setAuthorizedBy] = useState("");
+    const [carriedOutBy, setCarriedOutBy] = useState("");
     const date = new Date().toLocaleDateString();
    
    
@@ -35,8 +35,11 @@ export default function CashRegister(){
             setCashOut(e.target.value);
         }
     }
-    function onChangeReference(e){
-        setReference(e.target.value)
+    function onChangeAuthorizedBy(e){
+        setAuthorizedBy(e.target.value);
+    }
+    function onChangeCarriedOutBy(e){
+        setCarriedOutBy(e.target.value);
     }
 
     function onSubmitRecordTrx(e){
@@ -46,7 +49,8 @@ export default function CashRegister(){
             details,
             cashIn,
             cashOut,
-            reference,
+            authorizedBy,
+            carriedOutBy,
             balance:(cashIn-cashOut)
         }
 
@@ -57,8 +61,9 @@ export default function CashRegister(){
             setDetails("");
             setCashIn(0);
             setCashOut(0);
-            setReference("");
-            window.location.assign('/mongo-office/cash-register/')                
+            setAuthorizedBy("");
+            setCarriedOutBy("");
+            window.location.assign('/mongo-office/cash-register/');            
         })
         .catch(err=>window.alert(err))
     } else{window.alert("Please input valid info!")}
@@ -74,8 +79,7 @@ export default function CashRegister(){
                         <td>{e.date.substring(0,10)}</td>
                         <td>{e.details}</td>                        
                         <td>{e.cashIn}</td>
-                        <td>{e.cashOut}</td>
-                        <td>{e.balance}</td>
+                        <td>{e.cashOut}</td>                        
                     </tr>
                 );
             }))
@@ -90,9 +94,9 @@ export default function CashRegister(){
 
     return(
         <div className="body-part"> 
-            <div className="p-4 d-flex justify-content-between">
+            <div className="p-4 d-flex justify-content-between flex-wrap">
                 <button className="btn btn-info" data-toggle="collapse" data-target="#record">Make an Entry</button>
-                <span>{date}</span>
+                <span><strong>Date:</strong> {date}</span>
             </div>        
             <div id="record" className="collapse pb-4 form-light p-3">
                 <form onSubmit={onSubmitRecordTrx}>
@@ -101,7 +105,7 @@ export default function CashRegister(){
                         <label>Description: </label>
                         <input type="text" placeholder="Transaction details" value={details} className="form-control" onChange={onChangeDetails} required/>
                     </div>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between flex-wrap">
                     <div className="form-group">
                         <label>Cash Received: </label>
                         <input type="Number" min="0" placeholder="Cash received" className="form-control" onChange={onChangeCashIn} />
@@ -111,14 +115,13 @@ export default function CashRegister(){
                         <input type="Number" min="0" placeholder="Expense amount" className="form-control"  onChange={onChangeCashOut} />
                     </div>
                     <div className="form-group">
-                        <label>Reference: </label>
-                        <input type="text" placeholder="Reference name" value={reference} className="form-control" onChange={onChangeReference} required/>
+                        <label>Authoriszed By: </label>
+                        <input type="text" placeholder="Authorized by" value={authorizedBy} className="form-control" onChange={onChangeAuthorizedBy} required/>
                     </div>
                     <div className="form-group">
-                        <label>Date:</label>
-                        <input type="text" value={date} className="form-control" disabled/>
+                        <label>Carried out by: </label>
+                        <input type="text" placeholder="Carried out by" value={carriedOutBy} className="form-control" onChange={onChangeCarriedOutBy} required/>
                     </div>
-                    
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
@@ -131,8 +134,7 @@ export default function CashRegister(){
                         <th>Date</th>
                         <th className="w-50">Details</th>                        
                         <th>Received</th>
-                        <th>Expense</th>
-                        <th>Balance</th>
+                        <th>Expense</th>                        
                     </tr>
                     {transactions}
                 </table>
