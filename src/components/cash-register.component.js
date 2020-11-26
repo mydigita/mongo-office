@@ -88,7 +88,9 @@ export default function CashRegister(){
                 return (
                     <tr>
                         <td>{e.date.substring(0,10)}</td>
-                        <td>{e.details}</td>                        
+                        <td>{e.details}</td>
+                        <td>{e.authorizedBy}</td>
+                        <td>{e.carriedOutBy}</td>                     
                         <td>{e.cashIn}</td>
                         <td>{e.cashOut}</td>                        
                     </tr>
@@ -146,7 +148,9 @@ export default function CashRegister(){
                 <table className="table table-striped">
                     <tr>
                         <th>Date</th>
-                        <th className="w-50">Details</th>                        
+                        <th className="w-50">Details</th> 
+                        <th>Authorized by</th>
+                        <th>Carriedout by</th>                      
                         <th>Received</th>
                         <th>Expense</th>                        
                     </tr>
