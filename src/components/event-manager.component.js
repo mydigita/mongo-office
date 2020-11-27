@@ -46,7 +46,18 @@ export default function EventManager(){
 
     return(
         <div> 
-             
+            {/* Event registration */}
+            <div>
+                <form>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </form>
+            </div> 
 
         </div>
     );
