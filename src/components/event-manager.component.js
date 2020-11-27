@@ -41,6 +41,9 @@ export default function EventManager(){
     function onChangeContactPerson(e){
         setContactPerson(e.target.value);
     }
+    function onSubmitEventRegistration(e){
+        e.preventDefault();
+    }
     
 
 
@@ -48,14 +51,36 @@ export default function EventManager(){
         <div> 
             {/* Event registration */}
             <div>
-                <form>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <form onSubmit={onSubmitEventRegistration}>s
+                    <div className="form-group">
+                        <label>Title:</label>
+                        <input type="text" onChange={onChangeTitle} className="form-control" placeholder="Event title" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Details:</label>
+                        <input type="text" onChange={onChangeDetails} className="form-control" placeholder="Event details" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Organizer:</label>
+                        <input type="text" onChange={onChnageOrganizer} className="form-control" placeholder="Event organizer" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Venue:</label>
+                        <input type="text" onChange={onChangeVenue} className="form-control" placeholder="Event palce" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Contact person:</label>
+                        <input type="text" onChange={onChangeContactPerson} className="form-control" placeholder="Contact person" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Event date:</label>
+                        <DatePicker selected={eventDate} type="text" onChange={onChangeEventDate} className="form-control" required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Event time:</label>
+                        <input type="text" onChange={onChangeEventTime} className="form-control" placeholder="Event time" required/>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div> 
 
