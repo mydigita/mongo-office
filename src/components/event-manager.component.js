@@ -51,7 +51,7 @@ export default function EventManager(){
         <div> 
             {/* Event registration */}
             <div>
-                <form onSubmit={onSubmitEventRegistration}>s
+                <form onSubmit={onSubmitEventRegistration}>
                     <div className="form-group">
                         <label>Title:</label>
                         <input type="text" onChange={onChangeTitle} className="form-control" placeholder="Event title" required/>
