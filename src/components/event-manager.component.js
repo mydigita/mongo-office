@@ -18,9 +18,11 @@ export default function EventManager(){
     const status = 'open';
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid');
+    const [displayEvent, setDisplayEvent] = useState("");
+
+
     return(
-        <div>
-            
+        <div>           
 
         </div>
     );
