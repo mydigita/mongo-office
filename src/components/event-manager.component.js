@@ -20,9 +20,33 @@ export default function EventManager(){
     const userid= localStorage.getItem('userid');
     const [displayEvent, setDisplayEvent] = useState("");
 
+    function onChangeTitle(e){
+        setTitle(e.target.value);
+    }
+    function onChangeDetails(e){
+        setDetails(e.target.value);
+    }
+    function onChangeEventDate(e){
+        setEventDate(e);
+    }
+    function onChangeEventTime(e){
+        setEventTime(e)
+    }
+    function onChnageOrganizer(e){
+        setOrganizer(e.target.value);
+    }
+    function onChangeVenue(e){
+        setVenue(e.target.venue);
+    }
+    function onChangeContactPerson(e){
+        setContactPerson(e.target.value);
+    }
+    
+
 
     return(
-        <div>           
+        <div> 
+             
 
         </div>
     );
