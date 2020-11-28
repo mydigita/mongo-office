@@ -11,6 +11,6 @@ const EventSchema = new Schema({
     contactPerson:{type:String}
 }, {timestamps:true});
 
-const Events = mongoose.model('Events', EventSchema);
+const EventManager = mongoose.model('EventManager', EventSchema);
 
-module.exports = Events;
+module.exports = EventManager;
