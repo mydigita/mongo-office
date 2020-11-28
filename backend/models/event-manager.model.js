@@ -6,9 +6,12 @@ const EventSchema = new Schema({
     details:{type:String},
     organizer:{type:String},
     venue:{type:String},
-    date:{type:Date},
+    eventDate:{type:Date},
     time:{type:Date},
-    contactDetails:{type:String}
+    contactDetails:{type:String},
+    status:{type:String},
+    username:{type:String},
+    userid:{type:String}
 }, {timestamps:true});
 
 const EventManager = mongoose.model('EventManager', EventSchema);

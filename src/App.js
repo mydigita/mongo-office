@@ -8,6 +8,7 @@ import Logout from './components/logout.component';
 import "bootstrap/dist/css/bootstrap.min.css";
 import EditTask from "./components/edit.task-manager.component";
 import CashRegister from "./components/cash-register.component";
+import EventManager from "./components/event-manager.component";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/mongo-office/task-manager/edit/"  component={EditTask}/>
           <Route path="/mongo-office/accounts/logout/" component={Logout}/> 
           <Route path="/mongo-office/cash-register/" component={CashRegister}/> 
+          <Route path="/mongo-office/event-manager" component={EventManager}/>
     </Router>
   );
 }

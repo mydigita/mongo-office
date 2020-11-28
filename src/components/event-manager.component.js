@@ -14,7 +14,7 @@ export default function EventManager(){
     const [eventTime, setEventTime]= useState(new Date());
     const [organizer, setOrganizer] = useState("");
     const [venue, setVenue] = useState("");
-    const [contactPerson, setContactPerson] = useState("");    
+    const [contactDetails, setContactDetails] = useState("");    
     const status = 'open';
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid');
@@ -38,17 +38,21 @@ export default function EventManager(){
     function onChangeVenue(e){
         setVenue(e.target.venue);
     }
-    function onChangeContactPerson(e){
-        setContactPerson(e.target.value);
+    function onChangeContactDetails(e){
+        setContactDetails(e.target.value);
     }
     function onSubmitEventRegistration(e){
         e.preventDefault();
+        const eventData = {title, details, organizer, venue, eventDate, contactDetails, status};
+        axios.post(`http://localhost:5000/mongo-office/event-manager/register/${username}/${userid}`, eventData)
+        .then(data=>window.alert(data.data))
+        .catch(err=>window.alert(err))
     }
     
 
 
     return(
-        <div> 
+        <div className="body-part"> 
             {/* Event registration */}
             <div>
                 <form onSubmit={onSubmitEventRegistration}>
@@ -69,8 +73,8 @@ export default function EventManager(){
                         <input type="text" onChange={onChangeVenue} className="form-control" placeholder="Event palce" required/>
                     </div>
                     <div className="form-group">
-                        <label>Contact person:</label>
-                        <input type="text" onChange={onChangeContactPerson} className="form-control" placeholder="Contact person" required/>
+                        <label>Contact details:</label>
+                        <input type="text" onChange={onChangeContactDetails} className="form-control" placeholder="Contact details" required/>
                     </div>
                     <div className="form-group">
                         <label>Event date:</label>
