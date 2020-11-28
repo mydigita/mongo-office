@@ -8,7 +8,7 @@ const EventSchema = new Schema({
     venue:{type:String},
     date:{type:Date},
     time:{type:Date},
-    contactPerson:{type:String}
+    contactDetails:{type:String}
 }, {timestamps:true});
 
 const EventManager = mongoose.model('EventManager', EventSchema);
