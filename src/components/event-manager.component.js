@@ -1,37 +1,35 @@
-import React, {useEffect, useState}  from 'react';
+import React, { useState}  from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "jquery/dist/jquery.js";
 import "../App.css";
-import DatePicker from 'react-datepicker';
+import DateFnsUtils from '@date-io/date-fns'; 
+import {  
+  DateTimePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function EventManager(){
     const [title, setTitle] = useState("");
-    const [details, setDetails] = useState("");
-    const [eventDate, setEventDate]= useState(new Date());
-    const [eventTime, setEventTime]= useState(new Date());
+    const [details, setDetails] = useState("");    
     const [organizer, setOrganizer] = useState("");
     const [venue, setVenue] = useState("");
     const [contactDetails, setContactDetails] = useState("");    
     const status = 'open';
     const username = localStorage.getItem('user');
-    const userid= localStorage.getItem('userid');
-    const [displayEvent, setDisplayEvent] = useState("");
+    const userid= localStorage.getItem('userid'); 
+    const [selectedDate, handleDateChange] = useState(new Date());
+ 
 
     function onChangeTitle(e){
         setTitle(e.target.value);
     }
     function onChangeDetails(e){
         setDetails(e.target.value);
-    }
-    function onChangeEventDate(e){
-        setEventDate(e);
-    }
-    function onChangeEventTime(e){
-        setEventTime(e)
-    }
+    }   
+   
     function onChnageOrganizer(e){
         setOrganizer(e.target.value);
     }
@@ -41,9 +39,10 @@ export default function EventManager(){
     function onChangeContactDetails(e){
         setContactDetails(e.target.value);
     }
+    
     function onSubmitEventRegistration(e){
         e.preventDefault();
-        const eventData = {title, details, organizer, venue, eventDate, contactDetails, status};
+        const eventData = {title, details, organizer, venue, contactDetails, status};
         axios.post(`http://localhost:5000/mongo-office/event-manager/register/${username}/${userid}`, eventData)
         .then(data=>window.alert(data.data))
         .catch(err=>window.alert(err))
@@ -77,13 +76,12 @@ export default function EventManager(){
                         <input type="text" onChange={onChangeContactDetails} className="form-control" placeholder="Contact details" required/>
                     </div>
                     <div className="form-group">
-                        <label>Event date:</label>
-                        <DatePicker selected={eventDate} type="text" onChange={onChangeEventDate} className="form-control" required/>
+                        <label>Event date - time:</label>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DateTimePicker value={selectedDate} onChange={handleDateChange} className="form-control" required/>
+                        </MuiPickersUtilsProvider>
                     </div>
-                    <div className="form-group">
-                        <label>Event time:</label>
-                        <input type="text" onChange={onChangeEventTime} className="form-control" placeholder="Event time" required/>
-                    </div>
+                    
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div> 
