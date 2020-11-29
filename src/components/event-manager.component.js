@@ -20,7 +20,7 @@ export default function EventManager(){
     const status = 'open';
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid'); 
-    const [selectedDate, handleDateChange] = useState(new Date());
+    const [eventDate, setEventDate] = useState(new Date());
  
 
     function onChangeTitle(e){
@@ -42,7 +42,7 @@ export default function EventManager(){
     
     function onSubmitEventRegistration(e){
         e.preventDefault();
-        const eventData = {title, details, organizer, venue, contactDetails, status};
+        const eventData = {title, details, organizer, venue, eventDate, contactDetails, status};
         axios.post(`http://localhost:5000/mongo-office/event-manager/register/${username}/${userid}`, eventData)
         .then(data=>window.alert(data.data))
         .catch(err=>window.alert(err))
@@ -78,7 +78,7 @@ export default function EventManager(){
                     <div className="form-group">
                         <label>Event date - time:</label>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker value={selectedDate} onChange={handleDateChange} className="form-control" required/>
+                            <DateTimePicker value={eventDate} onChange={setEventDate} className="form-control" required/>
                         </MuiPickersUtilsProvider>
                     </div>
                     

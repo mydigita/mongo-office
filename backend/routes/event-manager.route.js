@@ -10,13 +10,12 @@ router.route('/register/:username/:userid')
         details,
         organizer,
         venue,
-        eventDate,
-        time,
+        eventDate,        
         contactDetails,
         status
     } = req.body;
 
-    const data = new EventManager({title, details, organizer, venue, eventDate, time, contactDetails, status, username, userid});
+    const data = new EventManager({title, details, organizer, venue, eventDate, contactDetails, status, username, userid});
     data.save()
     .then(()=>res.send('Event registration successful!'))
     .catch(err=>res.send(err))
