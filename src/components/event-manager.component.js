@@ -41,6 +41,7 @@ export default function EventManager(){
     function onChangeContactDetails(e){
         setContactDetails(e.target.value);
     }
+   
     
     function onSubmitEventRegistration(e){
         e.preventDefault();
@@ -53,10 +54,19 @@ export default function EventManager(){
     useEffect(()=>{
         axios.post(`http://localhost:5000/mongo-office/event-manager/view/${username}/${userid}`)
         .then(data=>{
+            
+            
             setViewEvents(data.data.map(e=>{
+                function editPath(){
+                    return window.location.assign(`/mongo-office/event-manager/edit/${e._id}`)
+                }
+                function actionToEditEvent(){
+                    editPath();
+                }
                 return(
                     <div className="shadow p-3">
-                        <h4>{e.title}</h4>
+                        <h4>{e.title} 
+                        <span><button onClick={actionToEditEvent} className="btn btn-default text-primary">Edit</button></span></h4>
                         <p>Date & time: {new Date(e.eventDate).toLocaleString()}</p>
                         <p>Event details: {e.details} <br/>
                         Organizer: {e.organizer}, Venue: {e.venue}, <br/> 
