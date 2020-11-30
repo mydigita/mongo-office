@@ -19,3 +19,4 @@ npm start
 * Completed nav menus of all linked app and applied to logged in user's dashboard
 * Completed Task-Manager (create task, view task, edit task, close task, delete task, task archive)
 * Completed Cash-Register (Record entry, view statement)
+* Working on Event-Manager
