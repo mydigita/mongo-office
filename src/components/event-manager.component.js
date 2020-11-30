@@ -1,4 +1,4 @@
-import React, { useState}  from 'react';
+import React, { useState, useEffect}  from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -21,6 +21,8 @@ export default function EventManager(){
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid'); 
     const [eventDate, setEventDate] = useState(new Date());
+    const [viewEvents, setViewEvents] = useState("");
+
  
 
     function onChangeTitle(e){
@@ -47,6 +49,15 @@ export default function EventManager(){
         .then(data=>window.alert(data.data))
         .catch(err=>window.alert(err))
     }
+
+    useEffect(()=>{
+        axios.post(`http://localhost:5000/mongo-office/event-manager/view/${username}/${userid}`)
+        .then(data=>{
+            setViewEvents(data.data)
+            // complete backend then come back here
+        })
+        .catch(err=>err)
+    })
     
 
 
