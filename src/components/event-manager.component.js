@@ -53,8 +53,18 @@ export default function EventManager(){
     useEffect(()=>{
         axios.post(`http://localhost:5000/mongo-office/event-manager/view/${username}/${userid}`)
         .then(data=>{
-            setViewEvents(data.data)
-            // complete backend then come back here
+            setViewEvents(data.data.map(e=>{
+                return(
+                    <div className="shadow p-3">
+                        <h4>{e.title}</h4>
+                        <p>Date & time: {new Date(e.eventDate).toLocaleString()}</p>
+                        <p>Event details: {e.details} <br/>
+                        Organizer: {e.organizer}, Venue: {e.venue}, <br/> 
+                        Contact details: {e.contactDetails}</p>
+                    </div>
+                );
+            }))
+            
         })
         .catch(err=>err)
     })
@@ -95,6 +105,10 @@ export default function EventManager(){
                     
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+            </div>
+
+            <div>
+            {viewEvents}
             </div> 
 
         </div>

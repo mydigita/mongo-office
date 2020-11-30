@@ -21,4 +21,15 @@ router.route('/register/:username/:userid')
     .catch(err=>res.send(err))
 });
 
+router.route('/view/:username/:userid')
+.post((req, res)=>{
+    const {username, userid} = req.params;
+    const dataPass = {
+        title:true, details:true, organizer:true, venue:true, eventDate:true, contactDetails:true
+    }
+    EventManager.find({username, userid}, dataPass)
+    .then(data=>res.send(data))
+    .catch(err=>res.send(err))
+})
+
 module.exports = router;
