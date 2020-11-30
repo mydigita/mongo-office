@@ -77,7 +77,7 @@ export default function EventManager(){
             
         })
         .catch(err=>err)
-    })
+    }, [userid, username]);
     
 
 

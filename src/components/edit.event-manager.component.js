@@ -21,9 +21,41 @@ export default function EditEvent(){
     const username = localStorage.getItem('user');
     const userid= localStorage.getItem('userid'); 
     const [eventDate, setEventDate] = useState(new Date());
+
+    
+    function onChangeTitle(e){
+        setTitle(e.target.value);
+    }
+    function onChangeDetails(e){
+        setDetails(e.target.value);
+    }   
+   
+    function onChnageOrganizer(e){
+        setOrganizer(e.target.value);
+    }
+    function onChangeVenue(e){
+        setVenue(e.target.venue);
+    }
+    function onChangeContactDetails(e){
+        setContactDetails(e.target.value);
+    }
+    function onClickCloseEvent(e){
+        // complete this
+    }
+    function onClickDeleteEvent(e){
+        // complete this
+    }
+
   
     return(
-        <div>
+        <div className="body-part">
+
+                    <div className="btn-group">
+                        <button type="submit" className="btn btn-success">Save Event</button>
+                        <button type="button" className="btn btn-warning" onClick={onClickCloseEvent}>Close Event</button>
+                        <button type="button" className="btn btn-danger" onClick={onClickDeleteEvent}>Delete Event</button>
+                        <button type="button" className="btn btn-info" onClick={()=>{return window.location.assign('/mongo-office/event-manager/')}}>Go Back</button>
+                    </div>
 
         </div>
     );
