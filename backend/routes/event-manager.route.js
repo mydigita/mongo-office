@@ -42,8 +42,8 @@ router.route('/edit/:eventId')
 router.route('/edit/save/:eventId')
 .post((req, res)=>{
     const {eventId, editPassword} = req.params;
-    const {title, details} = req.body;
-    EventManager.findOneAndUpdate({_id:eventId, editPassword}, {$set:{title, details}})
+    const {title, details, organizer, eventDate, contactDetails, venue} = req.body;
+    EventManager.findOneAndUpdate({_id:eventId, editPassword}, {$set:{title, details, organizer, eventDate, contactDetails, venue}})
     .then(data=>res.send('Task Updated!'))
     .catch(err=>res.send(err))
 })
