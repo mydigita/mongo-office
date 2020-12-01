@@ -23,7 +23,7 @@ export default function EditEvent(){
     const [eventDate, setEventDate] = useState(new Date());
     const eventId = window.location.href.split('/').reverse()[0];
 
-    useEffect((req, res)=>{
+    useEffect(()=>{
         
         axios.get(`http://localhost:5000/mongo-office/event-manager/edit/${eventId}`)
         .then(data=>{
@@ -51,7 +51,7 @@ export default function EditEvent(){
         setOrganizer(e.target.value);
     }
     function onChangeVenue(e){
-        setVenue(e.target.venue);
+        setVenue(e.target.value);
     }
     function onChangeContactDetails(e){
         setContactDetails(e.target.value);
@@ -62,7 +62,7 @@ export default function EditEvent(){
             title, details, organizer, venue, contactDetails, eventDate
         }
         axios.post(`http://localhost:5000/mongo-office/event-manager/edit/save/${eventId}`, dataToSave)
-        .then(data=>window.alert(data))
+        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/event-manager')})
         .catch(err=>window.alert(err))
     }
     function onClickCloseEvent(e){
