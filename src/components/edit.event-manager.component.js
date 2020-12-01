@@ -39,6 +39,7 @@ export default function EditEvent(){
     }, [eventId]);
 
     
+    
     function onChangeTitle(e){
         setTitle(e.target.value);
     }
@@ -57,6 +58,12 @@ export default function EditEvent(){
     }
     function onSubmitSaveEvent(e){
         e.preventDefault();
+        const dataToSave = {
+            title, details, organizer, venue, contactDetails, eventDate
+        }
+        axios.post(`http://localhost:5000/mongo-office/event-manager/edit/save/${eventId}`, dataToSave)
+        .then(data=>window.alert(data))
+        .catch(err=>window.alert(err))
     }
     function onClickCloseEvent(e){
         // complete this

@@ -37,6 +37,15 @@ router.route('/edit/:eventId')
     EventManager.findOne({_id:eventId})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
+});
+
+router.route('/edit/save/:eventId')
+.post((req, res)=>{
+    const {eventId, editPassword} = req.params;
+    const {title, details} = req.body;
+    EventManager.findOneAndUpdate({_id:eventId, editPassword}, {$set:{title, details}})
+    .then(data=>res.send('Task Updated!'))
+    .catch(err=>res.send(err))
 })
 
 module.exports = router;
