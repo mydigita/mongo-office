@@ -30,6 +30,13 @@ router.route('/view/:username/:userid')
     EventManager.find({username, userid}, dataPass)
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
+});
+router.route('/edit/:eventId')
+.get((req, res)=>{
+    const {eventId} = req.params;
+    EventManager.findOne({_id:eventId})
+    .then(data=>res.send(data))
+    .catch(err=>res.send(err))
 })
 
 module.exports = router;

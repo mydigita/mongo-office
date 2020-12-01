@@ -36,7 +36,7 @@ export default function EventManager(){
         setOrganizer(e.target.value);
     }
     function onChangeVenue(e){
-        setVenue(e.target.venue);
+        setVenue(e.target.value);
     }
     function onChangeContactDetails(e){
         setContactDetails(e.target.value);
@@ -84,6 +84,7 @@ export default function EventManager(){
     return(
         <div className="body-part"> 
             {/* Event registration */}
+            <div><h3>View Events</h3></div>
             <div>
                 <form onSubmit={onSubmitEventRegistration}>
                     <div className="form-group">
