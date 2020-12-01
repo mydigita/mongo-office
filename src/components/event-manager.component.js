@@ -56,7 +56,7 @@ export default function EventManager(){
         .then(data=>{
             
             
-            setViewEvents(data.data.map(e=>{
+            setViewEvents(data.data.reverse().map(e=>{
                 function editPath(){
                     return window.location.assign(`/mongo-office/event-manager/edit/${e._id}`)
                 }
