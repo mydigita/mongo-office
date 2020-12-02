@@ -84,14 +84,14 @@ export default function EventManager(){
     return(
         <div className="body-part"> 
             {/* Event registration */}
-            <div><h3>View Events</h3></div>
+            <div><h3 className="text-center">Event Manager</h3></div>
             <div>
-                <ul className="nav nav-tab pt-2">
+                <ul className="nav nav-tabs pt-2">
                     <li className="nav-item">
                         <a href="#view" data-toggle="tab" className="active nav-link">View Events</a>
                     </li>
                     <li className="nav-item">
-                        <a href="#add" data-toggle="tab" className="nav-link">Add New Events</a>
+                        <a href="#add" data-toggle="tab" className="nav-link">Add New Event</a>
                     </li>
                     <li className="nav-item">
                         <a href="#archive" data-toggle="tab" className="nav-link">Event Archive</a>
@@ -102,7 +102,7 @@ export default function EventManager(){
 
                 {/* view events */}
                 <div id="view" className="tab-pane active">
-                    {viewEvents}
+                    <div>{viewEvents}</div>
                 </div>
 
                 {/* add new events */}
