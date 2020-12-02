@@ -56,7 +56,7 @@ export default function EventManager(){
         .then(data=>{
             
             
-            setViewEvents(data.data.reverse().map(e=>{
+            setViewEvents(data.data.reverse().filter(e=>e.status ==="open").map(e=>{
                 function editPath(){
                     return window.location.assign(`/mongo-office/event-manager/edit/${e._id}`)
                 }
@@ -86,42 +86,61 @@ export default function EventManager(){
             {/* Event registration */}
             <div><h3>View Events</h3></div>
             <div>
-                <form onSubmit={onSubmitEventRegistration}>
-                    <div className="form-group">
-                        <label>Title:</label>
-                        <input type="text" onChange={onChangeTitle} className="form-control" placeholder="Event title" required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Details:</label>
-                        <input type="text" onChange={onChangeDetails} className="form-control" placeholder="Event details" required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Organizer:</label>
-                        <input type="text" onChange={onChnageOrganizer} className="form-control" placeholder="Event organizer" required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Venue:</label>
-                        <input type="text" onChange={onChangeVenue} className="form-control" placeholder="Event palce" required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Contact details:</label>
-                        <input type="text" onChange={onChangeContactDetails} className="form-control" placeholder="Contact details" required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Event date - time:</label>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker value={eventDate} onChange={setEventDate} className="form-control" required/>
-                        </MuiPickersUtilsProvider>
-                    </div>
-                    
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                <ul className="nav nav-tab pt-2">
+                    <li className="nav-item">
+                        <a href="#view" data-toggle="tab" className="active nav-link">View Events</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#add" data-toggle="tab" className="nav-link">Add New Events</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#archive" data-toggle="tab" className="nav-link">Event Archive</a>
+                    </li>
+                </ul>
             </div>
+            <div className="tab-content">
 
-            <div>
-            {viewEvents}
+                {/* view events */}
+                <div id="view" className="tab-pane active">
+                    {viewEvents}
+                </div>
+
+                {/* add new events */}
+
+                <div id="add" className="tab-pane">
+                    <form onSubmit={onSubmitEventRegistration}>
+                        <div className="form-group">
+                            <label>Title:</label>
+                            <input type="text" onChange={onChangeTitle} className="form-control" placeholder="Event title" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Details:</label>
+                            <input type="text" onChange={onChangeDetails} className="form-control" placeholder="Event details" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Organizer:</label>
+                            <input type="text" onChange={onChnageOrganizer} className="form-control" placeholder="Event organizer" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Venue:</label>
+                            <input type="text" onChange={onChangeVenue} className="form-control" placeholder="Event palce" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Contact details:</label>
+                            <input type="text" onChange={onChangeContactDetails} className="form-control" placeholder="Contact details" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Event date - time:</label>
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DateTimePicker value={eventDate} onChange={setEventDate} className="form-control" required/>
+                            </MuiPickersUtilsProvider>
+                        </div>
+                        
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>            
+                
             </div> 
-
         </div>
     );
 }
