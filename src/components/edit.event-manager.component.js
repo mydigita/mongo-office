@@ -66,10 +66,14 @@ export default function EditEvent(){
         .catch(err=>window.alert(err))
     }
     function onClickCloseEvent(e){
-        // complete this
+        axios.post(`http://localhost:5000/mongo-office/event-manager/edit/close/${eventId}`)
+        .then((data)=>window.alert(data.data))
+        .catch(err=>window.alert(err))
     }
     function onClickDeleteEvent(e){
-        // complete this
+        axios.delete(`http://localhost:5000/mongo-office/event-manager/edit/delete/${eventId}`)
+        .then((data)=>{window.alert(data.data); window.location.assign('/mongo-office/event-manager')})
+        .catch(err=>window.alert(err))
     }
 
   

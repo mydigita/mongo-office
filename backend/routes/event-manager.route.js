@@ -46,6 +46,22 @@ router.route('/edit/save/:eventId')
     EventManager.findOneAndUpdate({_id:eventId, editPassword}, {$set:{title, details, organizer, eventDate, contactDetails, venue}})
     .then(()=>res.send('Task Updated!'))
     .catch(err=>res.send(err))
+});
+router.route('/edit/close/:eventId')
+.post((req, res)=>{
+    const {eventId} = req.params;
+    EventManager.findOneAndUpdate({_id:eventId}, {$set:{status:"closed"}})
+    .then(()=>res.send("Event closed!"))
+    .catch(err=>res.send(err))
+})
+
+router.route('/edit/delete/:eventId')
+.delete((req, res)=>{
+const {eventId} = req.params;
+EventManager.findOneAndDelete({_id:eventId})
+.then(()=>res.send("Deleted!"))
+.catch(err=>res.send(err))
+
 })
 
 module.exports = router;
