@@ -48,7 +48,7 @@ export default function EventManager(){
         e.preventDefault();
         const eventData = {title, details, organizer, venue, eventDate, contactDetails, status};
         axios.post(`http://localhost:5000/mongo-office/event-manager/register/${username}/${userid}`, eventData)
-        .then(data=>window.alert(data.data))
+        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/event-manager')})
         .catch(err=>window.alert(err))
     }
 

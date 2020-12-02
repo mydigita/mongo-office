@@ -67,7 +67,7 @@ export default function EditEvent(){
     }
     function onClickCloseEvent(e){
         axios.post(`http://localhost:5000/mongo-office/event-manager/edit/close/${eventId}`)
-        .then((data)=>window.alert(data.data))
+        .then(data=>{window.alert(data.data); window.location.assign('/mongo-office/event-manager')})
         .catch(err=>window.alert(err))
     }
     function onClickDeleteEvent(e){
