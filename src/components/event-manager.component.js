@@ -22,6 +22,7 @@ export default function EventManager(){
     const userid= localStorage.getItem('userid'); 
     const [eventDate, setEventDate] = useState(new Date());
     const [viewEvents, setViewEvents] = useState("");
+    const [eventArchive, setEventArchive] = useState("");
 
  
 
@@ -70,9 +71,23 @@ export default function EventManager(){
                         <p>Date & time: {new Date(e.eventDate).toLocaleString()}</p>
                         <p>Event details: {e.details} <br/>
                         Organizer: {e.organizer}, Venue: {e.venue}, <br/> 
-                        Contact details: {e.contactDetails}</p>
+                        Contact details: {e.contactDetails}<br/>
+                        Status: {e.status}</p>
                     </div>
                 );
+            }));
+            setEventArchive(data.data.reverse().filter(e=>e.status==="closed").map(e=>{
+                return(
+                    <div className="shadow p-3">
+                        <h6 className="text-muted">{e.title}</h6>
+                        <p className="text-muted">Date & time: {new Date(e.eventDate).toLocaleString()}<br/>
+                        Event details: {e.details} <br/>
+                        Organizer: {e.organizer}, Venue: {e.venue}, <br/> 
+                        Contact details: {e.contactDetails}<br/>
+                        Status: {e.status}</p>
+                    </div>
+                );
+
             }))
             
         })
@@ -138,6 +153,9 @@ export default function EventManager(){
                         
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
+                </div>
+                <div id="archive" className="tab-pane">
+                    <div>{eventArchive}</div>
                 </div>            
                 
             </div> 
