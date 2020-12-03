@@ -14,7 +14,7 @@ router.route('/register/:username/:userid')
         venue,
         notice
     } = req.body;
-    const meetingData = {
+    const meetingData = new MeetingRecord({
         meetingID,
         meetingDate,
         noticeDate,
@@ -31,7 +31,7 @@ router.route('/register/:username/:userid')
         minutesDistribuion:[],
         username,
         userid
-    };
+    });
 
     meetingData.save()
     .then(data=>res.send("Meeting Registered"))
