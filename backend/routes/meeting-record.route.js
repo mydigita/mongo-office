@@ -1,4 +1,4 @@
-const router = require("express").route();
+const router = require("express").Router();
 const MeetingRecord = require("../models/meeting-record.model");
 
 
