@@ -15,7 +15,7 @@ router.route('/register/:username/:userid')
         notice
     } = req.body;
     const meetingData = new MeetingRecord({
-        meetingID,
+        meetingId,
         meetingDate,
         noticeDate,
         title,

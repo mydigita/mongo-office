@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const meetingSchema = new Schema({
-    meetingID:{type:String},
+    meetingId:{type:String},
     meetingDate:{type:Date},
     noticeDate:{type:Date},
     title:{type:String},
