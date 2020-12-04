@@ -9,7 +9,7 @@ import {
   DateTimePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import "react-datepicker/dist/react-datepicker.css";
+
 
 export default function EventManager(){
     const [title, setTitle] = useState("");
