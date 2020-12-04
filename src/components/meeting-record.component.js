@@ -63,7 +63,7 @@ export default function MeetingRecord(){
             username,
             userid
         }
-        axios.post(`http://localhost:5000/mongo-office/meeting-record/${username}/${userid}`, meetingData)
+        axios.post(`http://localhost:5000/mongo-office/meeting-record/register/${username}/${userid}`, meetingData)
         .then((data)=>window.alert(data))
         .catch(err=>window.alert(err))
     }
