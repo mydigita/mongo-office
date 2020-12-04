@@ -45,6 +45,15 @@ router.route('/add-minutes/:id')
     MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes}})
     .then(()=>res.send("Minutes recorded!"))
     .catch(err=>res.send(err))
+});
+
+router.route('/add-participants/:id')
+.post((req,res)=>{
+    const {id} = req.params;
+    const {participants} = req.body;
+    MeetingRecord.findOneAndUpdate({_id:id}, {$push:{participants}})
+    .then(()=>res.send('Participants added'))
+    .catch(err=>res.send(err))
 })
 
 module.exports = router;
