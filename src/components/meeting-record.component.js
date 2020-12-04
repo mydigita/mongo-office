@@ -25,7 +25,49 @@ export default function MeetingRecord(){
     const [status] = useState("open");
     const username = localStorage.getItem('user');
     const userid = localStorage.getItem('userid');
-     
+
+    function onChangeMeetingId(e){
+        setMeetingId(e.target.value);
+    }
+    function onChangeTitle(e){
+        setTitle(e.target.value);
+    }
+    function onChangeAgenda(e){
+        setAgenda(e.target.value);
+    }
+    function onChangeVenue(e){
+        setVenue(e.target.value)
+    }
+    function onChangeNotice(e){
+        setNotice(e.target.value);
+    }
+
+    function onSubmitRecordMeeting(e){
+        e.preventDefault();
+        const meetingData = {
+            meetingId,
+            meetingDate,
+            noticeDate,
+            title,
+            agenda,
+            venue,
+            notice,
+            noticeDistribution,
+            chairedBy,
+            participants,
+            minutes,
+            minutesPreparedBy,
+            minutesApprovedBy,
+            minutesDistribution,
+            status,
+            username,
+            userid
+        }
+        axios.post(`http://localhost:5000/mongo-office/meeting-record/${username}/${userid}`, meetingData)
+        .then((data)=>window.alert(data))
+        .catch(err=>window.alert(err))
+    }
+
     return(
         <div>
 
