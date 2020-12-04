@@ -41,8 +41,8 @@ router.route('/register/:username/:userid')
 router.route('/add-minutes/:id')
 .post((req, res)=>{
     const {id}=req.params;
-    const {minutes} = req.ready;
-    MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes}})
+    const {minutes, minutesPreparedBy, minutesApprovedBy} = req.ready;
+    MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes, minutesPreparedBy, minutesApprovedBy}})
     .then(()=>res.send("Minutes recorded!"))
     .catch(err=>res.send(err))
 });
@@ -50,8 +50,8 @@ router.route('/add-minutes/:id')
 router.route('/add-participants/:id')
 .post((req,res)=>{
     const {id} = req.params;
-    const {participants} = req.body;
-    MeetingRecord.findOneAndUpdate({_id:id}, {$push:{participants}})
+    const {participants, chairedBy} = req.body;
+    MeetingRecord.findOneAndUpdate({_id:id}, {$push:{participants}, $set:{chairedBy}})
     .then(()=>res.send('Participants added'))
     .catch(err=>res.send(err))
 })
