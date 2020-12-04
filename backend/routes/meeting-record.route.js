@@ -36,6 +36,15 @@ router.route('/register/:username/:userid')
     meetingData.save()
     .then(data=>res.send("Meeting Registered"))
     .catch(err=>res.send(err))
+});
+
+router.route('/add-minutes/:id')
+.post((req, res)=>{
+    const {id}=req.params;
+    const {minutes} = req.ready;
+    MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes}})
+    .then(()=>res.send("Minutes recorded!"))
+    .catch(err=>res.send(err))
 })
 
 module.exports = router;
