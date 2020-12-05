@@ -22,7 +22,7 @@ router.route('/register/:username/:userid')
 .post((req, res)=>{
     const {username, userid} = req.params;
     const {
-        meetingID,
+        meetingId,
         meetingDate,
         noticeDate,
         title,
