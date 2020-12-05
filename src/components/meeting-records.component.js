@@ -41,6 +41,13 @@ export default function MeetingRecord(){
     function onChangeNotice(e){
         setNotice(e.target.value);
     }
+    function onChangeMeetingDate(e){
+        if(e>new Date()){
+            setMeetingDate(e)
+        }else{
+            setMeetingDate(new Date())
+        }
+    }
 
     function onSubmitRecordMeeting(e){
         e.preventDefault();
@@ -83,26 +90,27 @@ export default function MeetingRecord(){
                     <div className="form-group">
                         <label>Meeting date & time:</label>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker value={meetingDate} onChange={setMeetingDate} className="form-control" required/>
+                            <DateTimePicker value={meetingDate} onChange={onChangeMeetingDate} className="form-control" required/>
                         </MuiPickersUtilsProvider>
                     </div>
                     </div>
                     <div className="form-group">
                         <label>Title:</label>
                         <input type="text" className="form-control" placeholder="Meeting title" onChange={onChangeTitle} required/>
-                    </div>                   
+                    </div> 
+                    <div className="form-group">
+                        <label>Agenda, separate each agenda with a comma:</label>
+                        <textarea cols="10" rows="10" className="form-control"  placeholder="Agenda" onChange={onChangeAgenda} required></textarea>
+                    </div>                
                     <div className="form-group">
                         <label>Venue:</label>
                         <input type="text" className="form-control" placeholder="Meeting venue" onChange={onChangeVenue} required/>
                     </div>
                     <div className="form-group">
-                        <label>Notice:</label>
+                        <label>Notice(put here the full notice if it's already issued):</label>
                         <textarea cols="10" rows="20" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
                     </div>
-                    <div className="form-group">
-                        <label>Agenda, separate each agenda with a comma:</label>
-                        <textarea cols="10" rows="10" className="form-control"  placeholder="Agenda" onChange={onChangeAgenda} required></textarea>
-                    </div>
+                    
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
