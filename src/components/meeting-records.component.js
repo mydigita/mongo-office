@@ -33,7 +33,7 @@ export default function MeetingRecord(){
         setTitle(e.target.value);
     }
     function onChangeAgenda(e){
-        setAgenda(e.target.value);
+        setAgenda(e.target.value.split(","));
     }
     function onChangeVenue(e){
         setVenue(e.target.value)
@@ -69,7 +69,8 @@ export default function MeetingRecord(){
     }
 
     return(
-        <div className="body-part">
+        <div className="body-part pt-3">
+            <div><h2 className="text-center">Register a meeting</h2></div>
 
             {/* register meetings */}
             <div>
@@ -97,6 +98,10 @@ export default function MeetingRecord(){
                     <div className="form-group">
                         <label>Notice:</label>
                         <textarea cols="10" rows="20" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label>Agenda, separate each agenda with a comma:</label>
+                        <textarea cols="10" rows="10" className="form-control"  placeholder="Agenda" onChange={onChangeAgenda} required></textarea>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
