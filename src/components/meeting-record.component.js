@@ -71,6 +71,36 @@ export default function MeetingRecord(){
     return(
         <div>
 
+            {/* register meetings */}
+            <div>
+                <form>
+                    <div className="form-group">
+                        <label>Meeting Reference:</label>
+                        <input type="text" className="form-control" onChange={onChangeMeetingId} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Title:</label>
+                        <input type="text" className="form-control" onChange={onChangeTitle} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Meeting Reference:</label>
+                        <input type="text" className="form-control" onChange={onChangeMeetingId} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Agenda:</label>
+                        <input type="text" className="form-control" onChange={onChangeAgenda} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Venue:</label>
+                        <input type="text" className="form-control" onChange={onChangeVenue} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Notice:</label>
+                        <input type="text" className="form-control" onChange={onChangeNotice} required/>
+                    </div>
+                </form>
+            </div>
+
         </div>
     );
 }
