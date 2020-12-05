@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const MeetingRecord = require("../models/meeting-record.model");
+const MeetingRecord = require("../models/meeting-records.model");
 
 router.route('/view-list/:username/:userid')
 .get((req,res)=>{
@@ -73,7 +73,7 @@ router.route('/add-participants/:id')
     .catch(err=>res.send(err))
 });
 
-router.rotue('/edit/close/:id')
+router.route('/edit/close/:id')
 .put((req, res)=>{
     const {id}= req.params;
     MeetingRecord.findOneAndUpdate({_id:id}, {$set:{status:"closed"}})

@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "jquery/dist/jquery";
 import "../App.css";
 import DateFnsUtils from "@date-io/date-fns";
-import {DateTimePicker, MuiPickerUtilsProvider} from "@material-ui/core";
+import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 
 export default function MeetingRecord(){
     const [meetingId, setMeetingId] = useState("");
@@ -63,41 +63,42 @@ export default function MeetingRecord(){
             username,
             userid
         }
-        axios.post(`http://localhost:5000/mongo-office/meeting-record/register/${username}/${userid}`, meetingData)
+        axios.post(`http://localhost:5000/mongo-office/meeting-records/register/${username}/${userid}`, meetingData)
         .then((data)=>window.alert(data))
         .catch(err=>window.alert(err))
     }
 
     return(
-        <div>
+        <div className="body-part">
 
             {/* register meetings */}
             <div>
-                <form>
+                <form onSubmit={onSubmitRecordMeeting}>
+                    <div className="d-flex flex-wrap justify-content-between">
                     <div className="form-group">
                         <label>Meeting Reference:</label>
-                        <input type="text" className="form-control" onChange={onChangeMeetingId} required/>
+                        <input type="text" className="form-control" placeholder="Meeting reference" onChange={onChangeMeetingId} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>Meeting date & time:</label>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DateTimePicker value={meetingDate} onChange={setMeetingDate} className="form-control" required/>
+                        </MuiPickersUtilsProvider>
+                    </div>
                     </div>
                     <div className="form-group">
                         <label>Title:</label>
-                        <input type="text" className="form-control" onChange={onChangeTitle} required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Meeting Reference:</label>
-                        <input type="text" className="form-control" onChange={onChangeMeetingId} required/>
-                    </div>
-                    <div className="form-group">
-                        <label>Agenda:</label>
-                        <input type="text" className="form-control" onChange={onChangeAgenda} required/>
-                    </div>
+                        <input type="text" className="form-control" placeholder="Meeting title" onChange={onChangeTitle} required/>
+                    </div>                   
                     <div className="form-group">
                         <label>Venue:</label>
-                        <input type="text" className="form-control" onChange={onChangeVenue} required/>
+                        <input type="text" className="form-control" placeholder="Meeting venue" onChange={onChangeVenue} required/>
                     </div>
                     <div className="form-group">
                         <label>Notice:</label>
-                        <input type="text" className="form-control" onChange={onChangeNotice} required/>
+                        <textarea cols="10" rows="20" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
                     </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
 
