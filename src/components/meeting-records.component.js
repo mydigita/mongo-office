@@ -55,7 +55,7 @@ export default function MeetingRecord(){
         .then(data=>{
             setMeetingList(
                 data.data.reverse().map(e=>{
-                    const meetingLink = `/mongo-office/meeting-records/view/${e._id}`;
+                    const meetingLink =window.location.assign(`/mongo-office/meeting-records/view/${e._id}`);
                     return(
                         <div>
                             <a href={meetingLink} className="nav-link">{e.title}</a>
