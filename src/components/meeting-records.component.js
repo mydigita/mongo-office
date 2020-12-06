@@ -77,10 +77,31 @@ export default function MeetingRecord(){
 
     return(
         <div className="body-part pt-3">
-            <div><h2 className="text-center">Register a meeting</h2></div>
+            <div><h2 className="text-center">Meeting Records</h2></div>
+            <div>
+                <ul className="nav nav-tabs pt-2">
+                    <li className="nav-item">
+                        <a href="#view" data-toggle="tab" className="active nav-link">View meetings</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#register" data-toggle="tab" className="nav-link">Register a meeting</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div className="tab-content">
+            
+            {/* view meetings  */}
+
+            <div id="view" className="tab-pane active pt-2">
+                <h4>Meeting list</h4>
+
+            </div>
 
             {/* register meetings */}
-            <div>
+
+            <div id="register" className="tab-pane pt-2">
                 <form onSubmit={onSubmitRecordMeeting}>
                     <div className="d-flex flex-wrap justify-content-between">
                     <div className="form-group">
@@ -113,6 +134,7 @@ export default function MeetingRecord(){
                     
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+            </div>
             </div>
 
         </div>
