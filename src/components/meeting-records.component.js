@@ -25,6 +25,7 @@ export default function MeetingRecord(){
     const [status] = useState("open");
     const username = localStorage.getItem('user');
     const userid = localStorage.getItem('userid');
+    const [meetingList, setMeetingList] = useState();
 
     function onChangeMeetingId(e){
         setMeetingId(e.target.value);
@@ -48,6 +49,24 @@ export default function MeetingRecord(){
             setMeetingDate(new Date())
         }
     }
+
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/mongo-office/meeting-records/view/${username}/${userid}`)
+        .then(data=>{
+            setMeetingList(
+                data.data.reverse().map(e=>{
+                    const meetingLink = `/mongo-office/meeting-records/view/${e._id}`;
+                    return(
+                        <div>
+                            <a href={meetingLink} className="nav-link">{e.title}</a>
+                        </div>
+                    );
+                })
+            )
+
+        })
+        .catch(err=>window.alert(err))
+    })
 
     function onSubmitRecordMeeting(e){
         e.preventDefault();
@@ -96,6 +115,7 @@ export default function MeetingRecord(){
 
             <div id="view" className="tab-pane active pt-2">
                 <h4>Meeting list</h4>
+                <div>{meetingList}</div>
 
             </div>
 
