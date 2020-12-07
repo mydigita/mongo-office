@@ -51,22 +51,20 @@ export default function MeetingRecord(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/mongo-office/meeting-records/view/${username}/${userid}`)
+        axios.get(`http://localhost:5000/mongo-office/meeting-records/view-list/${username}/${userid}`)
         .then(data=>{
             setMeetingList(
-                data.data.reverse().map(e=>{
-                    const meetingLink =window.location.assign(`/mongo-office/meeting-records/view/${e._id}`);
+                data.data.reverse().map(e=>{                    
                     return(
                         <div>
-                            <a href={meetingLink} className="nav-link">{e.title}</a>
+                            <a href={`/mongo-office/meeting-records/view-details/${e._id}`} className="nav-link">{e.title}</a>
                         </div>
                     );
                 })
             )
-
         })
-        .catch(err=>window.alert(err))
-    })
+        .catch(err=>console.log(err))
+    }, [userid, username])
 
     function onSubmitRecordMeeting(e){
         e.preventDefault();
