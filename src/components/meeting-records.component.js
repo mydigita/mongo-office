@@ -164,8 +164,12 @@ export default function MeetingRecord(){
 // Detail view of a meeting 
 export function ViewSingleMeeting(){
     const id = window.location.href.split("/").reverse()[0];
-   const [viewDetails, setViewDetails] = useState("");
-   useEffect(()=>{
+    const [viewDetails, setViewDetails] = useState("");
+    function onClickShowList(){
+        return (window.location.assign('/mongo-office/meeting-records'))
+    }
+
+     useEffect(()=>{
     axios.get(`http://localhost:5000/mongo-office/meeting-records/view-single/${id}`)
     .then(data=>{
         if(data){
@@ -188,6 +192,10 @@ export function ViewSingleMeeting(){
                         </div>
                         <div>
                             <p><span className="text-primary">Participants: </span><ol> {data.data.participants.map(e=><li>{e}</li>)}</ol></p>
+                        </div>
+                        <div className="btn-group">
+                            <button className="btn btn-warning" >Edit Details</button>
+                            <button className="btn btn-primary" onClick={onClickShowList}>Show list</button>
                         </div>
 
                     </div>
