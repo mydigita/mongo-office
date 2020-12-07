@@ -6,6 +6,7 @@ import "jquery/dist/jquery";
 import "../App.css";
 import DateFnsUtils from "@date-io/date-fns";
 import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+import moment from "moment";
 const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
@@ -169,11 +170,12 @@ export function ViewSingleMeeting(){
     .then(data=>{
         if(data){
             setViewDetails(()=>{
+                const meetingDate= moment(data.data.meetingDate).format('YYYY-MM-DD; HH:mm A');
                 return(
                     <div className="pt-3">
                         <div className="d-flex justify-content-between flex-wrap">
                         <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
-                        <p><span className="text-primary">Meeting Date: </span>{data.data.meetingDate}</p>
+                <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p>
                         </div>
                         <h5><span className="text-primary">Meeting title: </span> {data.data.title}</h5>
                         <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p>
