@@ -6,6 +6,8 @@ import "jquery/dist/jquery";
 import "../App.css";
 import DateFnsUtils from "@date-io/date-fns";
 import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+const username = localStorage.getItem('user');
+const userid = localStorage.getItem('userid');
 
 export default function MeetingRecord(){
     const [meetingId, setMeetingId] = useState("");
@@ -22,10 +24,8 @@ export default function MeetingRecord(){
     const [minutesPreparedBy] = useState("");
     const [minutesApprovedBy] = useState("");
     const [minutesDistribution] = useState("");
-    const [status] = useState("open");
-    const username = localStorage.getItem('user');
-    const userid = localStorage.getItem('userid');
-    const [meetingList, setMeetingList] = useState();
+    const [status] = useState("open");    
+    const [meetingList, setMeetingList] = useState("");
 
     function onChangeMeetingId(e){
         setMeetingId(e.target.value);
@@ -57,7 +57,7 @@ export default function MeetingRecord(){
                 data.data.reverse().map(e=>{                    
                     return(
                         <div>
-                            <a href={`/mongo-office/meeting-records/view-details/${e._id}`} className="nav-link">{e.title}</a>
+                            <a href={`/mongo-office/meeting-records/view-single/${e._id}`} className="nav-link">{e.title}</a>
                         </div>
                     );
                 })
@@ -157,6 +157,50 @@ export default function MeetingRecord(){
 
         </div>
     );
+}
+
+
+// Detail view of a meeting 
+export function ViewSingleMeeting(){
+    const id = window.location.href.split("/").reverse()[0];
+   const [viewDetails, setViewDetails] = useState("");
+   useEffect(()=>{
+    axios.get(`http://localhost:5000/mongo-office/meeting-records/view-single/${id}`)
+    .then(data=>{
+        if(data){
+            setViewDetails(()=>{
+                return(
+                    <div className="pt-3">
+                        <div className="d-flex justify-content-between flex-wrap">
+                        <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
+                        <p><span className="text-primary">Meeting Date: </span>{data.data.meetingDate}</p>
+                        </div>
+                        <h5><span className="text-primary">Meeting title: </span> {data.data.title}</h5>
+                        <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p>
+                        <p><span className="text-primary">Notice:</span><br/>{data.data.notice}</p>
+                        <p><span className="text-primary">Venue: </span><br/>{data.data.venue}</p>
+                        <div>
+                            <p><span className="text-primary">Minutes: </span> <br/>{data.data.minutes}</p>
+                            <p><span className="text-primary">Minutes prepared by:</span> {data.data.minutesPreparedBy}</p>
+                            <p><span className="text-primary">Minutes approved by:</span> {data.data.minutesApprovedBy}</p>
+                        </div>
+                        <div>
+                            <p><span className="text-primary">Participants: </span><ol> {data.data.participants.map(e=><li>{e}</li>)}</ol></p>
+                        </div>
+
+                    </div>
+                );
+            });
+        }
+    })
+    .catch(err=>window.alert(err))
+   }, [id]);
+
+   return(
+       <div className="body-part">
+            {viewDetails}
+       </div>
+   );
 }
 
 

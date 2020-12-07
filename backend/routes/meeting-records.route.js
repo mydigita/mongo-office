@@ -9,10 +9,12 @@ router.route('/view-list/:username/:userid')
     .catch(err=>res.send(err))
 });
 
+
 router.route('/view-single/:id')
 .get((req, res)=>{
     const {id} = req.params;
-    MeetingRecord.find({_id:id})
+    console.log(id);
+    MeetingRecord.findOne({_id:id})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
 });
