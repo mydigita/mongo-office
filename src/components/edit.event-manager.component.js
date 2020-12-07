@@ -17,9 +17,7 @@ export default function EditEvent(){
     const [details, setDetails] = useState("");    
     const [organizer, setOrganizer] = useState("");
     const [venue, setVenue] = useState("");
-    const [contactDetails, setContactDetails] = useState("");
-    const username = localStorage.getItem('user');
-    const userid= localStorage.getItem('userid');
+    const [contactDetails, setContactDetails] = useState("");    
     const [eventDate, setEventDate] = useState(new Date());
     const eventId = window.location.href.split('/').reverse()[0];
 

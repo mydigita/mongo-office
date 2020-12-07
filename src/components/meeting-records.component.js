@@ -13,11 +13,11 @@ const userid = localStorage.getItem('userid');
 export default function MeetingRecord(){
     const [meetingId, setMeetingId] = useState("");
     const [meetingDate, setMeetingDate] = useState(new Date())
-    const [noticeDate, setNoticeDate] = useState(new Date());
     const [title, setTitle] = useState("");
     const [agenda, setAgenda] = useState([]);
     const [venue, setVenue] = useState("");
     const [notice, setNotice] = useState("");
+    const [noticeDate, setNoticeDate]= useState(new Date());
     const [noticeDistribution, setNoticeDistribution] = useState([]);
     const [chairedBy] = useState("");
     const [participants] = useState([]);
@@ -65,7 +65,7 @@ export default function MeetingRecord(){
             )
         })
         .catch(err=>console.log(err))
-    }, [userid, username])
+    }, [])
 
     function onSubmitRecordMeeting(e){
         e.preventDefault();
