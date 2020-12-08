@@ -68,7 +68,7 @@ router.route('/edit-minutes/:id')
 router.route('/edit-minutes/:id')
 .put((req, res)=>{
     const {id}=req.params;
-    const {minutes, minutesPreparedBy, minutesApprovedBy} = req.ready;
+    const {minutes, minutesPreparedBy, minutesApprovedBy} = req.body;
     MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes, minutesPreparedBy, minutesApprovedBy}})
     .then(()=>res.send("Minutes recorded!"))
     .catch(err=>res.send(err))

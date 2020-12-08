@@ -252,7 +252,7 @@ export function RecordMinutes(){
 
         axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
         .then(data=>{
-            window.alert("Success!"); 
+            window.alert(data.data); 
             window.location.assign(`/mongo-office/meeting-records/view-single/${id}`);
         })
         .catch(err=>window.alert(err));
@@ -265,7 +265,7 @@ export function RecordMinutes(){
             <form onSubmit={onSubmitEditMinutes}>
                 <div className="form-group">
                     <label>Minutes: </label>
-                    <textarea className="form-control" rows="20" cols="10" onChange={onChangeMinutes}>{minutes}</textarea>
+                    <textarea className="form-control" rows="15" cols="10" value={minutes} onChange={onChangeMinutes}></textarea>
                 </div>
                 <div className="form-group">
                     <label>Minutes prepared by:</label>
