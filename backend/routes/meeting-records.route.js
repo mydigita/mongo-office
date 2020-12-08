@@ -57,7 +57,15 @@ router.route('/register/:username/:userid')
     .catch(err=>res.send(err))
 });
 
-router.route('/add-minutes/:id')
+router.route('/edit-minutes/:id')
+.get((req, res)=>{
+    const {id} =  req.params;
+    MeetingRecord.findOne({_id:id}, {minutes:true, minutesApprovedBy:true, minutesPreparedBy:true})
+    .then(data=>res.send(data))
+    .catch(err=>res.send(err))
+})
+
+router.route('/edit-minutes/:id')
 .put((req, res)=>{
     const {id}=req.params;
     const {minutes, minutesPreparedBy, minutesApprovedBy} = req.ready;

@@ -230,7 +230,7 @@ export function RecordMinutes(){
             setMinutesApprovedBy(data.data.minutesApprovedBy);
         })
         .catch(err=>window.alert(err));
-    });
+    }, [id]);
 
     function onChangeMinutes(e){
         setMinutes(e.target.value);
