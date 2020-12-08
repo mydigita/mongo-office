@@ -214,3 +214,65 @@ export function ViewSingleMeeting(){
 }
 
 
+export function RecordMinutes(){
+    const id = window.location.href.split('/').reverse()[0];
+    const [minutes, setMinutes] =useState("");
+    const [minutesPreparedBy, setMinutesPreparedBy] = useState("");
+    const [minutesApprovedBy, setMinutesApprovedBy] = useState("");
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`)
+        .then(data=>{
+            setMinutes(data.data.minutes);
+            setMinutesPreparedBy(data.data.minutesPreparedBy);
+            setMinutesApprovedBy(data.data.minutesApprovedBy);
+        })
+        .catch(err=>window.alert(err));
+    });
+
+    function onChangeMinutes(e){
+        setMinutes(e.target.value);
+    }
+    function onChangeMinutesPreparedBy(e){
+        setMinutesPreparedBy(e.target.value)
+    }
+    function onChangeMinutesApprovedBy(e){
+        setMinutesApprovedBy(e.target.value);
+    }
+
+    function onSubmitMinutes(e){
+        e.preventDefault();
+        const minutesData = {
+            minutes,
+            minutesPreparedBy,
+            minutesApprovedBy
+        };
+
+        axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
+        .then(data=>{window.alert("Success!"); window.location.assign(`/mongo-office/meeting-records/view-single/${id}`)})
+        .catch(err=>window.alert(err));
+
+    }
+
+
+    return (
+        <div>
+            <form onSubmit={onSubmitMinutes}>
+                <div>
+                    <label>Minutes: </label>
+                    <textarea ros="20" cols="10" onChange={onChangeMinutes}>{minutes}</textarea>
+                </div>
+                <div>
+                    <label>Minutes prepared by:</label>
+                    <input value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy}/>
+                </div>
+                <div>
+                    <label>Minutes approved by:</label>
+                    <input value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy}/>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+}
+
+
