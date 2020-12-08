@@ -242,7 +242,7 @@ export function RecordMinutes(){
         setMinutesApprovedBy(e.target.value);
     }
 
-    function onSubmitMinutes(e){
+    function onSubmitEditMinutes(e){
         e.preventDefault();
         const minutesData = {
             minutes,
@@ -261,21 +261,21 @@ export function RecordMinutes(){
 
 
     return (
-        <div>
-            <form onSubmit={onSubmitMinutes}>
-                <div>
+        <div className="body-part">
+            <form onSubmit={onSubmitEditMinutes}>
+                <div className="form-group">
                     <label>Minutes: </label>
-                    <textarea ros="20" cols="10" onChange={onChangeMinutes}>{minutes}</textarea>
+                    <textarea className="form-control" rows="20" cols="10" onChange={onChangeMinutes}>{minutes}</textarea>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Minutes prepared by:</label>
-                    <input value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy}/>
+                    <input className="form-control" value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy}/>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Minutes approved by:</label>
-                    <input value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy}/>
+                    <input className="form-control" value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy}/>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className="btn btn-warning">Submit</button>
             </form>
         </div>
     );
