@@ -259,9 +259,16 @@ export function RecordMinutes(){
 
     }
 
+    function onClickGoBackToMeetingDetails(){
+        return (window.location.assign(`/mongo-office/meeting-records/view-single/${id}`));
+    }
+
 
     return (
         <div className="body-part">
+            <div className="pt-4 pb-4">
+                <h4>Add/ Edit Minutes Details</h4>
+            </div>
             <form onSubmit={onSubmitEditMinutes}>
                 <div className="form-group">
                     <label>Minutes: </label>
@@ -275,7 +282,11 @@ export function RecordMinutes(){
                     <label>Minutes approved by:</label>
                     <input className="form-control" value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy}/>
                 </div>
-                <button type="submit" className="btn btn-warning">Submit</button>
+                <div className="btn-group">
+                    <button type="submit" className="btn btn-warning">Submit</button>
+                    <button className="btn btn-primary" onClick={onClickGoBackToMeetingDetails}>Go back</button>
+                </div>
+                
             </form>
         </div>
     );
