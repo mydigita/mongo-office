@@ -168,6 +168,9 @@ export function ViewSingleMeeting(){
     function onClickShowList(){
         return (window.location.assign('/mongo-office/meeting-records'))
     }
+    function onClickEditMinutes(){
+        return(window.location.assign(`/mongo-office/meeting-records/edit-minutes/${id}`));
+    }
 
      useEffect(()=>{
     axios.get(`http://localhost:5000/mongo-office/meeting-records/view-single/${id}`)
@@ -194,7 +197,7 @@ export function ViewSingleMeeting(){
                             <p><span className="text-primary">Participants: </span><ol> {data.data.participants.map(e=><li>{e}</li>)}</ol></p>
                         </div>
                         <div className="btn-group">
-                            <button className="btn btn-warning" >Edit Details</button>
+                            <button className="btn btn-warning" onClick={onClickEditMinutes} >Add/Edit Minutes</button>
                             <button className="btn btn-primary" onClick={onClickShowList}>Show list</button>
                         </div>
 
@@ -248,7 +251,10 @@ export function RecordMinutes(){
         };
 
         axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
-        .then(data=>{window.alert("Success!"); window.location.assign(`/mongo-office/meeting-records/view-single/${id}`)})
+        .then(data=>{
+            window.alert("Success!"); 
+            window.location.assign(`/mongo-office/meeting-records/view-single/${id}`);
+        })
         .catch(err=>window.alert(err));
 
     }
