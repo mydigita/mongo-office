@@ -147,7 +147,7 @@ export default function MeetingRecord(){
                         <input type="text" className="form-control" placeholder="Meeting venue" onChange={onChangeVenue} required/>
                     </div>
                     <div className="form-group">
-                        <label>Notice(put here the full notice if it's already issued):</label>
+                        <label>Notice (put here the full notice):</label>
                         <textarea cols="10" rows="20" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
                     </div>
                     
@@ -168,11 +168,12 @@ export function ViewSingleMeeting(){
     function onClickShowList(){
         return (window.location.assign('/mongo-office/meeting-records'))
     }
-    function onClickEditMinutes(){
-        return(window.location.assign(`/mongo-office/meeting-records/edit-minutes/${id}`));
-    }
+    
 
      useEffect(()=>{
+        function onClickEditMinutes(){
+            return(window.location.assign(`/mongo-office/meeting-records/edit-minutes/${id}`));
+        }
     axios.get(`http://localhost:5000/mongo-office/meeting-records/view-single/${id}`)
     .then(data=>{
         if(data){
