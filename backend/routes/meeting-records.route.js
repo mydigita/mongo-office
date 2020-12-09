@@ -13,7 +13,6 @@ router.route('/view-list/:username/:userid')
 router.route('/view-single/:id')
 .get((req, res)=>{
     const {id} = req.params;
-    console.log(id);
     MeetingRecord.findOne({_id:id})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
