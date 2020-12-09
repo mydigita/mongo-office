@@ -58,7 +58,7 @@ export default function MeetingRecord(){
                 data.data.reverse().map(e=>{                    
                     return(
                         <div>
-                            <a href={`/mongo-office/meeting-records/view-single/${e._id}`} className="nav-link">{e.title}</a>
+                            <a href={`/mongo-office/meeting-records/view-single/${e._id}`} className="nav-link">{e.title} - {new Date(e.meetingDate).toLocaleDateString()}</a>
                         </div>
                     );
                 })
