@@ -35,7 +35,7 @@ export default function MeetingRecord(){
         setTitle(e.target.value);
     }
     function onChangeAgenda(e){
-        setAgenda(e.target.value.split(","));
+        setAgenda(e.target.value);
     }
     function onChangeVenue(e){
         setVenue(e.target.value)
@@ -74,7 +74,7 @@ export default function MeetingRecord(){
             meetingDate,
             noticeDate,
             title,
-            agenda,
+            agenda:agenda.split(","),
             venue,
             notice,
             noticeDistribution,
@@ -245,7 +245,7 @@ export function RecordMinutes(){
         setMinutesApprovedBy(e.target.value);
     }
     function onChangeParticipants(e){
-        setParticipants(e.target.value.split(","))
+        setParticipants(e.target.value)
     }
 
     function onSubmitEditMinutes(e){
@@ -254,7 +254,7 @@ export function RecordMinutes(){
             minutes,
             minutesPreparedBy,
             minutesApprovedBy,
-            participants
+            participants:participants.split(",")
         };
 
         axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
