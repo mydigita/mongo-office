@@ -182,8 +182,8 @@ export function ViewSingleMeeting(){
                 return(
                     <div className="pt-3">
                         <div className="d-flex justify-content-between flex-wrap">
-                        <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
-                <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p>
+                            <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
+                            <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p>
                         </div>
                         <h5><span className="text-primary">Meeting title: </span> {data.data.title}</h5>
                         <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p>
@@ -223,12 +223,14 @@ export function RecordMinutes(){
     const [minutes, setMinutes] =useState("");
     const [minutesPreparedBy, setMinutesPreparedBy] = useState("");
     const [minutesApprovedBy, setMinutesApprovedBy] = useState("");
+    const [participants, setParticipants]=useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`)
         .then(data=>{
             setMinutes(data.data.minutes);
             setMinutesPreparedBy(data.data.minutesPreparedBy);
             setMinutesApprovedBy(data.data.minutesApprovedBy);
+            setParticipants(data.data.participants.join(","))
         })
         .catch(err=>window.alert(err));
     }, [id]);
@@ -242,13 +244,17 @@ export function RecordMinutes(){
     function onChangeMinutesApprovedBy(e){
         setMinutesApprovedBy(e.target.value);
     }
+    function onChangeParticipants(e){
+        setParticipants(e.target.value.split(","))
+    }
 
     function onSubmitEditMinutes(e){
         e.preventDefault();
         const minutesData = {
             minutes,
             minutesPreparedBy,
-            minutesApprovedBy
+            minutesApprovedBy,
+            participants
         };
 
         axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
@@ -273,15 +279,19 @@ export function RecordMinutes(){
             <form onSubmit={onSubmitEditMinutes}>
                 <div className="form-group">
                     <label>Minutes: </label>
-                    <textarea className="form-control" rows="15" cols="10" value={minutes} onChange={onChangeMinutes}></textarea>
+                    <textarea className="form-control" rows="15" cols="10" value={minutes} onChange={onChangeMinutes} required></textarea>
+                </div>
+                <div className="form-group">
+                    <label>Participants (comma separated names only): </label>
+                    <textarea className="form-control" rows="5" cols="10" value={participants} onChange={onChangeParticipants} required></textarea>
                 </div>
                 <div className="form-group">
                     <label>Minutes prepared by:</label>
-                    <input className="form-control" value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy}/>
+                    <input className="form-control" value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy} required/>
                 </div>
                 <div className="form-group">
                     <label>Minutes approved by:</label>
-                    <input className="form-control" value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy}/>
+                    <input className="form-control" value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy} required/>
                 </div>
                 <div className="btn-group">
                     <button type="submit" className="btn btn-warning">Submit</button>

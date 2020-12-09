@@ -60,7 +60,7 @@ router.route('/register/:username/:userid')
 router.route('/edit-minutes/:id')
 .get((req, res)=>{
     const {id} =  req.params;
-    MeetingRecord.findOne({_id:id}, {minutes:true, minutesApprovedBy:true, minutesPreparedBy:true})
+    MeetingRecord.findOne({_id:id}, {minutes:true, minutesApprovedBy:true, minutesPreparedBy:true, participants:true})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
 })
@@ -68,8 +68,8 @@ router.route('/edit-minutes/:id')
 router.route('/edit-minutes/:id')
 .put((req, res)=>{
     const {id}=req.params;
-    const {minutes, minutesPreparedBy, minutesApprovedBy} = req.body;
-    MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes, minutesPreparedBy, minutesApprovedBy}})
+    const {minutes, minutesPreparedBy, minutesApprovedBy, participants} = req.body;
+    MeetingRecord.findOneAndUpdate({_id:id}, {$set:{minutes, minutesPreparedBy, minutesApprovedBy, participants}})
     .then(()=>res.send("Minutes recorded!"))
     .catch(err=>res.send(err))
 });
