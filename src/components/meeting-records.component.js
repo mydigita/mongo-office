@@ -12,6 +12,7 @@ const userid = localStorage.getItem('userid');
 
 export default function MeetingRecord(){
     const [meetingId, setMeetingId] = useState("");
+    const [companyName, setCompanyName]= useState("");
     const [meetingDate, setMeetingDate] = useState(new Date())
     const [title, setTitle] = useState("");
     const [agenda, setAgenda] = useState([]);
@@ -30,6 +31,9 @@ export default function MeetingRecord(){
 
     function onChangeMeetingId(e){
         setMeetingId(e.target.value);
+    }
+    function onChangeCompanyName(e){
+        setCompanyName(e.target.value)
     }
     function onChangeTitle(e){
         setTitle(e.target.value);
@@ -58,7 +62,7 @@ export default function MeetingRecord(){
                 data.data.reverse().map(e=>{                    
                     return(
                         <div>
-                            <a href={`/mongo-office/meeting-records/view-single/${e._id}`} className="nav-link">{e.title} - {new Date(e.meetingDate).toLocaleDateString()}</a>
+                            <a href={`/mongo-office/meeting-records/view-single/${e._id}`} className="nav-link">{e.title} - {new Date(e.meetingDate).toLocaleDateString()} - {e.companyName}</a>
                         </div>
                     );
                 })
@@ -71,6 +75,7 @@ export default function MeetingRecord(){
         e.preventDefault();
         const meetingData = {
             meetingId,
+            companyName,
             meetingDate,
             noticeDate,
             title,
@@ -123,7 +128,11 @@ export default function MeetingRecord(){
             <div id="register" className="tab-pane pt-2">
                 <form onSubmit={onSubmitRecordMeeting}>
                     <div className="d-flex flex-wrap justify-content-between">
-                    <div className="form-group">
+                    <div className="form-group flex-grow-1 mr-1">
+                        <label>Company/Org Name:</label>
+                        <input type="text" className="form-control" placeholder="Company name" onChange={onChangeCompanyName} required/>
+                    </div>
+                    <div className="form-group mr-1">
                         <label>Meeting Reference:</label>
                         <input type="text" className="form-control" placeholder="Meeting reference" onChange={onChangeMeetingId} required/>
                     </div>
@@ -148,7 +157,7 @@ export default function MeetingRecord(){
                     </div>
                     <div className="form-group">
                         <label>Notice (put here the full notice):</label>
-                        <textarea cols="10" rows="20" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
+                        <textarea cols="10" rows="10" className="form-control"  placeholder="Notice of the meeting" onChange={onChangeNotice} required></textarea>
                     </div>
                     
                     <button type="submit" className="btn btn-primary">Submit</button>

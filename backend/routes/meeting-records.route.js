@@ -4,7 +4,7 @@ const MeetingRecord = require("../models/meeting-records.model");
 router.route('/view-list/:username/:userid')
 .get((req,res)=>{
     const {username, userid} = req.params;
-    MeetingRecord.find({userid:userid, username:username}, {_id:true, meetingId:true, title:true, status:true, meetingDate:true})
+    MeetingRecord.find({userid:userid, username:username}, {_id:true, meetingId:true, title:true, status:true, meetingDate:true, companyName:true})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
 });
@@ -25,6 +25,7 @@ router.route('/register/:username/:userid')
     const {
         meetingId,
         meetingDate,
+        companyName,
         noticeDate,
         title,
         agenda,
@@ -33,6 +34,7 @@ router.route('/register/:username/:userid')
     } = req.body;
     const meetingData = new MeetingRecord({
         meetingId,
+        companyName,
         meetingDate,
         noticeDate,
         title,
