@@ -233,13 +233,15 @@ export function RecordMinutes(){
     const [minutesPreparedBy, setMinutesPreparedBy] = useState("");
     const [minutesApprovedBy, setMinutesApprovedBy] = useState("");
     const [participants, setParticipants]=useState([]);
+    const [agenda, setAgenda] = useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`)
         .then(data=>{
             setMinutes(data.data.minutes);
             setMinutesPreparedBy(data.data.minutesPreparedBy);
             setMinutesApprovedBy(data.data.minutesApprovedBy);
-            setParticipants(data.data.participants.join(","))
+            setParticipants(data.data.participants.join(","));
+            setAgenda(data.data.agenda.join(','));
         })
         .catch(err=>window.alert(err));
     }, [id]);
@@ -248,13 +250,16 @@ export function RecordMinutes(){
         setMinutes(e.target.value);
     }
     function onChangeMinutesPreparedBy(e){
-        setMinutesPreparedBy(e.target.value)
+        setMinutesPreparedBy(e.target.value);
     }
     function onChangeMinutesApprovedBy(e){
         setMinutesApprovedBy(e.target.value);
     }
     function onChangeParticipants(e){
-        setParticipants(e.target.value)
+        setParticipants(e.target.value);
+    }
+    function onChangeAgenda(e){
+        setAgenda(e.target.value);
     }
 
     function onSubmitEditMinutes(e){
@@ -263,7 +268,8 @@ export function RecordMinutes(){
             minutes,
             minutesPreparedBy,
             minutesApprovedBy,
-            participants:participants.split(",")
+            participants:participants.split(","),
+            agenda:agenda.split(",")
         };
 
         axios.put(`http://localhost:5000/mongo-office/meeting-records/edit-minutes/${id}`, minutesData)
@@ -290,10 +296,7 @@ export function RecordMinutes(){
                     <label>Minutes: </label>
                     <textarea className="form-control" rows="15" cols="10" value={minutes} onChange={onChangeMinutes} required></textarea>
                 </div>
-                <div className="form-group">
-                    <label>Participants (comma separated names only): </label>
-                    <textarea className="form-control" rows="5" cols="10" value={participants} onChange={onChangeParticipants} required></textarea>
-                </div>
+                
                 <div className="form-group">
                     <label>Minutes prepared by:</label>
                     <input className="form-control" value={minutesPreparedBy} onChange={onChangeMinutesPreparedBy} required/>
@@ -301,6 +304,14 @@ export function RecordMinutes(){
                 <div className="form-group">
                     <label>Minutes approved by:</label>
                     <input className="form-control" value={minutesApprovedBy} onChange={onChangeMinutesApprovedBy} required/>
+                </div>
+                <div className="form-group">
+                    <label>Participants (comma separated names only): </label>
+                    <textarea className="form-control" placeholder="Participants" rows="5" cols="10" value={participants} onChange={onChangeParticipants} required></textarea>
+                </div>
+                <div className="form-group">
+                    <label>Agenda (comma separated agenda only): </label>
+                    <textarea className="form-control" placeholder="Meeting agenda" rows="5" cols="10" value={agenda} onChange={onChangeAgenda} required></textarea>
                 </div>
                 <div className="btn-group">
                     <button type="submit" className="btn btn-warning">Submit</button>
