@@ -181,21 +181,21 @@ export function ViewSingleMeeting(){
                 const meetingDate= moment(data.data.meetingDate).format('YYYY-MM-DD; HH:mm A');
                 return(
                     <div className="pt-3">
-                        <div className="d-flex justify-content-between flex-wrap">
+                        <div className="d-flex justify-content-start flex-wrap">
                             <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
                             <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p>
                         </div>
                         <h5><span className="text-primary">Meeting title: </span> {data.data.title}</h5>
-                        <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p>
+                        {/* <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p> */}
                         <p><span className="text-primary">Notice:</span><br/>{data.data.notice}</p>
-                        <p><span className="text-primary">Venue: </span><br/>{data.data.venue}</p>
+                        {/* <p><span className="text-primary">Venue: </span><br/>{data.data.venue}</p> */}
                         <div>
                             <p><span className="text-primary">Minutes: </span> <br/>{data.data.minutes}</p>
-                            <p><span className="text-primary">Minutes prepared by:</span> {data.data.minutesPreparedBy}</p>
-                            <p><span className="text-primary">Minutes approved by:</span> {data.data.minutesApprovedBy}</p>
+                            {/* <p><span className="text-primary">Minutes prepared by:</span> {data.data.minutesPreparedBy}</p> */}
+                            {/* <p><span className="text-primary">Minutes approved by:</span> {data.data.minutesApprovedBy}</p> */}
                         </div>
                         <div>
-                            <p><span className="text-primary">Participants: </span><ol> {data.data.participants.map(e=><li>{e}</li>)}</ol></p>
+                            {/* <p><span className="text-primary">Participants: </span><ol> {data.data.participants.map(e=><li>{e}</li>)}</ol></p> */}
                         </div>
                         <div className="btn-group">
                             <button className="btn btn-warning" onClick={onClickEditMinutes} >Add/Edit Minutes</button>
