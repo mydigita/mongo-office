@@ -182,8 +182,8 @@ export function ViewSingleMeeting(){
                 return(
                     <div className="pt-3">
                         <div className="d-flex justify-content-start flex-wrap">
-                            <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p>
-                            <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p>
+                            {/* <p><span className="text-primary">Ref: </span>{data.data.meetingId}</p> */}
+                            {/* <p><span className="text-primary">Meeting Date: </span>{meetingDate}</p> */}
                         </div>
                         <h5><span className="text-primary">Meeting title: </span> {data.data.title}</h5>
                         {/* <p><span className="text-primary">Agenda:</span><br/><ol>{data.data.agenda.map(e=><li>{e}</li>)}</ol></p> */}
