@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const meetingSchema = new Schema({
     meetingId:{type:String},
+    companyName:{type:String},
     meetingDate:{type:Date},
     noticeDate:{type:Date},
     title:{type:String},
