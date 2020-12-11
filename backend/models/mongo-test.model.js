@@ -7,6 +7,6 @@ const MongoTestSchema = new Schema({
     details:[]
 }, {timestamps:true});
 
-const MongoTest = mongoose.model("MongoTest", UserSchema);
+const MongoTest = mongoose.model("MongoTest", MongoTestSchema);
 
 module.exports = MongoTest;

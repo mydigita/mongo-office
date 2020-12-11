@@ -8,7 +8,7 @@ const taskRoutes = require('./routes/task-manager.route');
 const cashRegister = require('./routes/cash-register.route');
 const eventManager = require('./routes/event-manager.route');
 const meetingRecord = require('./routes/meeting-records.route');
-const mongoTest = require('./routes/mongo-test.route')
+const mongoTest = require('./routes/mongo-test.route');
 
 const app = express();
 const port = process.env.PORT || 5000;
