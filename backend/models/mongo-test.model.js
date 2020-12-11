@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const MongoTestSchema = new Schema({
     username:{type:String},
+    userid:{type:String},
     details:[]
 }, {timestamps:true});
 
