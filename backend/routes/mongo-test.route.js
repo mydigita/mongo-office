@@ -1,12 +1,13 @@
 const router = require('express').Router();
+const { ObjectId } = require('mongodb');
 const MongoTest = require('../models/mongo-test.model');
 
 
 router.route('/get/:id')
 .get((req, res)=>{
     const {id}=req.params;
-    MongoTest.findOne({_id:id}, {details:true})
-    .then(data=>res.send(data.details.map(e=>e.name)))
+    MongoTest.findOne({"details._id":id}, {details:{$elemMatch:{_id:id}}})
+    .then(data=>res.send(data.details[0]))
     .catch(err=>res.send(err))
 })
 
