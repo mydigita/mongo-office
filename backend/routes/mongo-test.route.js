@@ -24,5 +24,14 @@ router.route('/post/:username/:userid')
 
 })
 
+router.route('/update/:id')
+.put((req, res)=>{
+    const {id}=req.params;
+    const {dataToUpdate}=req.body;
+    MongoTest.findOneAndUpdate({_id:id}, {$set:{"details.$[].name":dataToUpdate}}, {returnOriginal:false})
+    .then((data)=>res.send(data))
+    .catch(err=>res.send(err))
+})
+
 
 module.exports = router;
