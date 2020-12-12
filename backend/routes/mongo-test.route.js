@@ -28,6 +28,8 @@ router.route('/update/:id')
 .put((req, res)=>{
     const {id}=req.params;
     const {dataToUpdate}=req.body;
+    //{returnOriginal:false} will return the updated data immediately
+    // {returnOriginal:true} is default, it will return the old data after update operation
     MongoTest.findOneAndUpdate({_id:id}, {$set:{"details.$[].name":dataToUpdate}}, {returnOriginal:false})
     .then((data)=>res.send(data))
     .catch(err=>res.send(err))
