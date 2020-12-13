@@ -6,7 +6,8 @@ router.route('/get/:id')
 .get((req, res)=>{
     const {id}=req.params;
     MongoTest.findOne({"details.posts._id":id}, {"details.posts._id.$":true})
-    .then(data=>res.send(data.details[0].posts.filter(e=>e._id===id)[0]))
+    // .then(data=>res.send(data.details[0].posts.filter(e=>e._id===id)[0]))
+    .then(data=>res.send({groupId:data.details[0]._id, groupName:data.details[0].name, post:data.details[0].posts.filter(e=>e._id===id)[0]}))
     .catch(err=>res.send(err))
 })
 
