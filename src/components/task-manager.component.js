@@ -67,7 +67,7 @@ export default function TaskManager(){
                 );
             }));
 
-            setTaskArchive(data.data.reverse().filter(e=>e.status==='closed').map(e=>{
+            setTaskArchive(data.data.filter(e=>e.status==='closed').map(e=>{
                 
                 return(
                     <div className="shadow single-task">
