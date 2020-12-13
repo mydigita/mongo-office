@@ -5,8 +5,8 @@ const MongoTest = require('../models/mongo-test.model');
 router.route('/get/:id')
 .get((req, res)=>{
     const {id}=req.params;
-    MongoTest.findOne({"details._id":id}, {details:{$elemMatch:{_id:id}}})
-    .then(data=>res.send(data.details[0]))
+    MongoTest.findOne({"details.posts._id":id}, {"details.posts._id.$":true})
+    .then(data=>res.send(data))
     .catch(err=>res.send(err))
 })
 
