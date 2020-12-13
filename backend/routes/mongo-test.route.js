@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { ObjectId } = require('mongodb');
 const MongoTest = require('../models/mongo-test.model');
 
 
