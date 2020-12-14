@@ -25,9 +25,17 @@ router.route('/register/:username/:userid')
         userid
     };
     carRegistration.save()
-    .then(()=>res.send("Registration successful"))
+    .then(()=>res.send("Registration successful!"))
     .catch(err=>res.send("Registration failed! Try again later."))
 
+});
+
+router.route("/movement-history/:carnumber")
+.get((req, res)=>{
+    const {carnumber} = req.params;
+    VehicleRecords.findOne({carNumber:carnumber}, {carNumber:true, movementHistory:true, lastMovement:true})
+    .then(data=>res.send(data))
+    .catch(err=>res.send(err))
 })
 
 
