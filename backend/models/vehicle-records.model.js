@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema =  mongoose.Schema;
 
 const VehicleSchema =  new Schema({
-    carNumber:{type:String},
+    carNumber:{type:String, unique:true},
     carDetails:[{
         color:{type:String},
         taxTokenValidity:{type:Date},
