@@ -9,6 +9,7 @@ const cashRegister = require('./routes/cash-register.route');
 const eventManager = require('./routes/event-manager.route');
 const meetingRecord = require('./routes/meeting-records.route');
 const mongoTest = require('./routes/mongo-test.route');
+const VehicleRecords = require('./routes/vehicle-records.route');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ app.use('/mongo-office/cash-register/', cashRegister);
 app.use('/mongo-office/event-manager/', eventManager);
 app.use('/mongo-office/meeting-records/', meetingRecord);
 app.use('/mongo-office/mongo-test/', mongoTest);
+app.use('/mongo-office/vehicle-records/', VehicleRecords);
 
 
 app.listen(port, ()=>{
