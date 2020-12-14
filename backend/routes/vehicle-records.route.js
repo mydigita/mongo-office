@@ -30,10 +30,10 @@ router.route('/register/:username/:userid')
 
 });
 
-router.route("/movement-history/:carnumber")
+router.route("/movement-history/:username/:userid/:carnumber")
 .get((req, res)=>{
-    const {carnumber} = req.params;
-    VehicleRecords.findOne({carNumber:carnumber}, {carNumber:true, movementHistory:true, lastMovement:true})
+    const {username, userid, carnumber} = req.params;
+    VehicleRecords.findOne({carNumber:carnumber, username, userid}, {carNumber:true, movementHistory:true, lastMovement:true})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
 })
