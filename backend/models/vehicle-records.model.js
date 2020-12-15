@@ -5,9 +5,13 @@ const VehicleSchema =  new Schema({
     carNumber:{type:String, unique:true},
     carDetails:[{
         color:{type:String},
+        engineNumber:{type:String},
+        chasisNumber:{type:String},
+        modelNumber:{type:String},
         taxTokenValidity:{type:Date},
         routePermitValidity:{type:Date},
-        insuranceValidity:{type:Date}
+        insuranceValidity:{type:Date},
+
     }],
     lastMovement:{
         tripDate:{type:Date},

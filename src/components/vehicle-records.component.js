@@ -10,9 +10,58 @@ import {
     MuiPickersUtilsProvider
 } from "@material-ui/pickers";
 
+const username = localStorage.getItem('user');
+const userid = localStorage.getItem('userid');
+
 export default function VehicleRecords(){
+    const [carNumber, setCarNumber]= useState("");
+    const [carDetails, setCarDetails]= useState({
+        color:"",
+        engineNumber:"",
+        chasisNumber:"",
+        modelNumber:"",
+        taxTokentValidity:"",
+        routePermitValidity:"",
+        insuranceValidity:"",
+    });
+    const [lastMovement, setLastMovement] = useState({
+        tripDate:new Date(),
+        driver:"",
+        moveFrom:"",
+        moveTo:"",
+        orderBy:"",
+        tripDetails:""
+    });
+    const [movementHistory, setMovementHistory] = useState({
+        tripDate:new Date(),
+        driver:"",
+        moveFrom:"",
+        moveTo:"",
+        orderBy:"",
+        tripDetails:""      
+    });
+    const [repairHistory, setReapirHistory] = useState({
+        repairDate: new Date(),
+        problemDetails:"",
+        repairBy:"",
+        confirmBy:"",
+        workDetails:"",
+        cost:0
+    });
+    const [caseHistory, setCaseHistory] = useState({
+        driver:"",
+        caseDate: new Date(),
+        caseReason:"",
+        caseStatus:"open",
+        caseDetails:""
+    });
+    const [accidentHistory, setAccidentHistory] = useState({
+        driver:"",
+        accidentDate: new Date(),
+        accidentDetails:""
+    });
     return(
-        <div className="body-part pt-5">
+        <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
 
         </div>
