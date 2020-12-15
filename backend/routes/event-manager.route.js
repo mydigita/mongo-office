@@ -44,7 +44,7 @@ router.route('/edit/save/:eventId')
     const {eventId, editPassword} = req.params;
     const {title, details, organizer, eventDate, contactDetails, venue} = req.body;
     EventManager.findOneAndUpdate({_id:eventId, editPassword}, {$set:{title, details, organizer, eventDate, contactDetails, venue}})
-    .then(()=>res.send('Task Updated!'))
+    .then(()=>res.send('Event Updated!'))
     .catch(err=>res.send(err))
 });
 router.route('/edit/close/:eventId')

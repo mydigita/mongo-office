@@ -60,6 +60,7 @@ export default function VehicleRecords(){
         accidentDate: new Date(),
         accidentDetails:""
     });
+    
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
