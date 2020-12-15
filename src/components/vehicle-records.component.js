@@ -12,8 +12,8 @@ import {
 
 export default function VehicleRecords(){
     return(
-        <div className="body-part">
-            <h3>Vehicle Records</h3>
+        <div className="body-part pt-5">
+            <h3 className="text-center">Vehicle Records</h3>
 
         </div>
     );
