@@ -9,3 +9,12 @@ import {
     DateTimePicker,
     MuiPickersUtilsProvider
 } from "@material-ui/pickers";
+
+export default function VehicleRecords(){
+    return(
+        <div className="body-part">
+            <h3>Vehicle Records</h3>
+
+        </div>
+    );
+}

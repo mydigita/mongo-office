@@ -11,6 +11,7 @@ import CashRegister from "./components/cash-register.component";
 import EventManager from "./components/event-manager.component";
 import EditEvent from "./components/edit.event-manager.component";
 import MeetingRecord, {ViewSingleMeeting, RecordMinutes} from "./components/meeting-records.component";
+import VehicleRecords from "./components/vehicle-records.component";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/mongo-office/meeting-records/" exact component={MeetingRecord}/>
           <Route path="/mongo-office/meeting-records/view-single/" component={ViewSingleMeeting}/> 
           <Route path="/mongo-office/meeting-records/edit-minutes/" component={RecordMinutes}/>
+          <Route path="/mongo-office/vehicle-records/" component={VehicleRecords}/>
     </Router>
   );
 }
