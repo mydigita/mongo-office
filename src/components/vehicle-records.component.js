@@ -17,13 +17,16 @@ export default function VehicleRecords(){
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
         carOwner:"",
-        color:"",
+        carColor:"",
         engineNumber:"",
         chasisNumber:"",
         modelNumber:"",
         taxTokentValidity:"",
         routePermitValidity:"",
         insuranceValidity:"",
+        buyDate:"",
+        buyFrom:"",
+        buyAtCost:"",
     });
     const [lastMovement, setLastMovement] = useState({
         tripDate:new Date(),
@@ -61,6 +64,34 @@ export default function VehicleRecords(){
         accidentDate: new Date(),
         accidentDetails:""
     });
+    function onChangeCarNumber(e){
+        setCarNumber(e.target.value)
+    }
+    function onChangeCarColor(e){
+        setCarDetails({carColor:e.target.value})
+    }
+    function onChangeEngineNumber(e){
+        setCarDetails({engineNumber:e.target.value})
+    }
+    function onChangeChasisNumber(e){
+        setCarDetails({chasisNumber:e.target.value})
+    }
+    function onChangeModelNumber(e){
+        setCarDetails({modelNumber:e.target.value})
+    }
+    function onChangeCarOwner(e){
+        setCarDetails({carOwner:e.target.value})
+    }
+    function onChangeTaxTokenValidity(e){
+        setCarDetails({taxTokentValidity:e})
+    }
+    function onChangeRoutePermitValidity(e){
+        setCarDetails({routePermitValidity:e})
+    }
+    function onChangeInsuranceValidity(e){
+        setCarDetails({insuranceValidity:e})
+    }
+    
     function onSubmitCarRegistration(e){
         e.preventDefault();
     }
@@ -73,36 +104,36 @@ export default function VehicleRecords(){
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
-                            <label>Car Number:</label>
+                            <label>Car number:</label>
                             <input type="text" placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Car Color: </label>
+                            <label>Car color: </label>
                             <input type="text" placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
-                            <label>Engine Number:</label>
+                            <label>Engine number:</label>
                             <input type="text" placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
-                            <label>Chasis Number:</label>
+                            <label>Chasis number:</label>
                             <input type="text" placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Model Number:</label>
+                            <label>Model number:</label>
                             <input type="text" placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
-                            <label>Registration Name / owner:</label>
+                            <label>Registration name / owner:</label>
                             <input type="text" placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
-                            <label>Tax Token Validity:</label>
+                            <label>Tax token validity:</label>
                             <input type="text" placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
@@ -110,8 +141,22 @@ export default function VehicleRecords(){
                             <input type="text" placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Insurance Validity:</label>
+                            <label>Insurance validity:</label>
                             <input type="text" placeholder="Insurance validity" className="form-control" required/>
+                        </div>
+                        </div>
+                        <div className="d-flex flex-wrap justify-content-between">                                      
+                        <div className="form-group">
+                            <label>Buy date:</label>
+                            <input type="text" placeholder="Buying date" className="form-control" required/>
+                        </div>                        
+                        <div className="form-group">
+                            <label>Buy from:</label>
+                            <input type="text" placeholder="Bought from" className="form-control" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Buy at cost:</label>
+                            <input type="text" placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
