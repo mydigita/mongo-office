@@ -91,6 +91,15 @@ export default function VehicleRecords(){
     function onChangeInsuranceValidity(e){
         setCarDetails({insuranceValidity:e})
     }
+    function onChangeBuyDate(e){
+        setCarDetails({buyDate:e})
+    }
+    function onChangeBuyFrom(e){
+        setCarDetails({buyFrom:e.target.value})
+    }
+    function onChangeBuyAtCost(e){
+        setCarDetails({buyAtCost:e.arget.value})
+    }
     
     function onSubmitCarRegistration(e){
         e.preventDefault();
@@ -105,58 +114,58 @@ export default function VehicleRecords(){
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car number:</label>
-                            <input type="text" placeholder="Car number" className="form-control" required/>
+                            <input type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
-                            <input type="text" placeholder="Car color" className="form-control" required/>
+                            <input type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine number:</label>
-                            <input type="text" placeholder="Engine number" className="form-control" required/>
+                            <input type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis number:</label>
-                            <input type="text" placeholder="Chasis number" className="form-control" required/>
+                            <input type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model number:</label>
-                            <input type="text" placeholder="Model number" className="form-control" required/>
+                            <input type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration name / owner:</label>
-                            <input type="text" placeholder="Registration name/owner" className="form-control" required/>
+                            <input type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input type="text" placeholder="Tax token validity" className="form-control" required/>
+                            <input type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input type="text" placeholder="Route permit validity" className="form-control" required/>
+                            <input type="text" onChange={onChangeRoutePermitValidity} placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input type="text" placeholder="Insurance validity" className="form-control" required/>
+                            <input type="text" onChange={onChangeInsuranceValidity} placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
-                            <input type="text" placeholder="Buying date" className="form-control" required/>
+                            <input type="text" onChange={onChangeBuyDate} placeholder="Buying date" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
-                            <input type="text" placeholder="Bought from" className="form-control" required/>
+                            <input type="text" onChange={onChangeBuyFrom} placeholder="Bought from" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
-                            <input type="text" placeholder="Bought at cost" className="form-control" required/>
+                            <input type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
