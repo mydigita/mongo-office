@@ -74,44 +74,44 @@ export default function VehicleRecords(){
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car Number</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Car Color: </label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine Number:</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis Number</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model Number</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration Name / owner</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax Token Validity</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Insurance Validity</label>
-                            <input type="text" className="form-control" required/>
+                            <input type="text" placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
