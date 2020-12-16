@@ -20,4 +20,5 @@ npm start
 * Completed Task-Manager (create task, view task, view task archive, edit task, close task, delete task (this will not delete the original message, rather it will change its status to 'deleted' and won't be viewed to client but will be reserved in the server database, and the client won't be notified about this secret)
 * Completed Cash-Register (Record entry, view statement)
 * Completed Event-Manager (Event registration, view active event, view event archive, edit event, close event and delete event)
-* Completed Meeting-Record (Add/register a meeting, add/edit notice, agenda, participants, minutes, and more...)
+* Completed Meeting-Records (Add/register a meeting, add/edit notice, agenda, participants, minutes, and more...)
+* Working on Vehicle Records
