@@ -16,7 +16,7 @@ const userid = localStorage.getItem('userid');
 export default function VehicleRecords(){
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
-        owner:"",
+        carOwner:"",
         color:"",
         engineNumber:"",
         chasisNumber:"",

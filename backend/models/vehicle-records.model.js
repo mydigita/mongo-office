@@ -4,6 +4,7 @@ const Schema =  mongoose.Schema;
 const VehicleSchema =  new Schema({
     carNumber:{type:String, unique:true},
     carDetails:[{
+        carOwner:{type:String},
         color:{type:String},
         engineNumber:{type:String},
         chasisNumber:{type:String},
