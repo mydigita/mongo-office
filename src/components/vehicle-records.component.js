@@ -16,6 +16,7 @@ const userid = localStorage.getItem('userid');
 export default function VehicleRecords(){
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
+        owner:"",
         color:"",
         engineNumber:"",
         chasisNumber:"",
@@ -60,10 +61,57 @@ export default function VehicleRecords(){
         accidentDate: new Date(),
         accidentDetails:""
     });
+    function onSubmitCarRegistration(e){
+        e.preventDefault();
+    }
     
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
+            <div id="register">
+                <div>
+                    <form onSubmit={onSubmitCarRegistration}>
+                        <div className="form-group">
+                            <label>Car Number</label>
+                            <input type="text" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Car Color: </label>
+                            <input type="text" className="form-control"/>
+                        </div>            
+                        <div className="form-group">
+                            <label>Engine Number:</label>
+                            <input type="text" className="form-control"/>
+                        </div>                        
+                        <div className="form-group">
+                            <label>Chasis Number</label>
+                            <input type="text" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Model Number</label>
+                            <input type="text" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Registration Name / owner</label>
+                            <input type="text" className="form-control"/>
+                        </div>                        
+                        <div className="form-group">
+                            <label>Tax Token Validity</label>
+                            <input type="text" className="form-control"/>
+                        </div>                        
+                        <div className="form-group">
+                            <label>Route permit validity</label>
+                            <input type="text" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Insurance Validity</label>
+                            <input type="text" className="form-control"/>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+            </div>
 
         </div>
     );
