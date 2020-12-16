@@ -73,7 +73,7 @@ export default function VehicleRecords(){
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
-                            <label>Car Number</label>
+                            <label>Car Number:</label>
                             <input type="text" placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
@@ -87,34 +87,34 @@ export default function VehicleRecords(){
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
-                            <label>Chasis Number</label>
+                            <label>Chasis Number:</label>
                             <input type="text" placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Model Number</label>
+                            <label>Model Number:</label>
                             <input type="text" placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
-                            <label>Registration Name / owner</label>
+                            <label>Registration Name / owner:</label>
                             <input type="text" placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
-                            <label>Tax Token Validity</label>
+                            <label>Tax Token Validity:</label>
                             <input type="text" placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
-                            <label>Route permit validity</label>
+                            <label>Route permit validity:</label>
                             <input type="text" placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Insurance Validity</label>
+                            <label>Insurance Validity:</label>
                             <input type="text" placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
-                        <button type="submit" className="btn btn-primary">Confirm registration</button>
+                        <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
                     </form>
                 </div>
 
