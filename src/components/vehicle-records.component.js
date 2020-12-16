@@ -98,7 +98,7 @@ export default function VehicleRecords(){
         setCarDetails({buyFrom:e.target.value})
     }
     function onChangeBuyAtCost(e){
-        setCarDetails({buyAtCost:e.arget.value})
+        setCarDetails({buyAtCost:e.target.value})
     }
     
     function onSubmitCarRegistration(e){
