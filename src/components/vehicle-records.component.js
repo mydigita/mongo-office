@@ -70,7 +70,7 @@ export default function VehicleRecords(){
             <h3 className="text-center">Vehicle Records</h3>
             <div id="register">
                 <div>
-                    <form onSubmit={onSubmitCarRegistration}>
+                    <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car Number</label>
@@ -114,7 +114,7 @@ export default function VehicleRecords(){
                             <input type="text" placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Confirm registration</button>
                     </form>
                 </div>
 
