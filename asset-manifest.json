@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/mongo-office/static/css/main.eebee3a1.chunk.css",
-    "main.js": "/mongo-office/static/js/main.f53402c5.chunk.js",
-    "main.js.map": "/mongo-office/static/js/main.f53402c5.chunk.js.map",
-    "runtime-main.js": "/mongo-office/static/js/runtime-main.5be5fa93.js",
-    "runtime-main.js.map": "/mongo-office/static/js/runtime-main.5be5fa93.js.map",
+    "main.css": "/mongo-office/static/css/main.d45d26b8.chunk.css",
+    "main.js": "/mongo-office/static/js/main.e23db8cd.chunk.js",
+    "main.js.map": "/mongo-office/static/js/main.e23db8cd.chunk.js.map",
+    "runtime-main.js": "/mongo-office/static/js/runtime-main.fbc2c6fb.js",
+    "runtime-main.js.map": "/mongo-office/static/js/runtime-main.fbc2c6fb.js.map",
     "static/css/2.5ea8d6f0.chunk.css": "/mongo-office/static/css/2.5ea8d6f0.chunk.css",
-    "static/js/2.953f04f6.chunk.js": "/mongo-office/static/js/2.953f04f6.chunk.js",
-    "static/js/2.953f04f6.chunk.js.map": "/mongo-office/static/js/2.953f04f6.chunk.js.map",
-    "static/js/3.a94a65da.chunk.js": "/mongo-office/static/js/3.a94a65da.chunk.js",
-    "static/js/3.a94a65da.chunk.js.map": "/mongo-office/static/js/3.a94a65da.chunk.js.map",
+    "static/js/2.e4f5d756.chunk.js": "/mongo-office/static/js/2.e4f5d756.chunk.js",
+    "static/js/2.e4f5d756.chunk.js.map": "/mongo-office/static/js/2.e4f5d756.chunk.js.map",
+    "static/js/3.a889b703.chunk.js": "/mongo-office/static/js/3.a889b703.chunk.js",
+    "static/js/3.a889b703.chunk.js.map": "/mongo-office/static/js/3.a889b703.chunk.js.map",
     "index.html": "/mongo-office/index.html",
     "static/css/2.5ea8d6f0.chunk.css.map": "/mongo-office/static/css/2.5ea8d6f0.chunk.css.map",
-    "static/css/main.eebee3a1.chunk.css.map": "/mongo-office/static/css/main.eebee3a1.chunk.css.map",
-    "static/js/2.953f04f6.chunk.js.LICENSE.txt": "/mongo-office/static/js/2.953f04f6.chunk.js.LICENSE.txt"
+    "static/css/main.d45d26b8.chunk.css.map": "/mongo-office/static/css/main.d45d26b8.chunk.css.map",
+    "static/js/2.e4f5d756.chunk.js.LICENSE.txt": "/mongo-office/static/js/2.e4f5d756.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5be5fa93.js",
+    "static/js/runtime-main.fbc2c6fb.js",
     "static/css/2.5ea8d6f0.chunk.css",
-    "static/js/2.953f04f6.chunk.js",
-    "static/css/main.eebee3a1.chunk.css",
-    "static/js/main.f53402c5.chunk.js"
+    "static/js/2.e4f5d756.chunk.js",
+    "static/css/main.d45d26b8.chunk.css",
+    "static/js/main.e23db8cd.chunk.js"
   ]
 }
