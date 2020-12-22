@@ -27,12 +27,12 @@ export default function CashRegister(){
         setDetails(e.target.value);
     }
     function onChangeCashIn(e){
-        if(e.target.value>0){
+        if(e.target.value>=0){
             setCashIn(e.target.value)
         }
     }
     function onChangeCashOut(e){
-        if(e.target.value>0){
+        if(e.target.value>=0){
             setCashOut(e.target.value);
         }
     }
@@ -76,12 +76,8 @@ export default function CashRegister(){
         .then(data=>{
             let balArr = [];
             data.data.map(e=>balArr.push(e.balance));
-            setTotalBalance(balArr.reduce((a,b)=>{
-                const totalAmount = a+b;
-                if(totalAmount>0){
-                return (<span>{totalAmount}</span>)
-                }else{return (<span className="text-danger">{totalAmount}</span>)}
-            }));
+            setTotalBalance(balArr.reduce((a,b)=>a+b));
+            console.log(balArr);
                          
             setTransactions(data.data.map(e=>{
                 
@@ -144,7 +140,7 @@ export default function CashRegister(){
             {/* view data / statement */}
 
              <div id="view" className="pt-4">
-                <div>Total Balance as on {date}:  Tk {totalBalance}</div>
+                <div >Total Balance as on {date}: <span className={totalBalance>0?"":"text-danger"}> Tk {totalBalance} </span></div>
                 <table className="table table-striped">
                     <tr>
                         <th>Date</th>
