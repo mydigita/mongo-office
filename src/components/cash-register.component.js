@@ -140,7 +140,7 @@ export default function CashRegister(){
             {/* view data / statement */}
 
              <div id="view" className="pt-4">
-                <div >Total Balance as on {date}: <span className={totalBalance>0?"":"text-danger"}> Tk {totalBalance} </span></div>
+                <div >Total Balance as on {date}: <span className={totalBalance>0?"text-success":"text-danger"}> Tk {totalBalance} </span></div>
                 <table className="table table-striped">
                     <tr>
                         <th className="w-10">Date</th>
