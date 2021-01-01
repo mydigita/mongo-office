@@ -107,7 +107,7 @@ export default function VehicleRecords(){
             carNumber,
             carDetails
         }
-        axios.post(`http://localhost:5000/mongo-office/vehicle-records/${username}/${userid}`)
+        axios.post(`http://localhost:5000/mongo-office/vehicle-records/register/${username}/${userid}`, registrationData)
         .then(data=>window.alert(data.data))
         .catch(err=>window.alert(err))
     }

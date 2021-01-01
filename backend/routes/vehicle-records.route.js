@@ -13,7 +13,7 @@ router.route('/register/:username/:userid')
         caseHistory,
         accidentHistory
     } = req.body;
-    const carRegistration ={
+    const carRegistration = new VehicleRecords({
         carNumber,
         carDetails,
         lastMovement,
@@ -23,7 +23,7 @@ router.route('/register/:username/:userid')
         accidentHistory,
         username,
         userid
-    };
+    });
     carRegistration.save()
     .then(()=>res.send("Registration successful!"))
     .catch(err=>res.send("Registration failed! Try again later."))
