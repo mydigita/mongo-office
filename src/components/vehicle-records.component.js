@@ -67,39 +67,44 @@ export default function VehicleRecords(){
     function onChangeCarNumber(e){
         setCarNumber(e.target.value)
     }
-    function onChangeCarColor(e){
-        setCarDetails({carColor:e.target.value})
+
+    function onChangeCarDetails(e){
+        setCarDetails({...carDetails, [e.target.id]:e.target.value})
     }
-    function onChangeEngineNumber(e){
-        setCarDetails({engineNumber:e.target.value})
-    }
-    function onChangeChasisNumber(e){
-        setCarDetails({chasisNumber:e.target.value})
-    }
-    function onChangeModelNumber(e){
-        setCarDetails({modelNumber:e.target.value})
-    }
-    function onChangeCarOwner(e){
-        setCarDetails({carOwner:e.target.value})
-    }
-    function onChangeTaxTokenValidity(e){
-        setCarDetails({taxTokentValidity:e})
-    }
-    function onChangeRoutePermitValidity(e){
-        setCarDetails({routePermitValidity:e})
-    }
-    function onChangeInsuranceValidity(e){
-        setCarDetails({insuranceValidity:e})
-    }
-    function onChangeBuyDate(e){
-        setCarDetails({buyDate:e})
-    }
-    function onChangeBuyFrom(e){
-        setCarDetails({buyFrom:e.target.value})
-    }
-    function onChangeBuyAtCost(e){
-        setCarDetails({buyAtCost:e.target.value})
-    }
+
+    // function onChangeCarColor(e){
+    //     setCarDetails({carColor:e.target.value})
+    // }
+    // function onChangeEngineNumber(e){
+    //     setCarDetails({engineNumber:e.target.value})
+    // }
+    // function onChangeChasisNumber(e){
+    //     setCarDetails({chasisNumber:e.target.value})
+    // }
+    // function onChangeModelNumber(e){
+    //     setCarDetails({modelNumber:e.target.value})
+    // }
+    // function onChangeCarOwner(e){
+    //     setCarDetails({carOwner:e.target.value})
+    // }
+    // function onChangeTaxTokenValidity(e){
+    //     setCarDetails({taxTokentValidity:e})
+    // }
+    // function onChangeRoutePermitValidity(e){
+    //     setCarDetails({routePermitValidity:e})
+    // }
+    // function onChangeInsuranceValidity(e){
+    //     setCarDetails({insuranceValidity:e})
+    // }
+    // function onChangeBuyDate(e){
+    //     setCarDetails({buyDate:e})
+    // }
+    // function onChangeBuyFrom(e){
+    //     setCarDetails({buyFrom:e.target.value})
+    // }
+    // function onChangeBuyAtCost(e){
+    //     setCarDetails({buyAtCost:e.target.value})
+    // }
     
     function onSubmitCarRegistration(e){
         e.preventDefault();
@@ -125,54 +130,54 @@ export default function VehicleRecords(){
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
-                            <input id="car-color" type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
+                            <input id="car-color" type="text" onChange={onChangeCarDetails} placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine number:</label>
-                            <input id="engine-number" type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
+                            <input id="engine-number" type="text" onChange={onChangeCarDetails} placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis number:</label>
-                            <input id="chasis-number" type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
+                            <input id="chasis-number" type="text" onChange={onChangeCarDetails} placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model number:</label>
-                            <input id="model-number" type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
+                            <input id="model-number" type="text" onChange={onChangeCarDetails} placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration name / owner:</label>
-                            <input id="regi-name" type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
+                            <input id="regi-name" type="text" onChange={onChangeCarDetails} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input id="tax-token" type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" required/>
+                            <input id="tax-token" type="text" onChange={onChangeCarDetails} placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input id="route-permit" type="text" onChange={onChangeRoutePermitValidity} placeholder="Route permit validity" className="form-control" required/>
+                            <input id="route-permit" type="text" onChange={onChangeCarDetails} placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input id="insurance-validity" type="text" onChange={onChangeInsuranceValidity} placeholder="Insurance validity" className="form-control" required/>
+                            <input id="insurance-validity" type="text" onChange={onChangeCarDetails} placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
-                            <input id="buy-date" type="text" onChange={onChangeBuyDate} placeholder="Buying date" className="form-control" required/>
+                            <input id="buy-date" type="text" onChange={onChangeCarDetails} placeholder="Buying date" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
-                            <input type="text" onChange={onChangeBuyFrom} placeholder="Bought from" className="form-control" required/>
+                            <input type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
-                            <input id="buy-cost" type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
+                            <input id="buy-cost" type="text" onChange={onChangeCarDetails} placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
