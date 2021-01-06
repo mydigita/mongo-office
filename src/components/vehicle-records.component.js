@@ -67,11 +67,33 @@ export default function VehicleRecords(){
     function onChangeCarNumber(e){
         setCarNumber(e.target.value)
     }
-
-    function onChangeCarDetails(e){
-        setCarDetails({...carDetails, [e.target.id]:e.target.value})
+    function onChangeCarOwner(e){
+        setCarDetails({...carDetails, carOwner:e.target.value})
     }
-  
+    function onChangeCarColor(e){
+        setCarDetails({...carDetails, carColor:e.target.value})
+    }
+    function onChangeEngineNumber(e){
+        setCarDetails({...carDetails, engineNumber:e.target.value})
+    }
+    function onChangeChasisNumber(e){
+        setCarDetails({...carDetails, chasisNumber:e.target.value})
+    }
+    function onChangeModelNumber(e){
+        setCarDetails({...carDetails, modelNumber:e.target.value})
+    }
+    function onChangeBuyFrom(e){
+        setCarDetails({...carDetails, buyFrom:e.target.value})
+    }
+    function onChangeBuyAtCost(e){
+        setCarDetails({...carDetails, buyAtCost:e.target.value})
+    }
+    
+
+    // function onChangeCarDetails(e){
+    //     setCarDetails({...carDetails, [e.target.id]:e.target.value})
+    // }
+
 
     function onSubmitCarRegistration(e){
         e.preventDefault();
@@ -97,26 +119,26 @@ export default function VehicleRecords(){
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
-                            <input id="car-color" type="text" onChange={onChangeCarDetails} placeholder="Car color" className="form-control" required/>
+                            <input id="car-color" type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine number:</label>
-                            <input id="engine-number" type="text" onChange={onChangeCarDetails} placeholder="Engine number" className="form-control" required/>
+                            <input id="engine-number" type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis number:</label>
-                            <input id="chasis-number" type="text" onChange={onChangeCarDetails} placeholder="Chasis number" className="form-control" required/>
+                            <input id="chasis-number" type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model number:</label>
-                            <input id="model-number" type="text" onChange={onChangeCarDetails} placeholder="Model number" className="form-control" required/>
+                            <input id="model-number" type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration name / owner:</label>
-                            <input id="regi-name" type="text" onChange={onChangeCarDetails} placeholder="Registration name/owner" className="form-control" required/>
+                            <input id="regi-name" type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
@@ -140,11 +162,11 @@ export default function VehicleRecords(){
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
-                            <input id="buy-from" type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
+                            <input id="buy-from" type="text" onChange={onChangeBuyFrom} placeholder="Bought from" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
-                            <input id="buy-cost" type="text" onChange={onChangeCarDetails} placeholder="Bought at cost" className="form-control" required/>
+                            <input id="buy-cost" type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
