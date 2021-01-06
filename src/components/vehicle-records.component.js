@@ -71,41 +71,8 @@ export default function VehicleRecords(){
     function onChangeCarDetails(e){
         setCarDetails({...carDetails, [e.target.id]:e.target.value})
     }
+  
 
-    // function onChangeCarColor(e){
-    //     setCarDetails({carColor:e.target.value})
-    // }
-    // function onChangeEngineNumber(e){
-    //     setCarDetails({engineNumber:e.target.value})
-    // }
-    // function onChangeChasisNumber(e){
-    //     setCarDetails({chasisNumber:e.target.value})
-    // }
-    // function onChangeModelNumber(e){
-    //     setCarDetails({modelNumber:e.target.value})
-    // }
-    // function onChangeCarOwner(e){
-    //     setCarDetails({carOwner:e.target.value})
-    // }
-    // function onChangeTaxTokenValidity(e){
-    //     setCarDetails({taxTokentValidity:e})
-    // }
-    // function onChangeRoutePermitValidity(e){
-    //     setCarDetails({routePermitValidity:e})
-    // }
-    // function onChangeInsuranceValidity(e){
-    //     setCarDetails({insuranceValidity:e})
-    // }
-    // function onChangeBuyDate(e){
-    //     setCarDetails({buyDate:e})
-    // }
-    // function onChangeBuyFrom(e){
-    //     setCarDetails({buyFrom:e.target.value})
-    // }
-    // function onChangeBuyAtCost(e){
-    //     setCarDetails({buyAtCost:e.target.value})
-    // }
-    
     function onSubmitCarRegistration(e){
         e.preventDefault();
         const registrationData={
@@ -155,25 +122,25 @@ export default function VehicleRecords(){
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input id="tax-token" type="text" onChange={onChangeCarDetails} placeholder="Tax token validity" className="form-control" required/>
+                            <input id="tax-token" type="text" placeholder="Tax token validity" className="form-control" />
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input id="route-permit" type="text" onChange={onChangeCarDetails} placeholder="Route permit validity" className="form-control" required/>
+                            <input id="route-permit" type="text"  placeholder="Route permit validity" className="form-control" />
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input id="insurance-validity" type="text" onChange={onChangeCarDetails} placeholder="Insurance validity" className="form-control" required/>
+                            <input id="insurance-validity" type="text"  placeholder="Insurance validity" className="form-control" />
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
-                            <input id="buy-date" type="text" onChange={onChangeCarDetails} placeholder="Buying date" className="form-control" required/>
+                            <input id="buy-date" type="text"  placeholder="Buying date" className="form-control" />
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
-                            <input type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
+                            <input id="buy-from" type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
