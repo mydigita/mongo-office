@@ -121,50 +121,50 @@ export default function VehicleRecords(){
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car number:</label>
-                            <input type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
+                            <input id="car-number" type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
-                            <input type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
+                            <input id="car-color" type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine number:</label>
-                            <input type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
+                            <input id="engine-number" type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis number:</label>
-                            <input type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
+                            <input id="chasis-number" type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model number:</label>
-                            <input type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
+                            <input id="model-number" type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration name / owner:</label>
-                            <input type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
+                            <input id="regi-name" type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" required/>
+                            <input id="tax-token" type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input type="text" onChange={onChangeRoutePermitValidity} placeholder="Route permit validity" className="form-control" required/>
+                            <input id="route-permit" type="text" onChange={onChangeRoutePermitValidity} placeholder="Route permit validity" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input type="text" onChange={onChangeInsuranceValidity} placeholder="Insurance validity" className="form-control" required/>
+                            <input id="insurance-validity" type="text" onChange={onChangeInsuranceValidity} placeholder="Insurance validity" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
-                            <input type="text" onChange={onChangeBuyDate} placeholder="Buying date" className="form-control" required/>
+                            <input id="buy-date" type="text" onChange={onChangeBuyDate} placeholder="Buying date" className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
@@ -172,7 +172,7 @@ export default function VehicleRecords(){
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
-                            <input type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
+                            <input id="buy-cost" type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
