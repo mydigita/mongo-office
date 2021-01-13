@@ -24,6 +24,7 @@ export default function VehicleRecords(){
         taxTokentValidity:"",
         routePermitValidity:"",
         insuranceValidity:"",
+        fitnessValidity:"",
         buyDate:"",
         buyFrom:"",
         buyAtCost:"",

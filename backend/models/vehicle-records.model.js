@@ -12,6 +12,7 @@ const VehicleSchema =  new Schema({
         taxTokenValidity:{type:Date},
         routePermitValidity:{type:Date},
         insuranceValidity:{type:Date},
+        fitnessValidity:{type:Date},
         buyDate:{type:Date},
         buyFrom:{type:String},
         buyAtCost:{type:Number}
