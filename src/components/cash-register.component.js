@@ -19,7 +19,7 @@ export default function CashRegister(){
     const [cashOut, setCashOut] = useState(0);
     const [authorizedBy, setAuthorizedBy] = useState("");
     const [carriedOutBy, setCarriedOutBy] = useState("");
-    const date = new Date().toLocaleDateString();
+    const date = new Date().toString().substring(0,16);
     const [totalBalance, setTotalBalance] = useState(0);
    
    
