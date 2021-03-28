@@ -35,7 +35,7 @@ export default function SideNav(){
             <div className="side-nav">
                 <div>
                     <h3>Mongo Office</h3>
-                    <p>By: theTradeCoder</p>
+                    <p>By: Mamun @TradeCoder</p>
                 </div>
                 <div>
                     <Link to={loginLogoutLink} className="form-control nav-link">{loginLogout()}</Link>             
