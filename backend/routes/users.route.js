@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const Users = require('../models/user.model');
+const bcrypt  =  require('bcrypt');
+const saltRound = 12;
 
 router.route('/:register') 
 .post((req, res)=>{
+    
     
     const {
         username,
@@ -16,7 +19,7 @@ router.route('/:register')
     const User = new Users({
         username,
         email,
-        password,
+        password: bcrypt.hashSync(password, saltRound),
         firstName,
         lastName,
         mobile 
@@ -30,10 +33,21 @@ router.route('/:register')
 
 router.route("/login/:username/:password")
 .post((req, res)=>{
-    const {username, password} = req.params;  
+    const {username, password} = req.params;
+    
+    Users.findOne({username})
+    .then(user=>{    
+     bcrypt.compare(password, user.password, (err, data)=>{        
+           if(data){
+               console.log(data);
+           res.send({userid:user._id, username:user.username, firstName:user.firstName});
+           } else{
+               res.send({error:'password or username not matched!'});
+           }
 
-    Users.findOne({username, password})
-    .then(data=>res.send({userid:data._id, username:data.username, firstName:data.firstName}))
+       })
+    }) 
+  
     .catch(err=>res.send(err))
 })
 
