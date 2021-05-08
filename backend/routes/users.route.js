@@ -36,17 +36,17 @@ router.route("/login/:username/:password")
     const {username, password} = req.params;
     
     Users.findOne({username})
-    .then(user=>{    
-     bcrypt.compare(password, user.password, (err, data)=>{        
-           if(data){
-               console.log(data);
+    .then(user=>{
+        bcrypt.hash(()=>{
+        bcrypt.compare(password, user.password, (err, data)=>{        
+           if(data){              
            res.send({userid:user._id, username:user.username, firstName:user.firstName});
            } else{
                res.send({error:'password or username not matched!'});
            }
-
        })
     }) 
+})
   
     .catch(err=>res.send(err))
 })
