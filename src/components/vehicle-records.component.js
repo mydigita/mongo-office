@@ -29,22 +29,7 @@ export default function VehicleRecords(){
         buyFrom:"",
         buyAtCost:"",
     });
-    const [lastMovement, setLastMovement] = useState({
-        tripDate:new Date(),
-        driver:"",
-        moveFrom:"",
-        moveTo:"",
-        orderBy:"",
-        tripDetails:""
-    });
-    const [movementHistory, setMovementHistory] = useState({
-        tripDate:new Date(),
-        driver:"",
-        moveFrom:"",
-        moveTo:"",
-        orderBy:"",
-        tripDetails:""      
-    });
+    
     const [repairHistory, setReapirHistory] = useState({
         repairDate: new Date(),
         problemDetails:"",

@@ -17,23 +17,7 @@ const VehicleSchema =  new Schema({
         buyFrom:{type:String},
         buyAtCost:{type:Number}
 
-    },
-    lastMovement:{
-        tripDate:{type:Date},
-        moveFrom:{type:String},
-        moveTo:{type:String},
-        driver:{type:String},
-        orderBy:{type:String},
-        tripDetails:{type:String}
-    },
-    movementHistory:[{
-        tripDate:{type:Date},
-        moveFrom:{type:String},
-        moveTo:{type:String},
-        driver:{type:String},
-        orderBy:{type:String},
-        tripDetails:{type:String}
-    }],    
+    },    
     repairHistory:[{
         repairDate:{type:String},
         problemDetails:{type:String},
