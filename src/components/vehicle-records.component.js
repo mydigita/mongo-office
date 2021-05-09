@@ -4,16 +4,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "jquery/dist/jquery";
 import  "../App.css";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-    DateTimePicker,
-    MuiPickersUtilsProvider
-} from "@material-ui/pickers";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+// import DateFnsUtils from "@date-io/date-fns";
+// import {
+//     DateTimePicker,
+//     MuiPickersUtilsProvider
+// } from "@material-ui/pickers";
 
 const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
 export default function VehicleRecords(){
+    const [buyDate, setBuyDate] = useState(new Date());
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
         carOwner:"",
@@ -74,6 +78,21 @@ export default function VehicleRecords(){
     function onChangeBuyAtCost(e){
         setCarDetails({...carDetails, buyAtCost:e.target.value})
     }
+    function onChangeTaxTokenValidity(e){
+        setCarDetails({...carDetails, taxTokentValidity:e.target.value})
+    }
+    function onChangeRoutePermitValidity(e){
+        setCarDetails({...carDetails, routePermitValidity:e.target.value})
+    }
+    function onChangeInsuranceValidity(e){
+        setCarDetails({...carDetails, insuranceValidity:e.target.value})
+    }
+    function onChangeBuyDate(e){
+        setBuyDate(e);
+        setCarDetails({...carDetails, buyDate:e});
+        
+    }
+
     
 
     // function onChangeCarDetails(e){
@@ -130,21 +149,21 @@ export default function VehicleRecords(){
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input id="tax-token" type="text" placeholder="Tax token validity" className="form-control" />
+                            <input id="tax-token" type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" />
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input id="route-permit" type="text"  placeholder="Route permit validity" className="form-control" />
+                            <input id="route-permit" type="text" onChange={onChangeRoutePermitValidity}  placeholder="Route permit validity" className="form-control" />
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input id="insurance-validity" type="text"  placeholder="Insurance validity" className="form-control" />
+                            <input id="insurance-validity" type="text" onChange={onChangeInsuranceValidity}  placeholder="Insurance validity" className="form-control" />
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
-                            <input id="buy-date" type="text"  placeholder="Buying date" className="form-control" />
+                            <DatePicker selected={buyDate} onChange={onChangeBuyDate} className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
