@@ -114,6 +114,12 @@ export default function VehicleRecords(){
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
+            <div id="displayVehicleList">
+
+            </div>
+            <div id="displayExpiryAlert">
+
+            </div>
             <div id="register">
                 <div>
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
