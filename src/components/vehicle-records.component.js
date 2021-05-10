@@ -100,6 +100,8 @@ export default function VehicleRecords(){
     // }
 
 
+
+
     function onSubmitCarRegistration(e){
         e.preventDefault();
         const registrationData={
