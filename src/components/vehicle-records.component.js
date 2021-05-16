@@ -8,13 +8,13 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 
+
 const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
 export default function VehicleRecords(){
     const [buyDate, setBuyDate] = useState(new Date());
     const [taxTokenValidity, setTaxTokenValidity]  = useState(new Date());
-    const [routePermitValidity, setRoutePermitValidity] = useState(new Date());
     const [insuranceValidity, setInsuranceValidity] =  useState(new Date());
     const [fitnessValidity, setFitnessValidity] =  useState(new Date());
     const [carNumber, setCarNumber]= useState("");
@@ -48,10 +48,7 @@ export default function VehicleRecords(){
         setInsuranceValidity(e);
         setCarDetails({...carDetails, insuranceValidity:e});
     }
-    function onChangeRoutePermitValidity(e){
-        setRoutePermitValidity(e);
-        setCarDetails({...carDetails, routePermitValidity:e});
-    }
+    
     function onChangeFitnessValidity(e){
         setFitnessValidity(e);
         setCarDetails({...carDetails, fitnessValidity:e});
@@ -77,6 +74,29 @@ export default function VehicleRecords(){
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
+            <div>
+                <button>Register a Car</button>
+                <button>Show a car details</button>
+            </div>
+            <div id="carlist" className="table-responsive">
+                <table className="table">
+                   <thead>
+                       <tr>
+                           <th>Serial</th>
+                           <th>Car Number</th>                                         
+                           <th>Tax Token</th>
+                           <th>Fitness</th>
+                           <th>Insurance</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                      
+
+                   </tbody>
+                    
+                </table>
+
+            </div>
             <div id="register">
                 <div>
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
@@ -109,29 +129,13 @@ export default function VehicleRecords(){
                             <input name="carOwner" type="text" onChange={onChangeCarDetails} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
-                        <div className="d-flex flex-wrap justify-content-between">                                      
-                        <div className="form-group">
-                            <label>Tax token validity:</label><br/>
-                            <DatePicker selected={taxTokenValidity} onChange={onChangeTaxTokenValidity} className="form-control" required/>
-                        </div>                        
-                        <div className="form-group">
-                            <label>Route permit validity:</label><br/>
-                            <DatePicker selected={routePermitValidity} onChange={onChangeRoutePermitValidity} className="form-control" required/>
-                        </div>
-                        <div className="form-group">
-                            <label>Insurance validity:</label> <br/>
-                            <DatePicker selected={insuranceValidity} onChange={onChangeInsuranceValidity} className="form-control" required/>
-                        </div>
-                        </div>
+                       
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label> <br/>
                             <DatePicker selected={buyDate} onChange={onChangeBuyDate} className="form-control" required/>
                         </div>
-                        <div className="form-group">
-                            <label>Fitness Validity:</label> <br/>
-                            <DatePicker selected={fitnessValidity} onChange={onChangeFitnessValidity} className="form-control" required/>
-                        </div>                        
+                                             
                         <div className="form-group">
                             <label>Buy from:</label>
                             <input name="buyFrom" type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
@@ -140,6 +144,20 @@ export default function VehicleRecords(){
                             <label>Buy at cost:</label>
                             <input name="buyAtCost" type="text" onChange={onChangeCarDetails} placeholder="Bought at cost" className="form-control" required/>
                         </div>
+                        </div>
+                        <div className="d-flex flex-wrap justify-content-between">                                      
+                        <div className="form-group">
+                            <label>Tax token validity:</label><br/>
+                            <DatePicker selected={taxTokenValidity} onChange={onChangeTaxTokenValidity} className="form-control" required/>
+                        </div>                        
+                        <div className="form-group">
+                            <label>Fitness Validity:</label> <br/>
+                            <DatePicker selected={fitnessValidity} onChange={onChangeFitnessValidity} className="form-control" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Insurance validity:</label> <br/>
+                            <DatePicker selected={insuranceValidity} onChange={onChangeInsuranceValidity} className="form-control" required/>
+                        </div>                        
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>
                     </form>
