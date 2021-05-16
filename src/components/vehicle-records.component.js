@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
@@ -7,17 +7,16 @@ import  "../App.css";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-// import DateFnsUtils from "@date-io/date-fns";
-// import {
-//     DateTimePicker,
-//     MuiPickersUtilsProvider
-// } from "@material-ui/pickers";
 
 const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
 export default function VehicleRecords(){
     const [buyDate, setBuyDate] = useState(new Date());
+    const [taxTokenValidity, setTaxTokenValidity]  = useState(new Date());
+    const [routePermitValidity, setRoutePermitValidity] = useState(new Date());
+    const [insuranceValidity, setInsuranceValidity] =  useState(new Date());
+    const [fitnessValidity, setFitnessValidity] =  useState(new Date());
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
         carOwner:"",
@@ -25,81 +24,43 @@ export default function VehicleRecords(){
         engineNumber:"",
         chasisNumber:"",
         modelNumber:"",
-        taxTokentValidity:"",
-        routePermitValidity:"",
-        insuranceValidity:"",
-        fitnessValidity:"",
+        taxTokentValidity: new Date(),
+        routePermitValidity: new Date(),
+        insuranceValidity: new Date(),
+        fitnessValidity: new Date(),
         buyDate:"",
         buyFrom:"",
         buyAtCost:"",
     });
-    
-    const [repairHistory, setReapirHistory] = useState({
-        repairDate: new Date(),
-        problemDetails:"",
-        repairBy:"",
-        confirmBy:"",
-        workDetails:"",
-        cost:0
-    });
-    const [caseHistory, setCaseHistory] = useState({
-        driver:"",
-        caseDate: new Date(),
-        caseReason:"",
-        caseStatus:"open",
-        caseDetails:""
-    });
-    const [accidentHistory, setAccidentHistory] = useState({
-        driver:"",
-        accidentDate: new Date(),
-        accidentDetails:""
-    });
-    function onChangeCarNumber(e){
+        function onChangeCarNumber(e){
         setCarNumber(e.target.value)
     }
-    function onChangeCarOwner(e){
-        setCarDetails({...carDetails, carOwner:e.target.value})
-    }
-    function onChangeCarColor(e){
-        setCarDetails({...carDetails, carColor:e.target.value})
-    }
-    function onChangeEngineNumber(e){
-        setCarDetails({...carDetails, engineNumber:e.target.value})
-    }
-    function onChangeChasisNumber(e){
-        setCarDetails({...carDetails, chasisNumber:e.target.value})
-    }
-    function onChangeModelNumber(e){
-        setCarDetails({...carDetails, modelNumber:e.target.value})
-    }
-    function onChangeBuyFrom(e){
-        setCarDetails({...carDetails, buyFrom:e.target.value})
-    }
-    function onChangeBuyAtCost(e){
-        setCarDetails({...carDetails, buyAtCost:e.target.value})
-    }
-    function onChangeTaxTokenValidity(e){
-        setCarDetails({...carDetails, taxTokentValidity:e.target.value})
-    }
-    function onChangeRoutePermitValidity(e){
-        setCarDetails({...carDetails, routePermitValidity:e.target.value})
-    }
-    function onChangeInsuranceValidity(e){
-        setCarDetails({...carDetails, insuranceValidity:e.target.value})
-    }
+   
     function onChangeBuyDate(e){
         setBuyDate(e);
-        setCarDetails({...carDetails, buyDate:e});
-        
+        setCarDetails({...carDetails, buyDate:e});        
     }
+    function onChangeTaxTokenValidity(e){
+        setTaxTokenValidity(e);
+        setCarDetails({...carDetails, taxTokentValidity:e}); 
+    }
+    function onChangeInsuranceValidity(e){
+        setInsuranceValidity(e);
+        setCarDetails({...carDetails, insuranceValidity:e});
+    }
+    function onChangeRoutePermitValidity(e){
+        setRoutePermitValidity(e);
+        setCarDetails({...carDetails, routePermitValidity:e});
+    }
+    function onChangeFitnessValidity(e){
+        setFitnessValidity(e);
+        setCarDetails({...carDetails, fitnessValidity:e});
+    }
+   
 
-    
-
-    // function onChangeCarDetails(e){
-    //     setCarDetails({...carDetails, [e.target.id]:e.target.value})
-    // }
-
-
+    function onChangeCarDetails(e){
+        setCarDetails({...carDetails, [e.target.name]:e.target.value})
+    }
 
 
     function onSubmitCarRegistration(e){
@@ -116,70 +77,68 @@ export default function VehicleRecords(){
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
-            <div id="displayVehicleList">
-
-            </div>
-            <div id="displayExpiryAlert">
-
-            </div>
             <div id="register">
                 <div>
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car number:</label>
-                            <input id="car-number" type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
+                            <input name="carNumber" type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
-                            <input id="car-color" type="text" onChange={onChangeCarColor} placeholder="Car color" className="form-control" required/>
+                            <input name="carColor" type="text" onChange={onChangeCarDetails} placeholder="Car color" className="form-control" required/>
                         </div>            
                         <div className="form-group">
                             <label>Engine number:</label>
-                            <input id="engine-number" type="text" onChange={onChangeEngineNumber} placeholder="Engine number" className="form-control" required/>
+                            <input name="engineNumber" type="text" onChange={onChangeCarDetails} placeholder="Engine number" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                   
                         <div className="form-group">
                             <label>Chasis number:</label>
-                            <input id="chasis-number" type="text" onChange={onChangeChasisNumber} placeholder="Chasis number" className="form-control" required/>
+                            <input name="chasisNumber" type="text" onChange={onChangeCarDetails} placeholder="Chasis number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Model number:</label>
-                            <input id="model-number" type="text" onChange={onChangeModelNumber} placeholder="Model number" className="form-control" required/>
+                            <input name="modelNumber" type="text" onChange={onChangeCarDetails} placeholder="Model number" className="form-control" required/>
                         </div>
                   
                         <div className="form-group">
                             <label>Registration name / owner:</label>
-                            <input id="regi-name" type="text" onChange={onChangeCarOwner} placeholder="Registration name/owner" className="form-control" required/>
+                            <input name="carOwner" type="text" onChange={onChangeCarDetails} placeholder="Registration name/owner" className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Tax token validity:</label>
-                            <input id="tax-token" type="text" onChange={onChangeTaxTokenValidity} placeholder="Tax token validity" className="form-control" />
+                            <DatePicker selected={taxTokenValidity} onChange={onChangeTaxTokenValidity} className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Route permit validity:</label>
-                            <input id="route-permit" type="text" onChange={onChangeRoutePermitValidity}  placeholder="Route permit validity" className="form-control" />
+                            <DatePicker selected={routePermitValidity} onChange={onChangeRoutePermitValidity} className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Insurance validity:</label>
-                            <input id="insurance-validity" type="text" onChange={onChangeInsuranceValidity}  placeholder="Insurance validity" className="form-control" />
+                            <DatePicker selected={insuranceValidity} onChange={onChangeInsuranceValidity} className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
                             <label>Buy date:</label>
                             <DatePicker selected={buyDate} onChange={onChangeBuyDate} className="form-control" required/>
+                        </div>
+                        <div className="form-group">
+                            <label>Fitness Validity:</label>
+                            <DatePicker selected={fitnessValidity} onChange={onChangeFitnessValidity} className="form-control" required/>
                         </div>                        
                         <div className="form-group">
                             <label>Buy from:</label>
-                            <input id="buy-from" type="text" onChange={onChangeBuyFrom} placeholder="Bought from" className="form-control" required/>
+                            <input name="buyFrom" type="text" onChange={onChangeCarDetails} placeholder="Bought from" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Buy at cost:</label>
-                            <input id="buy-cost" type="text" onChange={onChangeBuyAtCost} placeholder="Bought at cost" className="form-control" required/>
+                            <input name="buyAtCost" type="text" onChange={onChangeCarDetails} placeholder="Bought at cost" className="form-control" required/>
                         </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-lg">Confirm registration</button>

@@ -7,17 +7,13 @@ router.route('/register/:username/:userid')
     const {
         carNumber,   
         carDetails,
-        lastMovement,
-        movementHistory,
         repairHistory,
         caseHistory,
         accidentHistory
     } = req.body;
     const carRegistration = new VehicleRecords({
         carNumber,
-        carDetails,
-        lastMovement,
-        movementHistory,
+        carDetails,     
         repairHistory,
         caseHistory,
         accidentHistory,
