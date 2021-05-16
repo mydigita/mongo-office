@@ -63,16 +63,14 @@ export default function VehicleRecords(){
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/mongo-office/vehicle-records/displaylist/${username}/${userid}`)
-        .then(res=>{  
-            console.log(res.data);
+        .then(res=>{              
             setCarList(res.data.map((e, i)=>{
                 return (
                 <tr>
                         <td>{i+1}</td>
-                        <td>{e.carDetails.carNumber}</td>                
-                        <td>{e.carDetails.taxTokenValidity}</td>
-                        <td>{e.carDetails.fitnessValidity}</td>
-                        <td>{e.carDetails.insuranceValidity}</td>
+                        <td>{e.carDetails.carNumber}</td>
+                        <td>{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
+                        <td>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
                 </tr>)
             }))
         })
