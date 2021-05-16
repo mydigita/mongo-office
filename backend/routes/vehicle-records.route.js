@@ -29,7 +29,7 @@ router.route('/register/:username/:userid')
 router.route("/displaylist/:username/:userid/")
 .get((req, res)=>{
     const {username, userid} = req.params;
-    VehicleRecords.find({username, userid}, {carNumber:true})
+    VehicleRecords.find({username, userid}, {carNumber:true, carDetails:true})
     .then(data=>res.send(data))
     .catch(err=>res.send(err))
 })

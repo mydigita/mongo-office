@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
@@ -13,12 +13,14 @@ const username = localStorage.getItem('user');
 const userid = localStorage.getItem('userid');
 
 export default function VehicleRecords(){
+    const [carList, setCarList] =  useState();
     const [buyDate, setBuyDate] = useState(new Date());
     const [taxTokenValidity, setTaxTokenValidity]  = useState(new Date());
     const [insuranceValidity, setInsuranceValidity] =  useState(new Date());
     const [fitnessValidity, setFitnessValidity] =  useState(new Date());
     const [carNumber, setCarNumber]= useState("");
     const [carDetails, setCarDetails]= useState({
+        carNumber:carNumber,
         carOwner:"",
         carColor:"",
         engineNumber:"",
@@ -59,6 +61,24 @@ export default function VehicleRecords(){
         setCarDetails({...carDetails, [e.target.name]:e.target.value})
     }
 
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/mongo-office/vehicle-records/displaylist/${username}/${userid}`)
+        .then(res=>{  
+            console.log(res.data);
+            setCarList(res.data.map((e, i)=>{
+                return (
+                <tr>
+                        <td>{i+1}</td>
+                        <td>{e.carDetails.carNumber}</td>                
+                        <td>{e.carDetails.taxTokenValidity}</td>
+                        <td>{e.carDetails.fitnessValidity}</td>
+                        <td>{e.carDetails.insuranceValidity}</td>
+                </tr>)
+            }))
+        })
+        .catch(err=>console.log(err))
+    }, [])
+
 
     function onSubmitCarRegistration(e){
         e.preventDefault();
@@ -90,9 +110,8 @@ export default function VehicleRecords(){
                        </tr>
                    </thead>
                    <tbody>
-                      
-
-                   </tbody>
+                       {carList}
+                    </tbody>
                     
                 </table>
 
