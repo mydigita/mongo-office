@@ -111,25 +111,25 @@ export default function VehicleRecords(){
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
-                            <label>Tax token validity:</label>
+                            <label>Tax token validity:</label><br/>
                             <DatePicker selected={taxTokenValidity} onChange={onChangeTaxTokenValidity} className="form-control" required/>
                         </div>                        
                         <div className="form-group">
-                            <label>Route permit validity:</label>
+                            <label>Route permit validity:</label><br/>
                             <DatePicker selected={routePermitValidity} onChange={onChangeRoutePermitValidity} className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Insurance validity:</label>
+                            <label>Insurance validity:</label> <br/>
                             <DatePicker selected={insuranceValidity} onChange={onChangeInsuranceValidity} className="form-control" required/>
                         </div>
                         </div>
                         <div className="d-flex flex-wrap justify-content-between">                                      
                         <div className="form-group">
-                            <label>Buy date:</label>
+                            <label>Buy date:</label> <br/>
                             <DatePicker selected={buyDate} onChange={onChangeBuyDate} className="form-control" required/>
                         </div>
                         <div className="form-group">
-                            <label>Fitness Validity:</label>
+                            <label>Fitness Validity:</label> <br/>
                             <DatePicker selected={fitnessValidity} onChange={onChangeFitnessValidity} className="form-control" required/>
                         </div>                        
                         <div className="form-group">
