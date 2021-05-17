@@ -17,26 +17,22 @@ export default function VehicleRecords(){
     const [buyDate, setBuyDate] = useState(new Date());
     const [taxTokenValidity, setTaxTokenValidity]  = useState(new Date());
     const [insuranceValidity, setInsuranceValidity] =  useState(new Date());
-    const [fitnessValidity, setFitnessValidity] =  useState(new Date());
-    const [carNumber, setCarNumber]= useState("");
+    const [fitnessValidity, setFitnessValidity] =  useState(new Date());    
     const [carDetails, setCarDetails]= useState({
-        carNumber:carNumber,
+        carNumber:"",
         carOwner:"",
         carColor:"",
         engineNumber:"",
         chasisNumber:"",
         modelNumber:"",
-        taxTokentValidity: new Date(),
-        routePermitValidity: new Date(),
-        insuranceValidity: new Date(),
-        fitnessValidity: new Date(),
-        buyDate:"",
         buyFrom:"",
         buyAtCost:"",
-    });
-        function onChangeCarNumber(e){
-        setCarNumber(e.target.value)
-    }
+        buyDate: new Date(),
+        taxTokenValidity: new Date(),
+        routePermitValidity: new Date(),
+        insuranceValidity: new Date(),
+        fitnessValidity: new Date()    
+    });   
    
     function onChangeBuyDate(e){
         setBuyDate(e);
@@ -66,22 +62,24 @@ export default function VehicleRecords(){
         .then(res=>{              
             setCarList(res.data.map((e, i)=>{
                 return (
-                <tr>
+                <tr key={i}>
                         <td>{i+1}</td>
                         <td>{e.carDetails.carNumber}</td>
+                        <td>{e.carDetails.carOwner}</td>
+                        <td>{new Date(e.carDetails.taxTokenValidity).toLocaleDateString()}</td>
                         <td>{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
                         <td>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
                 </tr>)
             }))
         })
-        .catch(err=>console.log(err))
-    }, [])
+        .catch(err=>"Error")
+    })
 
 
     function onSubmitCarRegistration(e){
         e.preventDefault();
         const registrationData={
-            carNumber,
+            carNumber:carDetails.carNumber,
             carDetails
         }
         axios.post(`http://localhost:5000/mongo-office/vehicle-records/register/${username}/${userid}`, registrationData)
@@ -92,16 +90,28 @@ export default function VehicleRecords(){
     return(
         <div className="body-part pt-3">
             <h3 className="text-center">Vehicle Records</h3>
-            <div>
-                <button>Register a Car</button>
-                <button>Show a car details</button>
+            <div className="pb-2">
+            <ul className="nav nav-tabs pt-2">
+                <li className="nav-item">
+                    <a className="nav-link active primary" data-toggle="tab" href="#carlist">View car details</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link warning" data-toggle="tab" href="#add">Add a car</a>
+                </li>
+                <li className="nav-item">
+                   <a className="nav-link danger" data-toggle="tab" href="#edit">Edit / Update</a>
+                </li>
+            </ul>
             </div>
-            <div id="carlist" className="table-responsive">
+            <div className="tab-content">
+            <div id="carlist" className="tab-pane active">
+            <div className="table-responsive">
                 <table className="table">
                    <thead>
                        <tr>
                            <th>Serial</th>
-                           <th>Car Number</th>                                         
+                           <th>Car Number</th>
+                           <th>Owner</th>                          
                            <th>Tax Token</th>
                            <th>Fitness</th>
                            <th>Insurance</th>
@@ -109,18 +119,17 @@ export default function VehicleRecords(){
                    </thead>
                    <tbody>
                        {carList}
-                    </tbody>
-                    
+                    </tbody>                    
                 </table>
-
             </div>
-            <div id="register">
+            </div>
+            <div id="add" className="tab-pane">
                 <div>
                     <form onSubmit={onSubmitCarRegistration} className="form-light p-3">
                         <div className="d-flex flex-wrap justify-content-between">
                         <div className="form-group">
                             <label>Car number:</label>
-                            <input name="carNumber" type="text" onChange={onChangeCarNumber} placeholder="Car number" className="form-control" required/>
+                            <input name="carNumber" type="text" onChange={onChangeCarDetails} placeholder="Car number" className="form-control" required/>
                         </div>
                         <div className="form-group">
                             <label>Car color: </label>
@@ -180,6 +189,7 @@ export default function VehicleRecords(){
                     </form>
                 </div>
 
+            </div>
             </div>
 
         </div>

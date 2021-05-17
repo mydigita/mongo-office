@@ -3,20 +3,20 @@ const Schema =  mongoose.Schema;
 
 const VehicleSchema =  new Schema({
     carNumber:{type:String, unique:true},
-    carDetails:{        
+    carDetails:{
+        carNumber:{type:String}, 
         carOwner:{type:String},
         carColor:{type:String},
         engineNumber:{type:String},
         chasisNumber:{type:String},
         modelNumber:{type:String},
+        buyFrom:{type:String},
+        buyAtCost:{type:Number},
+        buyDate:{type:Date},
         taxTokenValidity:{type:Date},
         routePermitValidity:{type:Date},
         insuranceValidity:{type:Date},
-        fitnessValidity:{type:Date},
-        buyDate:{type:Date},
-        buyFrom:{type:String},
-        buyAtCost:{type:Number}
-
+        fitnessValidity:{type:Date}
     },    
     repairHistory:[{
         repairDate:{type:String},
