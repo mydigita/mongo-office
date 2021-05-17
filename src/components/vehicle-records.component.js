@@ -72,9 +72,9 @@ export default function VehicleRecords(){
                         <td>{i+1}</td>
                         <td>{e.carDetails.carNumber}</td>
                         <td>{e.carDetails.carOwner}</td>
-                        <td className={new Date(e.carDetails.taxTokenValidity)<warning30Days?"text-danger":new Date(e.carDetails.taxTokenValidity)<warning60Days?"text-warning":"text-success"}>{new Date(e.carDetails.taxTokenValidity).toLocaleDateString()}</td>
-                        <td className={new Date(e.carDetails.fitnessValidity)<warning30Days?"text-danger":new Date(e.carDetails.fitnessValidity)<warning60Days?"text-warning":"text-success"} >{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
-                        <td className={new Date(e.carDetails.insuranceValidity)<warning30Days?"text-danger":new Date(e.carDetails.insuranceValidity)<warning60Days?"text-warning":"text-success"}>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.taxTokenValidity)<warning30Days?"text-danger":new Date(e.carDetails.taxTokenValidity)<warning60Days?"text-primary":"text-body"}>{new Date(e.carDetails.taxTokenValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.fitnessValidity)<warning30Days?"text-danger":new Date(e.carDetails.fitnessValidity)<warning60Days?"text-primary":"text-body"} >{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.insuranceValidity)<warning30Days?"text-danger":new Date(e.carDetails.insuranceValidity)<warning60Days?"primary":"text-body"}>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
                 </tr>)
             }))
         })
