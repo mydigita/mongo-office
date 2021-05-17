@@ -32,7 +32,13 @@ export default function VehicleRecords(){
         routePermitValidity: new Date(),
         insuranceValidity: new Date(),
         fitnessValidity: new Date()    
-    });   
+    });
+    
+    let warning30Days = new Date();
+    warning30Days.setDate(warning30Days.getDate()+30);
+    let warning60Days = new Date();
+    warning60Days.setDate(warning60Days.getDate()+60);
+
    
     function onChangeBuyDate(e){
         setBuyDate(e);
@@ -61,14 +67,14 @@ export default function VehicleRecords(){
         axios.get(`http://localhost:5000/mongo-office/vehicle-records/displaylist/${username}/${userid}`)
         .then(res=>{              
             setCarList(res.data.map((e, i)=>{
-                return (
+               return (
                 <tr key={i}>
                         <td>{i+1}</td>
                         <td>{e.carDetails.carNumber}</td>
                         <td>{e.carDetails.carOwner}</td>
-                        <td>{new Date(e.carDetails.taxTokenValidity).toLocaleDateString()}</td>
-                        <td>{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
-                        <td>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.taxTokenValidity)<warning30Days?"text-danger":new Date(e.carDetails.taxTokenValidity)<warning60Days?"text-warning":"text-success"}>{new Date(e.carDetails.taxTokenValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.fitnessValidity)<warning30Days?"text-danger":new Date(e.carDetails.fitnessValidity)<warning60Days?"text-warning":"text-success"} >{new Date(e.carDetails.fitnessValidity).toLocaleDateString()}</td>
+                        <td className={new Date(e.carDetails.insuranceValidity)<warning30Days?"text-danger":new Date(e.carDetails.insuranceValidity)<warning60Days?"text-warning":"text-success"}>{new Date(e.carDetails.insuranceValidity).toLocaleDateString()}</td>
                 </tr>)
             }))
         })
